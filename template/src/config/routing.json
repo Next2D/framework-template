@@ -1,0 +1,16 @@
+{
+  "top": {
+    "before": [
+      {
+        "type": "api",
+        "method": "get",
+        "path": "user/{user_id}"
+      },
+      {
+        "type": "content",
+        "method": "get",
+        "path": "top.json"
+      }],
+    "after": []
+  }
+}

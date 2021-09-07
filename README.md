@@ -1,2 +1,2 @@
 # framework-template
-framework default template
+framework base template

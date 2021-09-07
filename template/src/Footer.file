@@ -1,0 +1,5 @@
+
+        window.next2d.fw.App = App;
+
+    })(window);
+}

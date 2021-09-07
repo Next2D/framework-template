@@ -1,0 +1,3 @@
+if (!("App" in window.next2d.fw)) {
+    (function(window) {
+        "use strict";
