@@ -11,15 +11,11 @@ class TopView extends next2d.fw.View
     constructor ()
     {
         super();
-        this.initialize();
     }
 
     /**
      * @return {void}
      * @abstract
      */
-    initialize ()
-    {
-        console.log("view initialize");
-    }
+    initialize () {}
 }

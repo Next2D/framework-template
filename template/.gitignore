@@ -22,3 +22,7 @@ yarn-error.log*
 
 # IDE
 .idea
+
+# generate file
+src/Config.file
+src/Packages.file

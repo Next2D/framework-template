@@ -1,0 +1,11 @@
+{
+  "dev": {
+    "endPoint": "/"
+  },
+  "stg": {
+    "endPoint": "/"
+  },
+  "prd": {
+    "endPoint": "/"
+  }
+}

@@ -16,7 +16,8 @@
       "karma-jasmine": "^4.0.1",
       "karma-safari-launcher": "^1.0.0",
       "karma-spec-reporter": "^0.0.32",
-      "minimist": "^1.2.5"
+      "minimist": "^1.2.5",
+      "glob": "^7.1.7"
     }
   }
 }

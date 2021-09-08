@@ -8,12 +8,15 @@ const TestServer  = require("karma").Server;
 const preprocess  = require("gulp-preprocess");
 const minimist    = require("minimist");
 const eslint      = require("gulp-eslint");
+const fs          = require("fs");
+const os          = require("os");
+const glob        = require("glob");
 
 const options = minimist(process.argv.slice(2), {
     "string": ["env", "distPath"],
     "default": {
         "env": "dev",
-        "distPath": "dist"
+        "distPath": `${__dirname}/dist`
     }
 });
 
@@ -24,31 +27,97 @@ const options = minimist(process.argv.slice(2), {
 function lint ()
 {
     return gulp
-        .src("src/**/*.js")
+        .src(`${__dirname}/src/**/*.js`)
         .pipe(eslint({ "useEslintrc": true }))
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
 }
 
 /**
+ * @description config
+ * @public
+ */
+function buildConfig (done)
+{
+
+    const config = {
+        "stage": {},
+        "routing": {}
+    };
+
+    const envJson = JSON.parse(
+        fs.readFileSync(`${__dirname}/src/config/config.json`, { "encoding": "utf8" })
+    );
+    const stageJson = JSON.parse(
+        fs.readFileSync(`${__dirname}/src/config/stage.json`, { "encoding": "utf8" })
+    );
+    const routingJson = JSON.parse(
+        fs.readFileSync(`${__dirname}/src/config/routing.json`, { "encoding": "utf8" })
+    );
+
+    Object.assign(config, envJson[options.env]);
+    Object.assign(config, envJson.all);
+    Object.assign(config.stage, stageJson);
+    Object.assign(config.routing, routingJson);
+
+    fs.writeFileSync(
+        `${__dirname}/src/Config.file`,
+        "next2d.fw.config = " + JSON.stringify(config, null, 2) + ";" + os.EOL
+    );
+
+    glob(`${__dirname}/src/**/*.js`, (err, files) =>
+    {
+        if (err) {
+            throw err;
+        }
+
+        let packages = "[";
+        files.forEach((file) =>
+        {
+            const js = fs.readFileSync(file, { "encoding": "utf-8" });
+            const lines = js.split("\n");
+
+            lines.forEach((line) =>
+            {
+                if (line.startsWith("class ")) {
+                    const name = line.split(" ")[1];
+                    packages += `["${name}", ${name}],`;
+                    return true;
+                }
+            });
+        });
+
+        packages = packages.slice(0, -1);
+        packages += "]";
+
+        fs.writeFileSync(
+            `${__dirname}/src/Packages.file`,
+            `next2d.fw.packages = new Map(${packages});`
+        );
+
+        done();
+    });
+}
+
+/**
  * @description JavaScriptをまとめてminifyして出力
  * @public
  */
-function buildJavaScript()
+function buildJavaScript ()
 {
-    // setup
-    const preprocessContext = {};
-
-    preprocessContext.DEBUG = options.env !== "prd";
 
     const build = gulp
         .src([
-            "Header.file",
-            "src/**/*.js",
-            "Footer.file"
+            `${__dirname}/node_modules/@next2d/player/next2d.js`,
+            `${__dirname}/node_modules/@next2d/framework/next2d-framework.js`,
+            `${__dirname}/src/Header.file`,
+            `${__dirname}/src/Config.file`,
+            `${__dirname}/src/**/*.js`,
+            `${__dirname}/src/Packages.file`,
+            `${__dirname}/src/Footer.file`
         ])
         .pipe(concat("app.js"))
-        .pipe(preprocess({ "context": preprocessContext }));
+        .pipe(preprocess({ "context": { "DEBUG": options.env !== "prd" } }));
 
     if (options.env === "prd") {
         build
@@ -68,7 +137,7 @@ function browser (done)
 {
     browserSync.init({
         "server": {
-            "baseDir": "dist",
+            "baseDir": `${__dirname}/dist`,
             "index": "index.html"
         },
         "reloadOnRestart": true
@@ -94,8 +163,13 @@ function reload (done)
 function watchFiles ()
 {
     return gulp
-        .watch("src/**/*.js")
+        .watch([
+            `${__dirname}/node_modules/@next2d/player/next2d.js`,
+            `${__dirname}/node_modules/@next2d/framework/next2d-framework.js`,
+            `${__dirname}/src/**/*.js*`
+        ])
         .on("change", gulp.series(
+            buildConfig,
             buildJavaScript,
             reload
         ));
@@ -108,7 +182,7 @@ function watchFiles ()
 function test (done)
 {
     new TestServer({
-        "configFile": __dirname + "/karma.conf.js",
+        "configFile": `${__dirname}/karma.conf.js`,
         "singleRun": true
     }, function (error)
     {
@@ -118,9 +192,11 @@ function test (done)
 }
 
 exports.default = gulp.series(
+    buildConfig,
     buildJavaScript,
     browser,
     watchFiles
 );
+exports.build = gulp.series(buildConfig, buildJavaScript);
 exports.test  = gulp.series(test);
 exports.lint  = gulp.series(lint);

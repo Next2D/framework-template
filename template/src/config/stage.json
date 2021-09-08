@@ -1,7 +1,7 @@
 {
   "width": 240,
   "height": 240,
-  "fps": 30,
+  "fps": 12,
   "options": {
     "base": "."
   }

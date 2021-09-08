@@ -2,14 +2,16 @@
   "top": {
     "before": [
       {
-        "type": "api",
+        "type": "json",
+        "path": "text.json",
         "method": "get",
-        "path": "user/{user_id}"
+        "name": "text"
       },
       {
         "type": "content",
+        "path": "content.json",
         "method": "get",
-        "path": "top.json"
+        "name": "topContent"
       }],
     "after": []
   }
