@@ -1,19 +1,9 @@
 {
-  "name": "@next2d/framework-template",
-  "description": "framework default template for Create Next2D App.",
-  "version": "0.0.4",
-  "homepage": "https://next2d.app",
-  "bugs": "https://github.com/Next2D/framework-template/issues/new",
-  "author": "Toshiyuki Ienaga<ienaga@tvon.jp>",
-  "license": "MIT",
-  "keywords": [
-    "Next2D",
-    "create-next2d-app",
-    "Next2D framework template"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Next2D/framework-template.git"
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "gulp test",
+    "lint": "gulp lint"
   },
   "devDependencies": {
     "@next2d/framework": "^0.0.1",

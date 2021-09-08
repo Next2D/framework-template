@@ -45596,21 +45596,6 @@ class App extends next2d.fw.Application
 }
 /**
  * @class
- * @extends
- */
-class TopContent extends next2d.display.MovieClip
-{
-    /**
-     * @constructor
-     * @public
-     */
-    constructor()
-    {
-        super();
-    }
-}
-/**
- * @class
  * @extends {next2d.fw.View}
  */
 class TopView extends next2d.fw.View
@@ -45688,7 +45673,7 @@ class TopViewModel extends next2d.fw.ViewModel
         console.log("removed", view);
     }
 }
-next2d.fw.packages = new Map([["App", App],["TopContent", TopContent],["TopView", TopView],["TopViewModel", TopViewModel]]);
+next2d.fw.packages = new Map([["App", App],["TopView", TopView],["TopViewModel", TopViewModel]]);
 
         window.next2d.fw.App = App;
 
