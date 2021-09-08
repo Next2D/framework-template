@@ -1,0 +1,4 @@
+.github
+template/dist/app.js
+template/node_modules
+template/package.json
