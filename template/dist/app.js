@@ -11000,13 +11000,6 @@ class Sprite extends DisplayObjectContainer
          * @private
          */
         this._$graphics = null;
-
-        // extends sync
-        if (this.constructor.namespace !== MovieClip.namespace
-            && this.constructor.namespace !== Sprite.namespace
-        ) {
-            this._$sync();
-        }
     }
 
     /**
@@ -11410,11 +11403,6 @@ class MovieClip extends Sprite
          * @private
          */
         this._$enabled = true;
-
-        // extends sync
-        if (this.constructor.namespace !== MovieClip.namespace) {
-            this._$sync();
-        }
     }
 
     /**
@@ -17377,11 +17365,6 @@ class Shape extends DisplayObject
          * @private
          */
         this._$bitmapId = 0;
-
-        // extends sync
-        if (this.constructor.namespace !== Shape.namespace) {
-            this._$sync();
-        }
     }
 
     /**
@@ -24139,11 +24122,6 @@ class TextField extends InteractiveObject
          * @private
          */
         this._$isComposing = false;
-
-        // extends sync
-        if (this.constructor.namespace !== TextField.namespace) {
-            this._$sync();
-        }
     }
 
     /**
@@ -27576,684 +27554,6 @@ class TextFormat
     }
 }
 /**
- * URLLoaderDataFormat クラスは、ダウンロードされるデータの受信方法を指定する値を提供します。
- *
- * The URLLoaderDataFormat class provides values that specify how downloaded data is received.
- *
- * @class
- * @memberOf next2d.net
- */
-class URLLoaderDataFormat
-{
-    /**
-     * @description 指定されたクラスのストリングを返します。
-     *              Returns the string representation of the specified class.
-     *
-     * @return  {string}
-     * @default [class URLLoaderDataFormat]
-     * @method
-     * @static
-     */
-    static toString ()
-    {
-        return "[class URLLoaderDataFormat]";
-    }
-
-    /**
-     * @description 指定されたクラスの空間名を返します。
-     *              Returns the space name of the specified class.
-     *
-     * @return  {string}
-     * @default next2d.net.URLLoaderDataFormat
-     * @const
-     * @static
-     */
-    static get namespace ()
-    {
-        return "next2d.net.URLLoaderDataFormat";
-    }
-
-    /**
-     * @description 指定されたオブジェクトのストリングを返します。
-     *              Returns the string representation of the specified object.
-     *
-     * @return  {string}
-     * @default [object URLLoaderDataFormat]
-     * @method
-     * @public
-     */
-    toString ()
-    {
-        return "[object URLLoaderDataFormat]";
-    }
-
-    /**
-     * @description 指定されたオブジェクトの空間名を返します。
-     *              Returns the space name of the specified object.
-     *
-     * @return  {string}
-     * @default next2d.net.URLLoaderDataFormat
-     * @const
-     * @static
-     */
-    get namespace ()
-    {
-        return "next2d.net.URLLoaderDataFormat";
-    }
-
-    /**
-     * @description ダウンロードされるデータを生のバイナリデータとして受信することを指定します。
-     *              Specifies that downloaded data is received as raw binary data.
-     *
-     * @return  {string}
-     * @default arraybuffer
-     * @const
-     * @static
-     */
-    static get ARRAY_BUFFER ()
-    {
-        return "arraybuffer";
-    }
-
-    /**
-     * @description ダウンロードされるデータをJSONとして受信することを指定します。
-     *              Specifies that downloaded data is received as string.
-     *
-     * @return  {string}
-     * @default json
-     * @const
-     * @static
-     */
-    static get JSON ()
-    {
-        return "json";
-    }
-}
-/**
- * URLRequest クラスは、すべての情報を 1 つの HTTP 要求にキャプチャします
- *
- * The URLRequest class captures all of the information in a single HTTP request.
- *
- * @class
- * @memberOf next2d.net
- */
-class URLRequest
-{
-    /**
-     * @param {string} [url=""]
-     *
-     * @constructor
-     * @public
-     */
-    constructor (url = "")
-    {
-        /**
-         * @type {string}
-         * @default ""
-         * @private
-         */
-        this._$url = url;
-
-        /**
-         * @type {string}
-         * @default application/json
-         * @private
-         */
-        this._$contentType = "application/json";
-
-        /**
-         * @type {object}
-         * @default null
-         * @private
-         */
-        this._$data = null;
-
-        /**
-         * @type {string}
-         * @default URLRequestMethod.GET
-         * @private
-         */
-        this._$method = URLRequestMethod.GET;
-
-        /**
-         * @type {array}
-         * @private
-         */
-        this._$requestHeaders  = Util.$getArray();
-
-        /**
-         * @type {string}
-         * @default navigator.userAgent
-         * @private
-         */
-        this._$userAgent = Util.$navigator.userAgent;
-
-        /**
-         * @type {string}
-         * @default URLLoaderDataFormat.JSON
-         * @private
-         */
-        this._$responseDataFormat = URLLoaderDataFormat.JSON;
-
-        /**
-         * @type {boolean}
-         * @default false
-         * @private
-         */
-        this._$withCredentials = false;
-    }
-
-    /**
-     * @description 指定されたクラスのストリングを返します。
-     *              Returns the string representation of the specified class.
-     *
-     * @return  {string}
-     * @default [class URLRequest]
-     * @method
-     * @static
-     */
-    static toString ()
-    {
-        return "[class URLRequest]";
-    }
-
-    /**
-     * @description 指定されたクラスの空間名を返します。
-     *              Returns the space name of the specified class.
-     *
-     * @return  {string}
-     * @default next2d.net.URLRequest
-     * @const
-     * @static
-     */
-    static get namespace ()
-    {
-        return "next2d.net.URLRequest";
-    }
-
-    /**
-     * @description 指定されたオブジェクトのストリングを返します。
-     *              Returns the string representation of the specified object.
-     *
-     * @return  {string}
-     * @default [object URLRequest]
-     * @method
-     * @public
-     */
-    toString ()
-    {
-        return "[object URLRequest]";
-    }
-
-    /**
-     * @description 指定されたオブジェクトの空間名を返します。
-     *              Returns the space name of the specified object.
-     *
-     * @return  {string}
-     * @default next2d.net.URLRequest
-     * @const
-     * @static
-     */
-    get namespace ()
-    {
-        return "next2d.net.URLRequest";
-    }
-
-    /**
-     * @description data プロパティのコンテンツの MIME コンテンツタイプです。
-     *              The MIME content type of the content in the the data property.
-     *
-     * @member {string}
-     * @default application/json
-     * @public
-     */
-    get contentType ()
-    {
-        return this._$contentType;
-    }
-    set contentType (content_type)
-    {
-        this._$contentType = `${content_type}`;
-    }
-
-    /**
-     * @description URL リクエストで送信されるデータを含むオブジェクトです。
-     *              An object containing data to be transmitted with the URL request.
-     *
-     * @member {string|object}
-     * @public
-     */
-    get data ()
-    {
-        return this._$data;
-    }
-    set data (data)
-    {
-        this._$data = data;
-    }
-
-    /**
-     * @description HTTP フォーム送信メソッドを制御します。
-     *              Controls the HTTP form submission method.
-     *
-     * @member  {string}
-     * @default URLRequestMethod.GET
-     * @public
-     */
-    get method ()
-    {
-        return this._$method;
-    }
-    set method (method)
-    {
-        method += "";
-        switch (method.toUpperCase()) {
-
-            case URLRequestMethod.DELETE:
-            case URLRequestMethod.HEAD:
-            case URLRequestMethod.OPTIONS:
-            case URLRequestMethod.POST:
-            case URLRequestMethod.PUT:
-                this._$method = method;
-                break;
-
-            default:
-                this._$method = URLRequestMethod.GET;
-                break;
-        }
-    }
-
-    /**
-     * @description HTTP リクエストヘッダーの配列が HTTP リクエストに追加されます。
-     *              The array of HTTP request headers to be appended to the HTTP request.
-     *
-     * @member {URLRequestHeader[]}
-     * @public
-     */
-    get requestHeaders ()
-    {
-        return this._$requestHeaders;
-    }
-    set requestHeaders (request_headers)
-    {
-        if (Util.$isArray(request_headers)) {
-            this._$requestHeaders = request_headers;
-        }
-    }
-
-    /**
-     * @description リクエストされる URL です。
-     *              The URL to be requested.
-     *
-     * @member {string}
-     * @public
-     */
-    get url ()
-    {
-        if (this._$url && this._$url.indexOf("//") === -1) {
-
-            const urls = this._$url.split("/");
-            if (urls[0] === "" || urls[0] === ".") {
-                urls.shift();
-            }
-
-            const player = Util.$currentPlayer();
-            if (player) {
-                return `${player.base}${urls.join("/")}`;
-            }
-        }
-
-        return this._$url;
-    }
-    set url (url)
-    {
-        this._$url = `${url}`;
-    }
-
-    /**
-     * @description HTTP 要求で使用されるユーザーエージェントストリングを指定します。
-     *              Specifies the user-agent string to be used in the HTTP request.
-     *
-     * @member {string}
-     * @readonly
-     * @public
-     */
-    get userAgent ()
-    {
-        return this._$userAgent;
-    }
-
-    /**
-     * @description レスポンスのデータフォーマットを指定します。
-     *              Specifies the data format of the response.
-     *
-     * @member {string}
-     * @default URLLoaderDataFormat.JSON
-     * @public
-     */
-    get responseDataFormat ()
-    {
-        return this._$responseDataFormat;
-    }
-    set responseDataFormat (format)
-    {
-        this._$responseDataFormat = `${format}`;
-    }
-
-    /**
-     * @description HTTP 要求で使用されるユーザーエージェントストリングを指定します。
-     *              Specifies the user-agent string to be used in the HTTP request.
-     *
-     * @member {boolean}
-     * @default false
-     * @readonly
-     * @public
-     */
-    get withCredentials ()
-    {
-        return this._$withCredentials;
-    }
-
-    /**
-     * @description リクエストされる Header Object
-     *              Header Object to be requested.
-     *
-     * @member {object}
-     * @readonly
-     * @public
-     */
-    get headers ()
-    {
-        const headers = {
-            "Content-Type": `${this._$contentType}`
-        };
-
-        const length = this._$requestHeaders.length;
-        for (let idx = 0; idx < length; ++idx) {
-
-            const urlRequestHeader = this._$requestHeaders[idx];
-
-            if (urlRequestHeader instanceof URLRequestHeader) {
-                headers[urlRequestHeader.name] = urlRequestHeader.value;
-            }
-        }
-
-        return headers;
-    }
-}
-/**
- * URLRequestHeader オブジェクトは 1 つの HTTP のリクエストヘッダーをカプセル化し、名前と値のペアを構成します。
- * URLRequestHeader オブジェクトは URLRequest クラスの requestHeaders プロパティで使用されます。
- *
- * A URLRequestHeader object encapsulates a single HTTP request header and consists of a name/value pair.
- * URLRequestHeader objects are used in the requestHeaders property of the URLRequest class.
- *
- * @class
- * @memberOf next2d.net
- */
-class URLRequestHeader
-{
-    /**
-     * @param {string} [name=""]
-     * @param {string} [value=""]
-     *
-     * @constructor
-     * @public
-     */
-    constructor (name = "", value = "")
-    {
-        /**
-         * @type {string}
-         * @default ""
-         * @private
-         */
-        this._$name = `${name}`;
-
-        /**
-         * @type {string}
-         * @default ""
-         * @private
-         */
-        this._$value = `${value}`;
-    }
-
-    /**
-     * @description 指定されたクラスのストリングを返します。
-     *              Returns the string representation of the specified class.
-     *
-     * @return  {string}
-     * @default [class URLRequestHeader]
-     * @method
-     * @static
-     */
-    static toString ()
-    {
-        return "[class URLRequestHeader]";
-    }
-
-    /**
-     * @description 指定されたクラスの空間名を返します。
-     *              Returns the space name of the specified class.
-     *
-     * @return  {string}
-     * @default next2d.net.URLRequestHeader
-     * @const
-     * @static
-     */
-    static get namespace ()
-    {
-        return "next2d.net.URLRequestHeader";
-    }
-
-    /**
-     * @description 指定されたオブジェクトのストリングを返します。
-     *              Returns the string representation of the specified object.
-     *
-     * @return  {string}
-     * @default [object URLRequestHeader]
-     * @method
-     * @public
-     */
-    toString ()
-    {
-        return "[object URLRequestHeader]";
-    }
-
-    /**
-     * @description 指定されたオブジェクトの空間名を返します。
-     *              Returns the space name of the specified object.
-     *
-     * @return  {string}
-     * @default next2d.net.URLRequestHeader
-     * @const
-     * @static
-     */
-    get namespace ()
-    {
-        return "next2d.net.URLRequestHeader";
-    }
-
-    /**
-     * @description HTTP リクエストヘッダー名（Content-Type や SOAPAction など）です。
-     *              An HTTP request header name (such as Content-Type or SOAPAction).
-     *
-     * @member {string}
-     * @default ""
-     * @readonly
-     * @public
-     */
-    get name ()
-    {
-        return this._$name;
-    }
-
-    /**
-     * @description name プロパティに関連付けられた値（text/plain など）です。
-     *              The value associated with the name property (such as text/plain).
-     *
-     * @member {string}
-     * @default ""
-     * @readonly
-     * @public
-     */
-    get value ()
-    {
-        return this._$value;
-    }
-}
-/**
- * URLRequestMethod クラスは、URLRequest オブジェクトがデータをサーバーに送信するときに
- * POST または GET のどちらのメソッドを使用するかを指定する値を提供します。
- *
- * The URLRequestMethod class provides values that specify whether the URLRequest object should use the
- * POST method or the GET method when sending data to a server.
- *
- * @class
- * @memberOf next2d.net
- */
-class URLRequestMethod
-{
-    /**
-     * @description 指定されたクラスのストリングを返します。
-     *              Returns the string representation of the specified class.
-     *
-     * @return  {string}
-     * @default [class URLRequestMethod]
-     * @method
-     * @static
-     */
-    static toString ()
-    {
-        return "[class URLRequestMethod]";
-    }
-
-    /**
-     * @description 指定されたクラスの空間名を返します。
-     *              Returns the space name of the specified class.
-     *
-     * @return  {string}
-     * @default next2d.net.URLRequestMethod
-     * @const
-     * @static
-     */
-    static get namespace ()
-    {
-        return "next2d.net.URLRequestMethod";
-    }
-
-    /**
-     * @description 指定されたオブジェクトのストリングを返します。
-     *              Returns the string representation of the specified object.
-     *
-     * @return  {string}
-     * @default [object URLRequestMethod]
-     * @method
-     * @public
-     */
-    toString ()
-    {
-        return "[object URLRequestMethod]";
-    }
-
-    /**
-     * @description 指定されたオブジェクトの空間名を返します。
-     *              Returns the space name of the specified object.
-     *
-     * @return  {string}
-     * @default next2d.net.URLRequestMethod
-     * @const
-     * @static
-     */
-    get namespace ()
-    {
-        return "next2d.net.URLRequestMethod";
-    }
-
-    /**
-     * @description URLRequest オブジェクトが DELETE であることを指定します。
-     *              Specifies that the URLRequest object is a DELETE.
-     *
-     * @return  {string}
-     * @default DELETE
-     * @const
-     * @static
-     */
-    static get DELETE ()
-    {
-        return "DELETE";
-    }
-
-    /**
-     * @description URLRequest オブジェクトが GET であることを指定します。
-     *              Specifies that the URLRequest object is a GET.
-     *
-     * @return  {string}
-     * @default GET
-     * @const
-     * @static
-     */
-    static get GET ()
-    {
-        return "GET";
-    }
-
-    /**
-     * @description URLRequest オブジェクトが HEAD であることを指定します。
-     *              Specifies that the URLRequest object is a HEAD.
-     *
-     * @return  {string}
-     * @default HEAD
-     * @const
-     * @static
-     */
-    static get HEAD ()
-    {
-        return "HEAD";
-    }
-
-    /**
-     * @description URLRequest オブジェクトが OPTIONS であることを指定します。
-     *              Specifies that the URLRequest object is OPTIONS.
-     *
-     * @return  {string}
-     * @default OPTIONS
-     * @const
-     * @static
-     */
-    static get OPTIONS ()
-    {
-        return "OPTIONS";
-    }
-
-    /**
-     * @description URLRequest オブジェクトが POST であることを指定します。
-     *              Specifies that the URLRequest object is a POST.
-     *
-     * @return  {string}
-     * @default POST
-     * @const
-     * @static
-     */
-    static get POST ()
-    {
-        return "POST";
-    }
-
-    /**
-     * @description URLRequest オブジェクトが PUT であることを指定します。
-     *              Specifies that the URLRequest object is a PUT.
-     *
-     * @return  {string}
-     * @default PUT
-     * @const
-     * @static
-     */
-    static get PUT ()
-    {
-        return "PUT";
-    }
-}
-/**
  * Sound クラスを使用すると、アプリケーション内のサウンドを処理することができます。
  * Sound クラスを使用すると、Sound オブジェクトの作成や、外部 MP3 ファイルのオブジェクトへのロードと再生ができます。
  *
@@ -29143,11 +28443,6 @@ class Video extends DisplayObject
          * @private
          */
         this._$volume = 1;
-
-        // extends sync
-        if (this.constructor.namespace !== Video.namespace) {
-            this._$sync();
-        }
     }
 
     /**
@@ -29982,6 +29277,684 @@ class Video extends DisplayObject
             this._$bounds.xMin, this._$bounds.xMax,
             this._$bounds.yMin, this._$bounds.yMax
         );
+    }
+}
+/**
+ * URLLoaderDataFormat クラスは、ダウンロードされるデータの受信方法を指定する値を提供します。
+ *
+ * The URLLoaderDataFormat class provides values that specify how downloaded data is received.
+ *
+ * @class
+ * @memberOf next2d.net
+ */
+class URLLoaderDataFormat
+{
+    /**
+     * @description 指定されたクラスのストリングを返します。
+     *              Returns the string representation of the specified class.
+     *
+     * @return  {string}
+     * @default [class URLLoaderDataFormat]
+     * @method
+     * @static
+     */
+    static toString ()
+    {
+        return "[class URLLoaderDataFormat]";
+    }
+
+    /**
+     * @description 指定されたクラスの空間名を返します。
+     *              Returns the space name of the specified class.
+     *
+     * @return  {string}
+     * @default next2d.net.URLLoaderDataFormat
+     * @const
+     * @static
+     */
+    static get namespace ()
+    {
+        return "next2d.net.URLLoaderDataFormat";
+    }
+
+    /**
+     * @description 指定されたオブジェクトのストリングを返します。
+     *              Returns the string representation of the specified object.
+     *
+     * @return  {string}
+     * @default [object URLLoaderDataFormat]
+     * @method
+     * @public
+     */
+    toString ()
+    {
+        return "[object URLLoaderDataFormat]";
+    }
+
+    /**
+     * @description 指定されたオブジェクトの空間名を返します。
+     *              Returns the space name of the specified object.
+     *
+     * @return  {string}
+     * @default next2d.net.URLLoaderDataFormat
+     * @const
+     * @static
+     */
+    get namespace ()
+    {
+        return "next2d.net.URLLoaderDataFormat";
+    }
+
+    /**
+     * @description ダウンロードされるデータを生のバイナリデータとして受信することを指定します。
+     *              Specifies that downloaded data is received as raw binary data.
+     *
+     * @return  {string}
+     * @default arraybuffer
+     * @const
+     * @static
+     */
+    static get ARRAY_BUFFER ()
+    {
+        return "arraybuffer";
+    }
+
+    /**
+     * @description ダウンロードされるデータをJSONとして受信することを指定します。
+     *              Specifies that downloaded data is received as string.
+     *
+     * @return  {string}
+     * @default json
+     * @const
+     * @static
+     */
+    static get JSON ()
+    {
+        return "json";
+    }
+}
+/**
+ * URLRequest クラスは、すべての情報を 1 つの HTTP 要求にキャプチャします
+ *
+ * The URLRequest class captures all of the information in a single HTTP request.
+ *
+ * @class
+ * @memberOf next2d.net
+ */
+class URLRequest
+{
+    /**
+     * @param {string} [url=""]
+     *
+     * @constructor
+     * @public
+     */
+    constructor (url = "")
+    {
+        /**
+         * @type {string}
+         * @default ""
+         * @private
+         */
+        this._$url = url;
+
+        /**
+         * @type {string}
+         * @default application/json
+         * @private
+         */
+        this._$contentType = "application/json";
+
+        /**
+         * @type {object}
+         * @default null
+         * @private
+         */
+        this._$data = null;
+
+        /**
+         * @type {string}
+         * @default URLRequestMethod.GET
+         * @private
+         */
+        this._$method = URLRequestMethod.GET;
+
+        /**
+         * @type {array}
+         * @private
+         */
+        this._$requestHeaders  = Util.$getArray();
+
+        /**
+         * @type {string}
+         * @default navigator.userAgent
+         * @private
+         */
+        this._$userAgent = Util.$navigator.userAgent;
+
+        /**
+         * @type {string}
+         * @default URLLoaderDataFormat.JSON
+         * @private
+         */
+        this._$responseDataFormat = URLLoaderDataFormat.JSON;
+
+        /**
+         * @type {boolean}
+         * @default false
+         * @private
+         */
+        this._$withCredentials = false;
+    }
+
+    /**
+     * @description 指定されたクラスのストリングを返します。
+     *              Returns the string representation of the specified class.
+     *
+     * @return  {string}
+     * @default [class URLRequest]
+     * @method
+     * @static
+     */
+    static toString ()
+    {
+        return "[class URLRequest]";
+    }
+
+    /**
+     * @description 指定されたクラスの空間名を返します。
+     *              Returns the space name of the specified class.
+     *
+     * @return  {string}
+     * @default next2d.net.URLRequest
+     * @const
+     * @static
+     */
+    static get namespace ()
+    {
+        return "next2d.net.URLRequest";
+    }
+
+    /**
+     * @description 指定されたオブジェクトのストリングを返します。
+     *              Returns the string representation of the specified object.
+     *
+     * @return  {string}
+     * @default [object URLRequest]
+     * @method
+     * @public
+     */
+    toString ()
+    {
+        return "[object URLRequest]";
+    }
+
+    /**
+     * @description 指定されたオブジェクトの空間名を返します。
+     *              Returns the space name of the specified object.
+     *
+     * @return  {string}
+     * @default next2d.net.URLRequest
+     * @const
+     * @static
+     */
+    get namespace ()
+    {
+        return "next2d.net.URLRequest";
+    }
+
+    /**
+     * @description data プロパティのコンテンツの MIME コンテンツタイプです。
+     *              The MIME content type of the content in the the data property.
+     *
+     * @member {string}
+     * @default application/json
+     * @public
+     */
+    get contentType ()
+    {
+        return this._$contentType;
+    }
+    set contentType (content_type)
+    {
+        this._$contentType = `${content_type}`;
+    }
+
+    /**
+     * @description URL リクエストで送信されるデータを含むオブジェクトです。
+     *              An object containing data to be transmitted with the URL request.
+     *
+     * @member {string|object}
+     * @public
+     */
+    get data ()
+    {
+        return this._$data;
+    }
+    set data (data)
+    {
+        this._$data = data;
+    }
+
+    /**
+     * @description HTTP フォーム送信メソッドを制御します。
+     *              Controls the HTTP form submission method.
+     *
+     * @member  {string}
+     * @default URLRequestMethod.GET
+     * @public
+     */
+    get method ()
+    {
+        return this._$method;
+    }
+    set method (method)
+    {
+        method += "";
+        switch (method.toUpperCase()) {
+
+            case URLRequestMethod.DELETE:
+            case URLRequestMethod.HEAD:
+            case URLRequestMethod.OPTIONS:
+            case URLRequestMethod.POST:
+            case URLRequestMethod.PUT:
+                this._$method = method;
+                break;
+
+            default:
+                this._$method = URLRequestMethod.GET;
+                break;
+        }
+    }
+
+    /**
+     * @description HTTP リクエストヘッダーの配列が HTTP リクエストに追加されます。
+     *              The array of HTTP request headers to be appended to the HTTP request.
+     *
+     * @member {URLRequestHeader[]}
+     * @public
+     */
+    get requestHeaders ()
+    {
+        return this._$requestHeaders;
+    }
+    set requestHeaders (request_headers)
+    {
+        if (Util.$isArray(request_headers)) {
+            this._$requestHeaders = request_headers;
+        }
+    }
+
+    /**
+     * @description リクエストされる URL です。
+     *              The URL to be requested.
+     *
+     * @member {string}
+     * @public
+     */
+    get url ()
+    {
+        if (this._$url && this._$url.indexOf("//") === -1) {
+
+            const urls = this._$url.split("/");
+            if (urls[0] === "" || urls[0] === ".") {
+                urls.shift();
+            }
+
+            const player = Util.$currentPlayer();
+            if (player) {
+                return `${player.base}${urls.join("/")}`;
+            }
+        }
+
+        return this._$url;
+    }
+    set url (url)
+    {
+        this._$url = `${url}`;
+    }
+
+    /**
+     * @description HTTP 要求で使用されるユーザーエージェントストリングを指定します。
+     *              Specifies the user-agent string to be used in the HTTP request.
+     *
+     * @member {string}
+     * @readonly
+     * @public
+     */
+    get userAgent ()
+    {
+        return this._$userAgent;
+    }
+
+    /**
+     * @description レスポンスのデータフォーマットを指定します。
+     *              Specifies the data format of the response.
+     *
+     * @member {string}
+     * @default URLLoaderDataFormat.JSON
+     * @public
+     */
+    get responseDataFormat ()
+    {
+        return this._$responseDataFormat;
+    }
+    set responseDataFormat (format)
+    {
+        this._$responseDataFormat = `${format}`;
+    }
+
+    /**
+     * @description HTTP 要求で使用されるユーザーエージェントストリングを指定します。
+     *              Specifies the user-agent string to be used in the HTTP request.
+     *
+     * @member {boolean}
+     * @default false
+     * @readonly
+     * @public
+     */
+    get withCredentials ()
+    {
+        return this._$withCredentials;
+    }
+
+    /**
+     * @description リクエストされる Header Object
+     *              Header Object to be requested.
+     *
+     * @member {object}
+     * @readonly
+     * @public
+     */
+    get headers ()
+    {
+        const headers = {
+            "Content-Type": `${this._$contentType}`
+        };
+
+        const length = this._$requestHeaders.length;
+        for (let idx = 0; idx < length; ++idx) {
+
+            const urlRequestHeader = this._$requestHeaders[idx];
+
+            if (urlRequestHeader instanceof URLRequestHeader) {
+                headers[urlRequestHeader.name] = urlRequestHeader.value;
+            }
+        }
+
+        return headers;
+    }
+}
+/**
+ * URLRequestHeader オブジェクトは 1 つの HTTP のリクエストヘッダーをカプセル化し、名前と値のペアを構成します。
+ * URLRequestHeader オブジェクトは URLRequest クラスの requestHeaders プロパティで使用されます。
+ *
+ * A URLRequestHeader object encapsulates a single HTTP request header and consists of a name/value pair.
+ * URLRequestHeader objects are used in the requestHeaders property of the URLRequest class.
+ *
+ * @class
+ * @memberOf next2d.net
+ */
+class URLRequestHeader
+{
+    /**
+     * @param {string} [name=""]
+     * @param {string} [value=""]
+     *
+     * @constructor
+     * @public
+     */
+    constructor (name = "", value = "")
+    {
+        /**
+         * @type {string}
+         * @default ""
+         * @private
+         */
+        this._$name = `${name}`;
+
+        /**
+         * @type {string}
+         * @default ""
+         * @private
+         */
+        this._$value = `${value}`;
+    }
+
+    /**
+     * @description 指定されたクラスのストリングを返します。
+     *              Returns the string representation of the specified class.
+     *
+     * @return  {string}
+     * @default [class URLRequestHeader]
+     * @method
+     * @static
+     */
+    static toString ()
+    {
+        return "[class URLRequestHeader]";
+    }
+
+    /**
+     * @description 指定されたクラスの空間名を返します。
+     *              Returns the space name of the specified class.
+     *
+     * @return  {string}
+     * @default next2d.net.URLRequestHeader
+     * @const
+     * @static
+     */
+    static get namespace ()
+    {
+        return "next2d.net.URLRequestHeader";
+    }
+
+    /**
+     * @description 指定されたオブジェクトのストリングを返します。
+     *              Returns the string representation of the specified object.
+     *
+     * @return  {string}
+     * @default [object URLRequestHeader]
+     * @method
+     * @public
+     */
+    toString ()
+    {
+        return "[object URLRequestHeader]";
+    }
+
+    /**
+     * @description 指定されたオブジェクトの空間名を返します。
+     *              Returns the space name of the specified object.
+     *
+     * @return  {string}
+     * @default next2d.net.URLRequestHeader
+     * @const
+     * @static
+     */
+    get namespace ()
+    {
+        return "next2d.net.URLRequestHeader";
+    }
+
+    /**
+     * @description HTTP リクエストヘッダー名（Content-Type や SOAPAction など）です。
+     *              An HTTP request header name (such as Content-Type or SOAPAction).
+     *
+     * @member {string}
+     * @default ""
+     * @readonly
+     * @public
+     */
+    get name ()
+    {
+        return this._$name;
+    }
+
+    /**
+     * @description name プロパティに関連付けられた値（text/plain など）です。
+     *              The value associated with the name property (such as text/plain).
+     *
+     * @member {string}
+     * @default ""
+     * @readonly
+     * @public
+     */
+    get value ()
+    {
+        return this._$value;
+    }
+}
+/**
+ * URLRequestMethod クラスは、URLRequest オブジェクトがデータをサーバーに送信するときに
+ * POST または GET のどちらのメソッドを使用するかを指定する値を提供します。
+ *
+ * The URLRequestMethod class provides values that specify whether the URLRequest object should use the
+ * POST method or the GET method when sending data to a server.
+ *
+ * @class
+ * @memberOf next2d.net
+ */
+class URLRequestMethod
+{
+    /**
+     * @description 指定されたクラスのストリングを返します。
+     *              Returns the string representation of the specified class.
+     *
+     * @return  {string}
+     * @default [class URLRequestMethod]
+     * @method
+     * @static
+     */
+    static toString ()
+    {
+        return "[class URLRequestMethod]";
+    }
+
+    /**
+     * @description 指定されたクラスの空間名を返します。
+     *              Returns the space name of the specified class.
+     *
+     * @return  {string}
+     * @default next2d.net.URLRequestMethod
+     * @const
+     * @static
+     */
+    static get namespace ()
+    {
+        return "next2d.net.URLRequestMethod";
+    }
+
+    /**
+     * @description 指定されたオブジェクトのストリングを返します。
+     *              Returns the string representation of the specified object.
+     *
+     * @return  {string}
+     * @default [object URLRequestMethod]
+     * @method
+     * @public
+     */
+    toString ()
+    {
+        return "[object URLRequestMethod]";
+    }
+
+    /**
+     * @description 指定されたオブジェクトの空間名を返します。
+     *              Returns the space name of the specified object.
+     *
+     * @return  {string}
+     * @default next2d.net.URLRequestMethod
+     * @const
+     * @static
+     */
+    get namespace ()
+    {
+        return "next2d.net.URLRequestMethod";
+    }
+
+    /**
+     * @description URLRequest オブジェクトが DELETE であることを指定します。
+     *              Specifies that the URLRequest object is a DELETE.
+     *
+     * @return  {string}
+     * @default DELETE
+     * @const
+     * @static
+     */
+    static get DELETE ()
+    {
+        return "DELETE";
+    }
+
+    /**
+     * @description URLRequest オブジェクトが GET であることを指定します。
+     *              Specifies that the URLRequest object is a GET.
+     *
+     * @return  {string}
+     * @default GET
+     * @const
+     * @static
+     */
+    static get GET ()
+    {
+        return "GET";
+    }
+
+    /**
+     * @description URLRequest オブジェクトが HEAD であることを指定します。
+     *              Specifies that the URLRequest object is a HEAD.
+     *
+     * @return  {string}
+     * @default HEAD
+     * @const
+     * @static
+     */
+    static get HEAD ()
+    {
+        return "HEAD";
+    }
+
+    /**
+     * @description URLRequest オブジェクトが OPTIONS であることを指定します。
+     *              Specifies that the URLRequest object is OPTIONS.
+     *
+     * @return  {string}
+     * @default OPTIONS
+     * @const
+     * @static
+     */
+    static get OPTIONS ()
+    {
+        return "OPTIONS";
+    }
+
+    /**
+     * @description URLRequest オブジェクトが POST であることを指定します。
+     *              Specifies that the URLRequest object is a POST.
+     *
+     * @return  {string}
+     * @default POST
+     * @const
+     * @static
+     */
+    static get POST ()
+    {
+        return "POST";
+    }
+
+    /**
+     * @description URLRequest オブジェクトが PUT であることを指定します。
+     *              Specifies that the URLRequest object is a PUT.
+     *
+     * @return  {string}
+     * @default PUT
+     * @const
+     * @static
+     */
+    static get PUT ()
+    {
+        return "PUT";
     }
 }
 /**
@@ -31362,6 +31335,2077 @@ class CacheStore
 
         const timer = Util.$setTimeout;
         timer(this._$delayLifeCheck, 5000);
+    }
+}
+
+/**
+ * @class
+ */
+class BitmapShaderVariantCollection
+{
+    /**
+     * @param {CanvasToWebGLContext}  context
+     * @param {WebGLRenderingContext} gl
+     * @param {WebGLShaderKeyword}    keyword
+     * @constructor
+     */
+    constructor (context, gl, keyword)
+    {
+        this._$context    = context;
+        this._$gl         = gl;
+        this._$keyword    = keyword;
+        this._$collection = new Map();
+    }
+
+    /**
+     * @return {CanvasToWebGLShader}
+     * @public
+     */
+    getBitmapShader ()
+    {
+        const key = "b";
+
+        if (!this._$collection.has(key)) {
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.TEXTURE(this._$keyword),
+                FragmentShaderSourceTexture.TEMPLATE(this._$keyword, 0, 0, false)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @public
+     */
+    setBitmapUniform ()
+    {
+        // uniform設定不要
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} sx
+     * @param {number} sy
+     * @param {number} tx
+     * @param {number} ty
+     * @public
+     */
+    setGetPixelsUniform (uniform, sx, sy, tx, ty)
+    {
+        const highp = uniform.highp;
+
+        // vertex: u_matrix
+        highp[0]  = 1;
+        highp[1]  = 0;
+        highp[2]  = 0;
+
+        highp[4]  = 0;
+        highp[5]  = 1;
+        highp[6]  = 0;
+
+        highp[8]  = 0;
+        highp[9]  = 0;
+        highp[10] = 1;
+
+        // vertex: u_src_tex_matrix
+        highp[12] = sx;
+        highp[13] = 0;
+        highp[14] = 0;
+
+        highp[16] = 0;
+        highp[17] = sy;
+        highp[18] = 0;
+
+        highp[3]  = tx;
+        highp[7]  = ty;
+        highp[11] = 1;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} sx1
+     * @param {number} sy1
+     * @param {number} tx1
+     * @param {number} ty1
+     * @param {number} sx2
+     * @param {number} sy2
+     * @param {number} tx2
+     * @param {number} ty2
+     * @public
+     */
+    setSetPixelsUniform (uniform, sx1, sy1, tx1, ty1, sx2, sy2, tx2, ty2)
+    {
+        const highp = uniform.highp;
+
+        // vertex: u_matrix
+        highp[0]  = sx1;
+        highp[1]  = 0;
+        highp[2]  = 0;
+
+        highp[4]  = 0;
+        highp[5]  = sy1;
+        highp[6]  = 0;
+
+        highp[8]  = tx1;
+        highp[9]  = ty1;
+        highp[10] = 1;
+
+        // vertex: u_src_tex_matrix
+        highp[12] = sx2;
+        highp[13] = 0;
+        highp[14] = 0;
+
+        highp[16] = 0;
+        highp[17] = sy2;
+        highp[18] = 0;
+
+        highp[3]  = tx2;
+        highp[7]  = ty2;
+        highp[11] = 1;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {array} colorTransform
+     * @public
+     */
+    setColorTransformUniform (uniform, colorTransform)
+    {
+        const mediump = uniform.mediump;
+
+        // fragment: u_color_transform_mul
+        mediump[0] = colorTransform[0];
+        mediump[1] = colorTransform[1];
+        mediump[2] = colorTransform[2];
+        mediump[3] = colorTransform[3];
+        // fragment: u_color_transform_add
+        mediump[4] = colorTransform[4] / 255;
+        mediump[5] = colorTransform[5] / 255;
+        mediump[6] = colorTransform[6] / 255;
+        mediump[7] = colorTransform[7] / 255;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {array}      matrix
+     * @param {boolean}    use_source_texture
+     * @param {array}      src_tex_mat
+     * @param {BitmapData} alpha_bitmap_data
+     * @param {array}      alpha_tex_mat
+     * @public
+     */
+    setManipulatePixelsUniform (
+        uniform, matrix, use_source_texture,
+        src_tex_mat, alpha_bitmap_data, alpha_tex_mat
+    ) {
+
+        const highp = uniform.highp;
+
+        // vertex: u_matrix
+        highp[0]  = matrix[0];
+        highp[1]  = matrix[1];
+        highp[2]  = matrix[2];
+
+        highp[4]  = matrix[3];
+        highp[5]  = matrix[4];
+        highp[6]  = matrix[5];
+
+        highp[8]  = matrix[6];
+        highp[9]  = matrix[7];
+        highp[10] = matrix[8];
+
+        if (alpha_bitmap_data) {
+            // vertex: u_src_tex_matrix
+            highp[12] = src_tex_mat[0];
+            highp[13] = src_tex_mat[1];
+            highp[14] = src_tex_mat[2];
+
+            highp[16] = src_tex_mat[3];
+            highp[17] = src_tex_mat[4];
+            highp[18] = src_tex_mat[5];
+
+            highp[20] = src_tex_mat[6];
+            highp[21] = src_tex_mat[7];
+            highp[22] = src_tex_mat[8];
+
+            // vertex: u_alpha_tex_matrix
+            highp[24] = alpha_tex_mat[0];
+            highp[25] = alpha_tex_mat[1];
+            highp[26] = alpha_tex_mat[2];
+
+            highp[3]  = alpha_tex_mat[3];
+            highp[7]  = alpha_tex_mat[4];
+            highp[11] = alpha_tex_mat[5];
+
+            highp[15] = alpha_tex_mat[6];
+            highp[19] = alpha_tex_mat[7];
+            highp[23] = alpha_tex_mat[8];
+        } else if (use_source_texture) {
+            // vertex: u_src_tex_matrix
+            highp[12] = src_tex_mat[0];
+            highp[13] = src_tex_mat[1];
+            highp[14] = src_tex_mat[2];
+
+            highp[16] = src_tex_mat[3];
+            highp[17] = src_tex_mat[4];
+            highp[18] = src_tex_mat[5];
+
+            highp[3]  = src_tex_mat[6];
+            highp[7]  = src_tex_mat[7];
+            highp[11] = src_tex_mat[8];
+        }
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} source_channel
+     * @param {number} dest_channel
+     * @public
+     */
+    setCopyChannelUniform (uniform, source_channel, dest_channel)
+    {
+        const textures = uniform.textures;
+        textures[0] = 0;
+        textures[1] = 1;
+
+        const mediump = uniform.mediump;
+
+        // fragment: u_src_ch
+        mediump[0] = source_channel      & 0x01;
+        mediump[1] = source_channel >> 1 & 0x01;
+        mediump[2] = source_channel >> 2 & 0x01;
+        mediump[3] = source_channel >> 3 & 0x01;
+        // fragment: u_dst_ch
+        mediump[4] = dest_channel      & 0x01;
+        mediump[5] = dest_channel >> 1 & 0x01;
+        mediump[6] = dest_channel >> 2 & 0x01;
+        mediump[7] = dest_channel >> 3 & 0x01;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {WebGLTexture} alpha_tex
+     * @public
+     */
+    setCopyPixelsUniform (uniform, alpha_tex)
+    {
+        if (alpha_tex) {
+            const textures = uniform.textures;
+            textures[0] = 0;
+            textures[1] = 1;
+        }
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @param {number} a
+     * @public
+     */
+    setFillRectUniform (uniform, r, g, b, a)
+    {
+        const mediump = uniform.mediump;
+
+        // fragment: u_color
+        mediump[0] = r;
+        mediump[1] = g;
+        mediump[2] = b;
+        mediump[3] = a;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {array}  tex_matrix
+     * @param {array}  tex_step
+     * @param {number} scan_loop
+     * @param {array}  mask
+     * @param {array}  color
+     * @public
+     */
+    setGetColorBoundsRectUniform (
+        uniform, tex_matrix, tex_step, scan_loop, mask, color
+    ) {
+
+        const highp = uniform.highp;
+
+        // vertex: u_matrix
+        highp[0]  = 1;
+        highp[1]  = 0;
+        highp[2]  = 0;
+
+        highp[4]  = 0;
+        highp[5]  = 1;
+        highp[6]  = 0;
+
+        highp[8]  = 0;
+        highp[9]  = 0;
+        highp[10] = 1;
+
+        // vertex: u_tex_matrix
+        highp[12] = tex_matrix[0];
+        highp[13] = tex_matrix[1];
+        highp[14] = tex_matrix[2];
+
+        highp[16] = tex_matrix[3];
+        highp[17] = tex_matrix[4];
+        highp[18] = tex_matrix[5];
+
+        highp[3]  = tex_matrix[6];
+        highp[7]  = tex_matrix[7];
+        highp[11] = tex_matrix[8];
+
+        const mediump = uniform.mediump;
+
+        // fragment: u_src_tex_step
+        mediump[0] = tex_step[0];
+        mediump[1] = tex_step[1];
+
+        // fragment: u_scan_loop
+        mediump[2] = scan_loop;
+
+        const integer = uniform.integer;
+
+        // fragment: u_mask
+        integer[0] = mask[0];
+        integer[1] = mask[1];
+        integer[2] = mask[2];
+        integer[3] = mask[3];
+
+        // fragment: u_color
+        integer[4] = color[0];
+        integer[5] = color[1];
+        integer[6] = color[2];
+        integer[7] = color[3];
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @param {number} a
+     * @public
+     */
+    setMergeUniform (uniform, r, g, b, a)
+    {
+        const textures = uniform.textures;
+        textures[0] = 0;
+        textures[1] = 1;
+
+        const mediump = uniform.mediump;
+
+        // fragment: u_multipliers
+        mediump[0] = r;
+        mediump[1] = g;
+        mediump[2] = b;
+        mediump[3] = a;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} seed_r
+     * @param {number} seed_g
+     * @param {number} seed_b
+     * @param {number} seed_a
+     * @param {number} amp_r
+     * @param {number} amp_g
+     * @param {number} amp_b
+     * @param {number} amp_a
+     * @param {number} low_r
+     * @param {number} low_g
+     * @param {number} low_b
+     * @param {number} low_a
+     * @public
+     */
+    setNoiseUniform (
+        uniform,
+        seed_r, seed_g, seed_b, seed_a,
+        amp_r, amp_g, amp_b, amp_a,
+        low_r, low_g, low_b, low_a
+    ) {
+        const mediump = uniform.mediump;
+
+        // fragment: u_seed
+        mediump[0]  = seed_r;
+        mediump[1]  = seed_g;
+        mediump[2]  = seed_b;
+        mediump[3]  = seed_a;
+
+        // fragment: u_amp
+        mediump[4]  = amp_r;
+        mediump[5]  = amp_g;
+        mediump[6]  = amp_b;
+        mediump[7]  = amp_a;
+
+        // fragment: u_low
+        mediump[8]  = low_r;
+        mediump[9]  = low_g;
+        mediump[10] = low_b;
+        mediump[11] = low_a;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @public
+     */
+    setPaletteMapUniform (uniform)
+    {
+        const textures = uniform.textures;
+        textures[0] = 0;
+        textures[1] = 2;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @param {number} a
+     * @public
+     */
+    setPixelDissolveUniform (uniform, r, g, b, a)
+    {
+        const mediump = uniform.mediump;
+
+        // fragment: u_color
+        mediump[0] = r;
+        mediump[1] = g;
+        mediump[2] = b;
+        mediump[3] = a;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @public
+     */
+    setFlushSetPixelQueueUniform (uniform)
+    {
+        const highp = uniform.highp;
+
+        // vertex: u_matrix
+        highp[0] = 1;
+        highp[1] = 0;
+        highp[2] = 0;
+
+        highp[3] = 0;
+        highp[4] = -1;
+        highp[5] = 0;
+
+        highp[6] = 0;
+        highp[7] = 1;
+        highp[8] = 1;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} tr
+     * @param {number} tg
+     * @param {number} tb
+     * @param {number} ta
+     * @param {number} cr
+     * @param {number} cg
+     * @param {number} cb
+     * @param {number} ca
+     * @param {number} mr
+     * @param {number} mg
+     * @param {number} mb
+     * @param {number} ma
+     * @public
+     */
+    setThresholdUniform (
+        uniform, tr, tg, tb, ta, cr, cg, cb, ca, mr, mg, mb, ma
+    ) {
+
+        const mediump = uniform.mediump;
+
+        // fragment: u_threshold
+        mediump[0] = tr;
+        mediump[1] = tg;
+        mediump[2] = tb;
+        mediump[3] = ta;
+
+        // fragment: u_out_color
+        mediump[4] = cr;
+        mediump[5] = cg;
+        mediump[6] = cb;
+        mediump[7] = ca;
+
+        const integer = uniform.integer;
+
+        // fragment: u_masked
+        integer[0] = mr;
+        integer[1] = mg;
+        integer[2] = mb;
+        integer[3] = ma;
+    }
+}
+/**
+ * @class
+ */
+class BlendShaderVariantCollection
+{
+    /**
+     * @param {CanvasToWebGLContext}  context
+     * @param {WebGLRenderingContext} gl
+     * @param {WebGLShaderKeyword}    keyword
+     * @constructor
+     * @public
+     */
+    constructor (context, gl, keyword)
+    {
+        this._$context    = context;
+        this._$gl         = gl;
+        this._$keyword    = keyword;
+        this._$collection = new Map();
+    }
+
+    /**
+     * @param  {boolean} with_color_transform
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getNormalBlendShader (with_color_transform)
+    {
+        const key = `n${with_color_transform ? "y" : "n"}`;
+
+        if (!this._$collection.has(key)) {
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.BLEND(this._$keyword),
+                FragmentShaderSourceTexture.TEMPLATE(this._$keyword, with_color_transform)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getClipShader ()
+    {
+        const key = "c";
+
+        if (!this._$collection.has(key)) {
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.BLEND_CLIP(this._$keyword),
+                FragmentShaderSourceTexture.TEMPLATE(this._$keyword, false)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param  {string}  operation
+     * @param  {boolean} with_color_transform
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getBlendShader (operation, with_color_transform)
+    {
+        const key = `${operation}${with_color_transform ? "y" : "n"}`;
+
+        if (!this._$collection.has(key)) {
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.BLEND(this._$keyword),
+                FragmentShaderSourceBlend.TEMPLATE(this._$keyword, operation, with_color_transform)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number}  x
+     * @param {number}  y
+     * @param {number}  w
+     * @param {number}  h
+     * @param {array}   matrix
+     * @param {number}  render_width
+     * @param {number}  render_height
+     * @param {boolean} with_color_transform
+     * @param {number}  ct0
+     * @param {number}  ct1
+     * @param {number}  ct2
+     * @param {number}  ct3
+     * @param {number}  ct4
+     * @param {number}  ct5
+     * @param {number}  ct6
+     * @param {number}  ct7
+     * @method
+     * @public
+     */
+    setNormalBlendUniform (
+        uniform, x, y, w, h, matrix, render_width, render_height,
+        with_color_transform, ct0, ct1, ct2, ct3, ct4, ct5, ct6, ct7)
+    {
+        const highp = uniform.highp;
+
+        // vertex: u_offset
+        highp[0] = x;
+        highp[1] = y;
+        // vertex: u_size
+        highp[2] = w;
+        highp[3] = h;
+
+        // vertex: u_matrix
+        highp[4]  = matrix[0];
+        highp[5]  = matrix[1];
+        highp[6]  = matrix[2];
+
+        highp[8]  = matrix[3];
+        highp[9]  = matrix[4];
+        highp[10] = matrix[5];
+
+        highp[12] = matrix[6];
+        highp[13] = matrix[7];
+        highp[14] = matrix[8];
+
+        // vertex: u_viewport
+        highp[7]  = render_width;
+        highp[11] = render_height;
+
+        if (with_color_transform) {
+            const mediump = uniform.mediump;
+
+            // fragment: u_color_transform_mul
+            mediump[0] = ct0;
+            mediump[1] = ct1;
+            mediump[2] = ct2;
+            mediump[3] = ct3;
+            // fragment: u_color_transform_add
+            mediump[4] = ct4;
+            mediump[5] = ct5;
+            mediump[6] = ct6;
+            mediump[7] = ct7;
+        }
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number}  x
+     * @param {number}  y
+     * @param {number}  w
+     * @param {number}  h
+     * @param {array}   inverse_matrix
+     * @param {number}  render_width
+     * @param {number}  render_height
+     * @method
+     * @public
+     */
+    setClipUniform (
+        uniform, x, y, w, h, inverse_matrix, render_width, render_height
+    ) {
+
+        const highp = uniform.highp;
+
+        // vertex: u_offset
+        highp[0] = x;
+        highp[1] = y;
+        // vertex: u_size
+        highp[2] = w;
+        highp[3] = h;
+
+        // vertex: u_inverse_matrix
+        highp[4]  = inverse_matrix[0];
+        highp[5]  = inverse_matrix[1];
+        highp[6]  = inverse_matrix[2];
+
+        highp[8]  = inverse_matrix[3];
+        highp[9]  = inverse_matrix[4];
+        highp[10] = inverse_matrix[5];
+
+        highp[12] = inverse_matrix[6];
+        highp[13] = inverse_matrix[7];
+        highp[14] = inverse_matrix[8];
+
+        // vertex: u_viewport
+        highp[7]  = render_width;
+        highp[11] = render_height;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number}  x
+     * @param {number}  y
+     * @param {number}  w
+     * @param {number}  h
+     * @param {array}   matrix
+     * @param {number}  render_width
+     * @param {number}  render_height
+     * @param {boolean} with_color_transform
+     * @param {number}  ct0
+     * @param {number}  ct1
+     * @param {number}  ct2
+     * @param {number}  ct3
+     * @param {number}  ct4
+     * @param {number}  ct5
+     * @param {number}  ct6
+     * @param {number}  ct7
+     * @method
+     * @public
+     */
+    setBlendUniform (
+        uniform, x, y, w, h, matrix, render_width, render_height,
+        with_color_transform, ct0, ct1, ct2, ct3, ct4, ct5, ct6, ct7
+    ) {
+        const textures = uniform.textures;
+        textures[0] = 0;
+        textures[1] = 1;
+
+        const highp = uniform.highp;
+
+        // vertex: u_offset
+        highp[0] = x;
+        highp[1] = y;
+        // vertex: u_size
+        highp[2] = w;
+        highp[3] = h;
+
+        // vertex: u_matrix
+        highp[4]  = matrix[0];
+        highp[5]  = matrix[1];
+        highp[6]  = matrix[2];
+
+        highp[8]  = matrix[3];
+        highp[9]  = matrix[4];
+        highp[10] = matrix[5];
+
+        highp[12] = matrix[6];
+        highp[13] = matrix[7];
+        highp[14] = matrix[8];
+
+        // vertex: u_viewport
+        highp[7]  = render_width;
+        highp[11] = render_height;
+
+        if (with_color_transform) {
+            const mediump = uniform.mediump;
+
+            // fragment: u_color_transform_mul
+            mediump[0] = ct0;
+            mediump[1] = ct1;
+            mediump[2] = ct2;
+            mediump[3] = ct3;
+            // fragment: u_color_transform_add
+            mediump[4] = ct4;
+            mediump[5] = ct5;
+            mediump[6] = ct6;
+            mediump[7] = ct7;
+        }
+    }
+}
+
+/**
+ * @class
+ */
+class FilterShaderVariantCollection
+{
+    /**
+     * @param {CanvasToWebGLContext}  context
+     * @param {WebGLRenderingContext} gl
+     * @param {WebGLShaderKeyword}    keyword
+     * @constructor
+     * @public
+     */
+    constructor (context, gl, keyword)
+    {
+        this._$context    = context;
+        this._$gl         = gl;
+        this._$keyword    = keyword;
+        this._$collection = new Map();
+    }
+
+    /**
+     * @param  {number}  half_blur
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getBlurFilterShader (half_blur)
+    {
+        const key = `b${half_blur}`;
+
+        if (!this._$collection.has(key)) {
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.TEXTURE(this._$keyword),
+                FragmentShaderSourceBlurFilter.TEMPLATE(this._$keyword, half_blur)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param  {boolean} transforms_base
+     * @param  {boolean} transforms_blur
+     * @param  {boolean} is_glow
+     * @param  {string}  type
+     * @param  {boolean} knockout
+     * @param  {boolean} applies_strength
+     * @param  {boolean} is_gradient
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getBitmapFilterShader (
+        transforms_base, transforms_blur, is_glow,
+        type, knockout, applies_strength, is_gradient
+    ) {
+
+        const key1 = transforms_base ? "y" : "n";
+        const key2 = transforms_blur ? "y" : "n";
+        const key3 = is_glow ? "y" : "n";
+        const key4 = knockout ? "y" : "n";
+        const key5 = applies_strength ? "y" : "n";
+        const key = `f${key1}${key2}${key3}${type}${key4}${key5}`;
+
+        if (!this._$collection.has(key)) {
+            let texturesLength = 1;
+            if (transforms_base) { texturesLength++ }
+            if (is_gradient) { texturesLength++ }
+
+            let mediumpLength = (transforms_base ? 4 : 0)
+                + (transforms_blur ? 4 : 0)
+                + (applies_strength ? 1 : 0);
+            if (is_gradient) {
+                // do nothing
+            } else {
+                mediumpLength += is_glow ? 4 : 8;
+            }
+            mediumpLength = Util.$ceil(mediumpLength / 4);
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.TEXTURE(this._$keyword),
+                FragmentShaderSourceFilter.TEMPLATE(
+                    this._$keyword, texturesLength, mediumpLength,
+                    transforms_base, transforms_blur,
+                    is_glow, type, knockout,
+                    applies_strength, is_gradient
+                )
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getColorMatrixFilterShader ()
+    {
+        const key = "m";
+
+        if (!this._$collection.has(key)) {
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.TEXTURE(this._$keyword),
+                FragmentShaderSourceColorMatrixFilter.TEMPLATE(this._$keyword)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param  {number}  x
+     * @param  {number}  y
+     * @param  {boolean} preserve_alpha
+     * @param  {boolean} clamp
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getConvolutionFilterShader (x, y, preserve_alpha, clamp)
+    {
+        const key1 = ("0" + x).slice(-2);
+        const key2 = ("0" + y).slice(-2);
+        const key3 = preserve_alpha ? "y" : "n";
+        const key4 = clamp ? "y" : "n";
+        const key = `c${key1}${key2}${key3}${key4}`;
+
+        if (!this._$collection.has(key)) {
+            const mediumpLength = (clamp ? 1 : 2) + Util.$ceil(x * y / 4);
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.TEXTURE(this._$keyword),
+                FragmentShaderSourceConvolutionFilter.TEMPLATE(
+                    this._$keyword, mediumpLength,
+                    x, y, preserve_alpha, clamp
+                )
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param  {number} component_x
+     * @param  {number} component_y
+     * @param  {string} mode
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getDisplacementMapFilterShader (component_x, component_y, mode)
+    {
+        const key = `d${component_x}${component_y}${mode}`;
+
+        if (!this._$collection.has(key)) {
+            const mediumpLength = mode === DisplacementMapFilterMode.COLOR ? 3 : 2;
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.TEXTURE(this._$keyword),
+                FragmentShaderSourceDisplacementMapFilter.TEMPLATE(
+                    this._$keyword, mediumpLength,
+                    component_x, component_y, mode
+                )
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number}  width
+     * @param {number}  height
+     * @param {boolean} is_horizontal
+     * @param {number}  fraction
+     * @param {number}  samples
+     * @method
+     * @public
+     */
+    setBlurFilterUniform (uniform, width, height, is_horizontal, fraction, samples)
+    {
+        const mediump = uniform.mediump;
+
+        // fragment: u_offset
+        if (is_horizontal) {
+            mediump[0] = 1 / width;
+            mediump[1] = 0;
+        } else {
+            mediump[0] = 0;
+            mediump[1] = 1 / height;
+        }
+
+        // fragment: u_fraction
+        mediump[2] = fraction;
+
+        // fragment: u_samples
+        mediump[3] = samples;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number}  width
+     * @param {number}  height
+     * @param {number}  base_width
+     * @param {number}  base_height
+     * @param {number}  base_offset_x
+     * @param {number}  base_offset_y
+     * @param {number}  blur_width
+     * @param {number}  blur_height
+     * @param {number}  blur_offset_x
+     * @param {number}  blur_offset_y
+     * @param {boolean} is_glow
+     * @param {number}  strength
+     * @param {number}  color_r1
+     * @param {number}  color_g1
+     * @param {number}  color_b1
+     * @param {number}  color_a1
+     * @param {number}  color_r2
+     * @param {number}  color_g2
+     * @param {number}  color_b2
+     * @param {number}  color_a2
+     * @param {boolean} transforms_base
+     * @param {boolean} transforms_blur
+     * @param {boolean} applies_strength
+     * @param {boolean} is_gradient
+     * @method
+     * @public
+     */
+    setBitmapFilterUniform (
+        uniform, width, height,
+        base_width, base_height, base_offset_x, base_offset_y,
+        blur_width, blur_height, blur_offset_x, blur_offset_y,
+        is_glow, strength,
+        color_r1, color_g1, color_b1, color_a1,
+        color_r2, color_g2, color_b2, color_a2,
+        transforms_base, transforms_blur, applies_strength, is_gradient
+    ) {
+        let textures;
+        // fragment: u_textures
+        if (transforms_base) {
+            textures = uniform.textures;
+            textures[0] = 0;
+            textures[1] = 1;
+            if (is_gradient) {
+                textures[2] = 2;
+            }
+        } else if (is_gradient) {
+            textures = uniform.textures;
+            textures[0] = 0;
+            textures[1] = 2;
+        }
+
+        const mediump = uniform.mediump;
+        let i = 0;
+
+        if (transforms_base) {
+            // fragment: u_uv_scale
+            mediump[i]     = width / base_width;
+            mediump[i + 1] = height / base_height;
+            // fragment: u_uv_offset
+            mediump[i + 2] = base_offset_x / base_width;
+            mediump[i + 3] = (height - base_height - base_offset_y) / base_height;
+            i += 4;
+        }
+
+        if (transforms_blur) {
+            // fragment: u_st_scale
+            mediump[i]     = width / blur_width;
+            mediump[i + 1] = height / blur_height;
+            // fragment: u_st_offset
+            mediump[i + 2] = blur_offset_x / blur_width;
+            mediump[i + 3] = (height - blur_height - blur_offset_y) / blur_height;
+            i += 4;
+        }
+
+        if (is_gradient) {
+            // do nothing
+        } else if (is_glow) {
+            // fragment: u_color
+            mediump[i]     = color_r1;
+            mediump[i + 1] = color_g1;
+            mediump[i + 2] = color_b1;
+            mediump[i + 3] = color_a1;
+            i += 4;
+        } else {
+            // fragment: u_highlight_color
+            mediump[i]     = color_r1;
+            mediump[i + 1] = color_g1;
+            mediump[i + 2] = color_b1;
+            mediump[i + 3] = color_a1;
+            // fragment: u_shadow_color
+            mediump[i + 4] = color_r2;
+            mediump[i + 5] = color_g2;
+            mediump[i + 6] = color_b2;
+            mediump[i + 7] = color_a2;
+            i += 8;
+        }
+
+        if (applies_strength) {
+            // fragment: u_strength
+            mediump[i++] = strength;
+        }
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {array} matrix
+     * @method
+     * @public
+     */
+    setColorMatrixFilterUniform (uniform, matrix)
+    {
+        const mediump = uniform.mediump;
+
+        // fragment: u_mul
+        mediump[0]  = matrix[0];
+        mediump[1]  = matrix[1];
+        mediump[2]  = matrix[2];
+        mediump[3]  = matrix[3];
+
+        mediump[4]  = matrix[5];
+        mediump[5]  = matrix[6];
+        mediump[6]  = matrix[7];
+        mediump[7]  = matrix[8];
+
+        mediump[8]  = matrix[10];
+        mediump[9]  = matrix[11];
+        mediump[10] = matrix[12];
+        mediump[11] = matrix[13];
+
+        mediump[12] = matrix[15];
+        mediump[13] = matrix[16];
+        mediump[14] = matrix[17];
+        mediump[15] = matrix[18];
+
+        // fragment: u_add
+        mediump[16] = matrix[4]  / 255;
+        mediump[17] = matrix[9]  / 255;
+        mediump[18] = matrix[14] / 255;
+        mediump[19] = matrix[19] / 255;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number}  width
+     * @param {number}  height
+     * @param {array}   matrix
+     * @param {number}  divisor
+     * @param {number}  bias
+     * @param {boolean} clamp
+     * @param {number}  color_r
+     * @param {number}  color_g
+     * @param {number}  color_b
+     * @param {number}  color_a
+     * @method
+     * @public
+     */
+    setConvolutionFilterUniform (
+        uniform,
+        width, height, matrix, divisor, bias, clamp,
+        color_r, color_g, color_b, color_a
+    ) {
+        const mediump = uniform.mediump;
+
+        // fragment: u_rcp_size
+        mediump[0] = 1 / width;
+        mediump[1] = 1 / height;
+
+        // fragment: u_rcp_divisor
+        mediump[2] = 1 / divisor;
+
+        // fragment: u_bias
+        mediump[3] = bias / 255;
+
+        let i = 4;
+
+        if (!clamp) {
+            // fragment: u_substitute_color
+            mediump[i]     = color_r;
+            mediump[i + 1] = color_g;
+            mediump[i + 2] = color_b;
+            mediump[i + 3] = color_a;
+            i += 4;
+        }
+
+        // fragment: u_matrix
+        const length = matrix.length;
+        for (let j = 0; j < length; j++) {
+            mediump[i++] = matrix[j];
+        }
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} map_width
+     * @param {number} map_height
+     * @param {number} base_width
+     * @param {number} base_height
+     * @param {number} point_x
+     * @param {number} point_y
+     * @param {number} scale_x
+     * @param {number} scale_y
+     * @param {string} mode
+     * @param {number} color_r
+     * @param {number} color_g
+     * @param {number} color_b
+     * @param {number} color_a
+     * @method
+     * @public
+     */
+    setDisplacementMapFilterUniform (
+        uniform, map_width, map_height, base_width, base_height,
+        point_x, point_y, scale_x, scale_y, mode,
+        color_r, color_g, color_b, color_a
+    ) {
+        const textures = uniform.textures;
+        textures[0] = 0;
+        textures[1] = 1;
+
+        const mediump = uniform.mediump;
+
+        // fragment: u_uv_to_st_scale
+        mediump[0] = base_width  / map_width;
+        mediump[1] = base_height / map_height;
+        // fragment: u_uv_to_st_offset
+        mediump[2] = point_x / map_width;
+        mediump[3] = (base_height - map_height - point_y) / map_height;
+
+        // fragment: u_scale
+        mediump[4] =  scale_x / base_width;
+        mediump[5] = -scale_y / base_height;
+
+        if (mode === DisplacementMapFilterMode.COLOR) {
+            // fragment: u_substitute_color
+            mediump[8]  = color_r;
+            mediump[9]  = color_g;
+            mediump[10] = color_b;
+            mediump[11] = color_a;
+        }
+    }
+}
+/**
+ * @class
+ */
+class GradientLUTShaderVariantCollection
+{
+    /**
+     * @param {CanvasToWebGLContext}  context
+     * @param {WebGLRenderingContext} gl
+     * @param {WebGLShaderKeyword}    keyword
+     * @constructor
+     * @public
+     */
+    constructor (context, gl, keyword)
+    {
+        this._$context    = context;
+        this._$gl         = gl;
+        this._$keyword    = keyword;
+        this._$collection = new Map();
+    }
+
+    /**
+     * @param  {number}  stops_length
+     * @param  {boolean} is_linear_space
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getGradientLUTShader (stops_length, is_linear_space)
+    {
+        const key1 = ("00" + stops_length).slice(-3);
+        const key2 = is_linear_space ? "y" : "n";
+        const key = `l${key1}${key2}`;
+
+        if (!this._$collection.has(key)) {
+            const mediumpLength = Util.$ceil(stops_length * 5 / 4);
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                VertexShaderSource.TEXTURE(this._$keyword),
+                FragmentShaderSourceGradientLUT.TEMPLATE(this._$keyword, mediumpLength, stops_length, is_linear_space)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {array}  stops
+     * @param {number} begin
+     * @param {number} end
+     * @param {array}  table
+     * @method
+     * @public
+     */
+    setGradientLUTUniformForShape (uniform, stops, begin, end, table)
+    {
+        let i = 0;
+        const mediump = uniform.mediump;
+
+        // fragment: u_gradient_color
+        for (let j = begin; j < end; j++) {
+            const color = stops[j][1];
+            mediump[i++] = table[color[0]];
+            mediump[i++] = table[color[1]];
+            mediump[i++] = table[color[2]];
+            mediump[i++] = table[color[3]];
+        }
+
+        // fragment: u_gradient_t
+        for (let j = begin; j < end; j++) {
+            mediump[i++] = stops[j][0];
+        }
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {array}  ratios
+     * @param {array}  colors
+     * @param {array}  alphas
+     * @param {number} begin
+     * @param {number} end
+     * @method
+     * @public
+     */
+    setGradientLUTUniformForFilter (uniform, ratios, colors, alphas, begin, end)
+    {
+        let i = 0;
+        const mediump = uniform.mediump;
+
+        // fragment: u_gradient_color
+        for (let j = begin; j < end; j++) {
+            const color = colors[j];
+            mediump[i++] = ((color >> 16)       ) / 255;
+            mediump[i++] = (color  >>   8 & 0xFF) / 255;
+            mediump[i++] = (color         & 0xFF) / 255;
+            mediump[i++] = alphas[j];
+        }
+
+        // fragment: u_gradient_t
+        for (let j = begin; j < end; j++) {
+            mediump[i++] = ratios[j];
+        }
+    }
+}
+/**
+ * @class
+ */
+class GradientShapeShaderVariantCollection
+{
+    /**
+     * @param {CanvasToWebGLContext}  context
+     * @param {WebGLRenderingContext} gl
+     * @param {WebGLShaderKeyword}    keyword
+     * @constructor
+     * @public
+     */
+    constructor (context, gl, keyword)
+    {
+        this._$context    = context;
+        this._$gl         = gl;
+        this._$keyword    = keyword;
+        this._$collection = new Map();
+    }
+
+    /**
+     * @param  {boolean} is_stroke
+     * @param  {boolean} has_grid
+     * @param  {boolean} is_radial
+     * @param  {boolean} has_focal_point
+     * @param  {string}  spread_method
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getGradientShapeShader (
+        is_stroke, has_grid, is_radial, has_focal_point, spread_method
+    ) {
+
+        const key = this.createCollectionKey(
+            is_stroke, has_grid, is_radial, has_focal_point, spread_method
+        );
+
+        if (!this._$collection.has(key)) {
+            let highpLength = (has_grid ? 13 : 5) + (is_stroke ? 1 : 0) + 1;
+            const fragmentIndex = highpLength - 1;
+
+            let vertexShaderSource;
+            if (is_stroke) {
+                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
+                    this._$keyword, highpLength, fragmentIndex,
+                    true, has_grid
+                );
+            } else {
+                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
+                    this._$keyword, highpLength,
+                    true, false, has_grid
+                );
+            }
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                vertexShaderSource,
+                FragmentShaderSourceGradient.TEMPLATE(
+                    this._$keyword, highpLength, fragmentIndex,
+                    is_radial, has_focal_point, spread_method
+                )
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param  {boolean} is_stroke
+     * @param  {boolean} has_grid
+     * @param  {boolean} is_radial
+     * @param  {boolean} has_focal_point
+     * @param  {string}  spread_method
+     * @return {string}
+     * @method
+     * @private
+     */
+    createCollectionKey (is_stroke, has_grid, is_radial, has_focal_point, spread_method)
+    {
+        const key1 = is_stroke ? "y" : "n";
+        const key2 = has_grid  ? "y" : "n";
+        const key3 = is_radial ? "y" : "n";
+        const key4 = is_radial && has_focal_point ? "y" : "n";
+        let key5 = 0;
+        switch (spread_method) {
+            case "reflect":
+                key5 = 1;
+                break;
+            case "repeat":
+                key5 = 2;
+                break;
+        }
+
+        return `${key1}${key2}${key3}${key4}${key5}`;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {boolean} is_stroke
+     * @param {number}  half_width
+     * @param {number}  face
+     * @param {number}  miter_limit
+     * @param {boolean} has_grid
+     * @param {array}   matrix
+     * @param {array}   inverse_matrix
+     * @param {number}  viewport_width
+     * @param {number}  viewport_height
+     * @param {CanvasToWebGLContextGrid} grid
+     * @param {boolean} is_radial
+     * @param {array}   points
+     * @param {number}  focal_point_ratio
+     * @method
+     * @public
+     */
+    setGradientShapeUniform (
+        uniform,
+        is_stroke, half_width, face, miter_limit,
+        has_grid, matrix, inverse_matrix,
+        viewport_width, viewport_height, grid,
+        is_radial, points, focal_point_ratio
+    ) {
+        const highp = uniform.highp;
+
+        // vertex: u_matrix
+        highp[0]  = matrix[0];
+        highp[1]  = matrix[1];
+        highp[2]  = matrix[2];
+
+        highp[4]  = matrix[3];
+        highp[5]  = matrix[4];
+        highp[6]  = matrix[5];
+
+        highp[8]  = matrix[6];
+        highp[9]  = matrix[7];
+        highp[10] = matrix[8];
+
+        // vertex: u_inverse_matrix
+        highp[12] = inverse_matrix[0];
+        highp[13] = inverse_matrix[1];
+        highp[14] = inverse_matrix[2];
+
+        highp[16] = inverse_matrix[3];
+        highp[17] = inverse_matrix[4];
+        highp[18] = inverse_matrix[5];
+
+        highp[11] = inverse_matrix[6];
+        highp[15] = inverse_matrix[7];
+        highp[19] = inverse_matrix[8];
+
+        // vertex: u_viewport
+        highp[3] = viewport_width;
+        highp[7] = viewport_height;
+
+        let i = 20;
+        if (has_grid) {
+            // vertex: u_parent_matrix
+            highp[i]      = grid.parentMatrixA;
+            highp[i + 1]  = grid.parentMatrixB;
+            highp[i + 2]  = grid.parentMatrixC;
+
+            highp[i + 4]  = grid.parentMatrixD;
+            highp[i + 5]  = grid.parentMatrixE;
+            highp[i + 6]  = grid.parentMatrixF;
+
+            highp[i + 8]  = grid.parentMatrixG;
+            highp[i + 9]  = grid.parentMatrixH;
+            highp[i + 10] = grid.parentMatrixI;
+
+            // vertex: u_ancestor_matrix
+            highp[i + 12] = grid.ancestorMatrixA;
+            highp[i + 13] = grid.ancestorMatrixB;
+            highp[i + 14] = grid.ancestorMatrixC;
+
+            highp[i + 16] = grid.ancestorMatrixD;
+            highp[i + 17] = grid.ancestorMatrixE;
+            highp[i + 18] = grid.ancestorMatrixF;
+
+            highp[i + 20] = grid.ancestorMatrixG;
+            highp[i + 21] = grid.ancestorMatrixH;
+            highp[i + 22] = grid.ancestorMatrixI;
+
+            // vertex: u_parent_viewport
+            highp[i + 11] = grid.parentViewportX;
+            highp[i + 15] = grid.parentViewportY;
+            highp[i + 19] = grid.parentViewportW;
+            highp[i + 23] = grid.parentViewportH;
+
+            // vertex: u_grid_min
+            highp[i + 24] = grid.minXST;
+            highp[i + 25] = grid.minYST;
+            highp[i + 26] = grid.minXPQ;
+            highp[i + 27] = grid.minYPQ;
+            // vertex: u_grid_max
+            highp[i + 28] = grid.maxXST;
+            highp[i + 29] = grid.maxYST;
+            highp[i + 30] = grid.maxXPQ;
+            highp[i + 31] = grid.maxYPQ;
+
+            i = 52;
+        }
+
+        if (is_stroke) {
+            // vertex: u_half_width
+            highp[i]     = half_width;
+            // vertex: u_face
+            highp[i + 1] = face;
+            // vertex: u_miter_limit
+            highp[i + 2] = miter_limit;
+
+            i += 4;
+        }
+
+        if (is_radial) {
+            // fragment: u_radial_point
+            highp[i]     = points[5];
+            // fragment: u_focal_point_ratio
+            highp[i + 1] = focal_point_ratio;
+        } else {
+            // fragment: u_linear_points
+            highp[i]     = points[0];
+            highp[i + 1] = points[1];
+            highp[i + 2] = points[2];
+            highp[i + 3] = points[3];
+        }
+    }
+}
+
+/**
+ * @class
+ */
+class ShapeShaderVariantCollection
+{
+    /**
+     * @param {CanvasToWebGLContext}  context
+     * @param {WebGLRenderingContext} gl
+     * @param {WebGLShaderKeyword}    keyword
+     * @constructor
+     * @public
+     */
+    constructor (context, gl, keyword)
+    {
+        this._$context    = context;
+        this._$gl         = gl;
+        this._$keyword    = keyword;
+        this._$collection = new Map();
+    }
+
+    /**
+     * @param  {boolean} is_stroke
+     * @param  {boolean} has_grid
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getSolidColorShapeShader (is_stroke, has_grid)
+    {
+        const key = `s${is_stroke ? "y" : "n"}${has_grid ? "y" : "n"}`;
+
+        if (!this._$collection.has(key)) {
+            const highpLength = (has_grid ? 8 : 3) + (is_stroke ? 1 : 0);
+            const fragmentIndex = highpLength;
+
+            let vertexShaderSource;
+            if (is_stroke) {
+                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
+                    this._$keyword, highpLength, fragmentIndex,
+                    false, has_grid
+                );
+            } else {
+                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
+                    this._$keyword, highpLength,
+                    false, false, has_grid
+                );
+            }
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                vertexShaderSource,
+                FragmentShaderSource.SOLID_COLOR(this._$keyword)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param  {boolean} is_stroke
+     * @param  {boolean} repeat
+     * @param  {boolean} has_grid
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getBitmapShapeShader (is_stroke, repeat, has_grid)
+    {
+        const key = `b${is_stroke ? "y" : "n"}${repeat ? "y" : "n"}${has_grid ? "y" : "n"}`;
+
+        if (!this._$collection.has(key)) {
+            const highpLength = (has_grid ? 13 : 5) + (is_stroke ? 1 : 0);
+            const fragmentIndex = highpLength;
+
+            let vertexShaderSource;
+            if (is_stroke) {
+                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
+                    this._$keyword, highpLength, fragmentIndex,
+                    true, has_grid
+                );
+            } else {
+                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
+                    this._$keyword, highpLength,
+                    true, false, has_grid
+                );
+            }
+
+            const fragmentShaderSource = repeat
+                ? FragmentShaderSource.BITMAP_PATTERN(this._$keyword)
+                : FragmentShaderSource.BITMAP_CLIPPED(this._$keyword);
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                vertexShaderSource,
+                fragmentShaderSource
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param  {boolean} is_stroke
+     * @param  {boolean} has_grid
+     * @return {CanvasToWebGLShader}
+     * @method
+     * @public
+     */
+    getMaskShapeShader (is_stroke, has_grid)
+    {
+        const key = `m${is_stroke ? "y" : "n"}${has_grid ? "y" : "n"}`;
+
+        if (!this._$collection.has(key)) {
+            const highpLength = (has_grid ? 8 : 3) + (is_stroke ? 1 : 0);
+            const fragmentIndex = highpLength;
+
+            let vertexShaderSource;
+            if (is_stroke) {
+                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
+                    this._$keyword, highpLength, fragmentIndex,
+                    false, has_grid
+                );
+            } else {
+                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
+                    this._$keyword, highpLength,
+                    false, true, has_grid
+                );
+            }
+
+            this._$collection.set(key, new CanvasToWebGLShader(
+                this._$gl, this._$context,
+                vertexShaderSource,
+                FragmentShaderSource.MASK(this._$keyword)
+            ));
+        }
+
+        return this._$collection.get(key);
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {boolean} is_stroke
+     * @param {number}  half_width
+     * @param {number}  face
+     * @param {number}  miter_limit
+     * @param {boolean} has_grid
+     * @param {array}   matrix
+     * @param {number}  viewport_width
+     * @param {number}  viewport_height
+     * @param {CanvasToWebGLContextGrid} grid
+     * @param {array}   color
+     * @param {number}  alpha
+     * @method
+     * @public
+     */
+    setSolidColorShapeUniform (
+        uniform,
+        is_stroke, half_width, face, miter_limit,
+        has_grid, matrix,
+        viewport_width, viewport_height, grid,
+        color, alpha
+    ) {
+        const highp = uniform.highp;
+        let i;
+
+        if (has_grid) {
+            // vertex: u_parent_matrix
+            highp[0]  = grid.parentmatrix_a;
+            highp[1]  = grid.parentmatrix_b;
+            highp[2]  = grid.parentmatrix_c;
+
+            highp[4]  = grid.parentmatrix_d;
+            highp[5]  = grid.parentmatrix_e;
+            highp[6]  = grid.parentmatrix_f;
+
+            highp[8]  = grid.parentmatrix_g;
+            highp[9]  = grid.parentmatrix_h;
+            highp[10] = grid.parentmatrix_i;
+
+            // vertex: u_ancestor_matrix
+            highp[12] = grid.ancestormatrix_a;
+            highp[13] = grid.ancestormatrix_b;
+            highp[14] = grid.ancestormatrix_c;
+
+            highp[16] = grid.ancestormatrix_d;
+            highp[17] = grid.ancestormatrix_e;
+            highp[18] = grid.ancestormatrix_f;
+
+            highp[20] = grid.ancestormatrix_g;
+            highp[21] = grid.ancestormatrix_h;
+            highp[22] = grid.ancestormatrix_i;
+
+            // vertex: u_viewport
+            highp[3]  = viewport_width;
+            highp[7]  = viewport_height;
+
+            // vertex: u_parent_viewport
+            highp[11] = grid.parentViewportX;
+            highp[15] = grid.parentViewportY;
+            highp[19] = grid.parentViewportW;
+            highp[23] = grid.parentViewportH;
+
+            // vertex: u_grid_min
+            highp[24] = grid.minXST;
+            highp[25] = grid.minYST;
+            highp[26] = grid.minXPQ;
+            highp[27] = grid.minYPQ;
+            // vertex: u_grid_max
+            highp[28] = grid.maxXST;
+            highp[29] = grid.maxYST;
+            highp[30] = grid.maxXPQ;
+            highp[31] = grid.maxYPQ;
+
+            i = 32;
+        } else {
+            // vertex: u_matrix
+            highp[0]  = matrix[0];
+            highp[1]  = matrix[1];
+            highp[2]  = matrix[2];
+
+            highp[4]  = matrix[3];
+            highp[5]  = matrix[4];
+            highp[6]  = matrix[5];
+
+            highp[8]  = matrix[6];
+            highp[9]  = matrix[7];
+            highp[10] = matrix[8];
+
+            // vertex: u_viewport
+            highp[3] = viewport_width;
+            highp[7] = viewport_height;
+
+            i = 12;
+        }
+
+        if (is_stroke) {
+            // vertex: u_half_width
+            highp[i]     = half_width;
+            // vertex: u_face
+            highp[i + 1] = face;
+            // vertex: u_miter_limit
+            highp[i + 2] = miter_limit;
+        }
+
+        const mediump = uniform.mediump;
+
+        // fragment: u_color
+        mediump[0] = color[0];
+        mediump[1] = color[1];
+        mediump[2] = color[2];
+        mediump[3] = color[3] * alpha;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {boolean} is_stroke
+     * @param {number}  half_width
+     * @param {number}  face
+     * @param {number}  miter_limit
+     * @param {boolean} has_grid
+     * @param {array}   matrix
+     * @param {array}   inverseMatrix
+     * @param {number}  viewport_width
+     * @param {number}  viewport_height
+     * @param {CanvasToWebGLContextGrid} grid
+     * @param {number}  texture_width
+     * @param {number}  texture_height
+     * @param {number}  mul1
+     * @param {number}  mul2
+     * @param {number}  mul3
+     * @param {number}  mul4
+     * @param {number}  add1
+     * @param {number}  add2
+     * @param {number}  add3
+     * @param {number}  add4
+     * @method
+     * @public
+     */
+    setBitmapShapeUniform (
+        uniform,
+        is_stroke, half_width, face, miter_limit,
+        has_grid, matrix, inverseMatrix,
+        viewport_width, viewport_height, grid,
+        texture_width, texture_height,
+        mul1, mul2, mul3, mul4,
+        add1, add2, add3, add4
+    ) {
+        const highp = uniform.highp;
+        let i;
+
+        // vertex: u_matrix
+        highp[0]  = matrix[0];
+        highp[1]  = matrix[1];
+        highp[2]  = matrix[2];
+
+        highp[4]  = matrix[3];
+        highp[5]  = matrix[4];
+        highp[6]  = matrix[5];
+
+        highp[8]  = matrix[6];
+        highp[9]  = matrix[7];
+        highp[10] = matrix[8];
+
+        // vertex: u_inverse_matrix
+        highp[12] = inverseMatrix[0];
+        highp[13] = inverseMatrix[1];
+        highp[14] = inverseMatrix[2];
+
+        highp[16] = inverseMatrix[3];
+        highp[17] = inverseMatrix[4];
+        highp[18] = inverseMatrix[5];
+
+        highp[11] = inverseMatrix[6];
+        highp[15] = inverseMatrix[7];
+        highp[19] = inverseMatrix[8];
+
+        // vertex: u_viewport
+        highp[3] = viewport_width;
+        highp[7] = viewport_height;
+
+        i = 20;
+
+        if (has_grid) {
+            // vertex: u_parent_matrix
+            highp[i]      = grid.parentmatrix_a;
+            highp[i + 1]  = grid.parentmatrix_b;
+            highp[i + 2]  = grid.parentmatrix_c;
+
+            highp[i + 4]  = grid.parentmatrix_d;
+            highp[i + 5]  = grid.parentmatrix_e;
+            highp[i + 6]  = grid.parentmatrix_f;
+
+            highp[i + 8]  = grid.parentmatrix_g;
+            highp[i + 9]  = grid.parentmatrix_h;
+            highp[i + 10] = grid.parentmatrix_i;
+
+            // vertex: u_ancestor_matrix
+            highp[i + 12] = grid.ancestormatrix_a;
+            highp[i + 13] = grid.ancestormatrix_b;
+            highp[i + 14] = grid.ancestormatrix_c;
+
+            highp[i + 16] = grid.ancestormatrix_d;
+            highp[i + 17] = grid.ancestormatrix_e;
+            highp[i + 18] = grid.ancestormatrix_f;
+
+            highp[i + 20] = grid.ancestormatrix_g;
+            highp[i + 21] = grid.ancestormatrix_h;
+            highp[i + 22] = grid.ancestormatrix_i;
+
+            // vertex: u_parent_viewport
+            highp[i + 11] = grid.parentViewportX;
+            highp[i + 15] = grid.parentViewportY;
+            highp[i + 19] = grid.parentViewportW;
+            highp[i + 23] = grid.parentViewportH;
+
+            // vertex: u_grid_min
+            highp[i + 24] = grid.minXST;
+            highp[i + 25] = grid.minYST;
+            highp[i + 26] = grid.minXPQ;
+            highp[i + 27] = grid.minYPQ;
+            // vertex: u_grid_max
+            highp[i + 28] = grid.maxXST;
+            highp[i + 29] = grid.maxYST;
+            highp[i + 30] = grid.maxXPQ;
+            highp[i + 31] = grid.maxYPQ;
+
+            i = 52;
+        }
+
+        if (is_stroke) {
+            // vertex: u_half_width
+            highp[i]     = half_width;
+            // vertex: u_face
+            highp[i + 1] = face;
+            // vertex: u_miter_limit
+            highp[i + 2] = miter_limit;
+        }
+
+        const mediump = uniform.mediump;
+
+        // fragment: u_uv
+        mediump[0] = texture_width;
+        mediump[1] = texture_height;
+
+        // fragment: u_color_transform_mul
+        mediump[4] = mul1;
+        mediump[5] = mul2;
+        mediump[6] = mul3;
+        mediump[7] = mul4;
+        // fragment: u_color_transform_add
+        mediump[8]  = add1;
+        mediump[9]  = add2;
+        mediump[10] = add3;
+        mediump[11] = add4;
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {boolean} has_grid
+     * @param {number}  matrix_a
+     * @param {number}  matrix_b
+     * @param {number}  matrix_c
+     * @param {number}  matrix_d
+     * @param {number}  matrix_e
+     * @param {number}  matrix_f
+     * @param {number}  matrix_g
+     * @param {number}  matrix_h
+     * @param {number}  matrix_i
+     * @param {number}  viewport_width
+     * @param {number}  viewport_height
+     * @param {CanvasToWebGLContextGrid} grid
+     * @method
+     * @public
+     */
+    setMaskShapeUniform (
+        uniform, has_grid,
+        matrix_a, matrix_b, matrix_c,
+        matrix_d, matrix_e, matrix_f,
+        matrix_g, matrix_h, matrix_i,
+        viewport_width, viewport_height, grid
+    ) {
+        const highp = uniform.highp;
+
+        if (has_grid) {
+            // vertex: u_parent_matrix
+            highp[0]  = grid.parentmatrix_a;
+            highp[1]  = grid.parentmatrix_b;
+            highp[2]  = grid.parentmatrix_c;
+
+            highp[4]  = grid.parentmatrix_d;
+            highp[5]  = grid.parentmatrix_e;
+            highp[6]  = grid.parentmatrix_f;
+
+            highp[8]  = grid.parentmatrix_g;
+            highp[9]  = grid.parentmatrix_h;
+            highp[10] = grid.parentmatrix_i;
+
+            // vertex: u_ancestor_matrix
+            highp[12] = grid.ancestormatrix_a;
+            highp[13] = grid.ancestormatrix_b;
+            highp[14] = grid.ancestormatrix_c;
+
+            highp[16] = grid.ancestormatrix_d;
+            highp[17] = grid.ancestormatrix_e;
+            highp[18] = grid.ancestormatrix_f;
+
+            highp[20] = grid.ancestormatrix_g;
+            highp[21] = grid.ancestormatrix_h;
+            highp[22] = grid.ancestormatrix_i;
+
+            // vertex: u_viewport
+            highp[3]  = viewport_width;
+            highp[7]  = viewport_height;
+
+            // vertex: u_parent_viewport
+            highp[11] = grid.parentViewportX;
+            highp[15] = grid.parentViewportY;
+            highp[19] = grid.parentViewportW;
+            highp[23] = grid.parentViewportH;
+
+            // vertex: u_grid_min
+            highp[24] = grid.minXST;
+            highp[25] = grid.minYST;
+            highp[26] = grid.minXPQ;
+            highp[27] = grid.minYPQ;
+            // vertex: u_grid_max
+            highp[28] = grid.maxXST;
+            highp[29] = grid.maxYST;
+            highp[30] = grid.maxXPQ;
+            highp[31] = grid.maxYPQ;
+        } else {
+            // vertex: u_matrix
+            highp[0]  = matrix_a;
+            highp[1]  = matrix_b;
+            highp[2]  = matrix_c;
+
+            highp[4]  = matrix_d;
+            highp[5]  = matrix_e;
+            highp[6]  = matrix_f;
+
+            highp[8]  = matrix_g;
+            highp[9]  = matrix_h;
+            highp[10] = matrix_i;
+
+            // vertex: u_viewport
+            highp[3] = viewport_width;
+            highp[7] = viewport_height;
+        }
+    }
+
+    /**
+     * @param {WebGLShaderUniform} uniform
+     * @param {number} width
+     * @param {number} height
+     * @method
+     * @public
+     */
+    setMaskShapeUniformIdentity (uniform, width, height)
+    {
+        const highp = uniform.highp;
+
+        // vertex: u_matrix
+        highp[0]  = 1;
+        highp[1]  = 0;
+        highp[2]  = 0;
+
+        highp[4]  = 0;
+        highp[5]  = 1;
+        highp[6]  = 0;
+
+        highp[8]  = 0;
+        highp[9]  = 0;
+        highp[10] = 1;
+
+        // vertex: u_viewport
+        highp[3] = width;
+        highp[7] = height;
     }
 }
 
@@ -33458,2077 +35502,6 @@ ${k.varyingOut()} vec2 v_uv;
 `;
     }
 }
-/**
- * @class
- */
-class BitmapShaderVariantCollection
-{
-    /**
-     * @param {CanvasToWebGLContext}  context
-     * @param {WebGLRenderingContext} gl
-     * @param {WebGLShaderKeyword}    keyword
-     * @constructor
-     */
-    constructor (context, gl, keyword)
-    {
-        this._$context    = context;
-        this._$gl         = gl;
-        this._$keyword    = keyword;
-        this._$collection = new Map();
-    }
-
-    /**
-     * @return {CanvasToWebGLShader}
-     * @public
-     */
-    getBitmapShader ()
-    {
-        const key = "b";
-
-        if (!this._$collection.has(key)) {
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.TEXTURE(this._$keyword),
-                FragmentShaderSourceTexture.TEMPLATE(this._$keyword, 0, 0, false)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @public
-     */
-    setBitmapUniform ()
-    {
-        // uniform設定不要
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} sx
-     * @param {number} sy
-     * @param {number} tx
-     * @param {number} ty
-     * @public
-     */
-    setGetPixelsUniform (uniform, sx, sy, tx, ty)
-    {
-        const highp = uniform.highp;
-
-        // vertex: u_matrix
-        highp[0]  = 1;
-        highp[1]  = 0;
-        highp[2]  = 0;
-
-        highp[4]  = 0;
-        highp[5]  = 1;
-        highp[6]  = 0;
-
-        highp[8]  = 0;
-        highp[9]  = 0;
-        highp[10] = 1;
-
-        // vertex: u_src_tex_matrix
-        highp[12] = sx;
-        highp[13] = 0;
-        highp[14] = 0;
-
-        highp[16] = 0;
-        highp[17] = sy;
-        highp[18] = 0;
-
-        highp[3]  = tx;
-        highp[7]  = ty;
-        highp[11] = 1;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} sx1
-     * @param {number} sy1
-     * @param {number} tx1
-     * @param {number} ty1
-     * @param {number} sx2
-     * @param {number} sy2
-     * @param {number} tx2
-     * @param {number} ty2
-     * @public
-     */
-    setSetPixelsUniform (uniform, sx1, sy1, tx1, ty1, sx2, sy2, tx2, ty2)
-    {
-        const highp = uniform.highp;
-
-        // vertex: u_matrix
-        highp[0]  = sx1;
-        highp[1]  = 0;
-        highp[2]  = 0;
-
-        highp[4]  = 0;
-        highp[5]  = sy1;
-        highp[6]  = 0;
-
-        highp[8]  = tx1;
-        highp[9]  = ty1;
-        highp[10] = 1;
-
-        // vertex: u_src_tex_matrix
-        highp[12] = sx2;
-        highp[13] = 0;
-        highp[14] = 0;
-
-        highp[16] = 0;
-        highp[17] = sy2;
-        highp[18] = 0;
-
-        highp[3]  = tx2;
-        highp[7]  = ty2;
-        highp[11] = 1;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {array} colorTransform
-     * @public
-     */
-    setColorTransformUniform (uniform, colorTransform)
-    {
-        const mediump = uniform.mediump;
-
-        // fragment: u_color_transform_mul
-        mediump[0] = colorTransform[0];
-        mediump[1] = colorTransform[1];
-        mediump[2] = colorTransform[2];
-        mediump[3] = colorTransform[3];
-        // fragment: u_color_transform_add
-        mediump[4] = colorTransform[4] / 255;
-        mediump[5] = colorTransform[5] / 255;
-        mediump[6] = colorTransform[6] / 255;
-        mediump[7] = colorTransform[7] / 255;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {array}      matrix
-     * @param {boolean}    use_source_texture
-     * @param {array}      src_tex_mat
-     * @param {BitmapData} alpha_bitmap_data
-     * @param {array}      alpha_tex_mat
-     * @public
-     */
-    setManipulatePixelsUniform (
-        uniform, matrix, use_source_texture,
-        src_tex_mat, alpha_bitmap_data, alpha_tex_mat
-    ) {
-
-        const highp = uniform.highp;
-
-        // vertex: u_matrix
-        highp[0]  = matrix[0];
-        highp[1]  = matrix[1];
-        highp[2]  = matrix[2];
-
-        highp[4]  = matrix[3];
-        highp[5]  = matrix[4];
-        highp[6]  = matrix[5];
-
-        highp[8]  = matrix[6];
-        highp[9]  = matrix[7];
-        highp[10] = matrix[8];
-
-        if (alpha_bitmap_data) {
-            // vertex: u_src_tex_matrix
-            highp[12] = src_tex_mat[0];
-            highp[13] = src_tex_mat[1];
-            highp[14] = src_tex_mat[2];
-
-            highp[16] = src_tex_mat[3];
-            highp[17] = src_tex_mat[4];
-            highp[18] = src_tex_mat[5];
-
-            highp[20] = src_tex_mat[6];
-            highp[21] = src_tex_mat[7];
-            highp[22] = src_tex_mat[8];
-
-            // vertex: u_alpha_tex_matrix
-            highp[24] = alpha_tex_mat[0];
-            highp[25] = alpha_tex_mat[1];
-            highp[26] = alpha_tex_mat[2];
-
-            highp[3]  = alpha_tex_mat[3];
-            highp[7]  = alpha_tex_mat[4];
-            highp[11] = alpha_tex_mat[5];
-
-            highp[15] = alpha_tex_mat[6];
-            highp[19] = alpha_tex_mat[7];
-            highp[23] = alpha_tex_mat[8];
-        } else if (use_source_texture) {
-            // vertex: u_src_tex_matrix
-            highp[12] = src_tex_mat[0];
-            highp[13] = src_tex_mat[1];
-            highp[14] = src_tex_mat[2];
-
-            highp[16] = src_tex_mat[3];
-            highp[17] = src_tex_mat[4];
-            highp[18] = src_tex_mat[5];
-
-            highp[3]  = src_tex_mat[6];
-            highp[7]  = src_tex_mat[7];
-            highp[11] = src_tex_mat[8];
-        }
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} source_channel
-     * @param {number} dest_channel
-     * @public
-     */
-    setCopyChannelUniform (uniform, source_channel, dest_channel)
-    {
-        const textures = uniform.textures;
-        textures[0] = 0;
-        textures[1] = 1;
-
-        const mediump = uniform.mediump;
-
-        // fragment: u_src_ch
-        mediump[0] = source_channel      & 0x01;
-        mediump[1] = source_channel >> 1 & 0x01;
-        mediump[2] = source_channel >> 2 & 0x01;
-        mediump[3] = source_channel >> 3 & 0x01;
-        // fragment: u_dst_ch
-        mediump[4] = dest_channel      & 0x01;
-        mediump[5] = dest_channel >> 1 & 0x01;
-        mediump[6] = dest_channel >> 2 & 0x01;
-        mediump[7] = dest_channel >> 3 & 0x01;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {WebGLTexture} alpha_tex
-     * @public
-     */
-    setCopyPixelsUniform (uniform, alpha_tex)
-    {
-        if (alpha_tex) {
-            const textures = uniform.textures;
-            textures[0] = 0;
-            textures[1] = 1;
-        }
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} r
-     * @param {number} g
-     * @param {number} b
-     * @param {number} a
-     * @public
-     */
-    setFillRectUniform (uniform, r, g, b, a)
-    {
-        const mediump = uniform.mediump;
-
-        // fragment: u_color
-        mediump[0] = r;
-        mediump[1] = g;
-        mediump[2] = b;
-        mediump[3] = a;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {array}  tex_matrix
-     * @param {array}  tex_step
-     * @param {number} scan_loop
-     * @param {array}  mask
-     * @param {array}  color
-     * @public
-     */
-    setGetColorBoundsRectUniform (
-        uniform, tex_matrix, tex_step, scan_loop, mask, color
-    ) {
-
-        const highp = uniform.highp;
-
-        // vertex: u_matrix
-        highp[0]  = 1;
-        highp[1]  = 0;
-        highp[2]  = 0;
-
-        highp[4]  = 0;
-        highp[5]  = 1;
-        highp[6]  = 0;
-
-        highp[8]  = 0;
-        highp[9]  = 0;
-        highp[10] = 1;
-
-        // vertex: u_tex_matrix
-        highp[12] = tex_matrix[0];
-        highp[13] = tex_matrix[1];
-        highp[14] = tex_matrix[2];
-
-        highp[16] = tex_matrix[3];
-        highp[17] = tex_matrix[4];
-        highp[18] = tex_matrix[5];
-
-        highp[3]  = tex_matrix[6];
-        highp[7]  = tex_matrix[7];
-        highp[11] = tex_matrix[8];
-
-        const mediump = uniform.mediump;
-
-        // fragment: u_src_tex_step
-        mediump[0] = tex_step[0];
-        mediump[1] = tex_step[1];
-
-        // fragment: u_scan_loop
-        mediump[2] = scan_loop;
-
-        const integer = uniform.integer;
-
-        // fragment: u_mask
-        integer[0] = mask[0];
-        integer[1] = mask[1];
-        integer[2] = mask[2];
-        integer[3] = mask[3];
-
-        // fragment: u_color
-        integer[4] = color[0];
-        integer[5] = color[1];
-        integer[6] = color[2];
-        integer[7] = color[3];
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} r
-     * @param {number} g
-     * @param {number} b
-     * @param {number} a
-     * @public
-     */
-    setMergeUniform (uniform, r, g, b, a)
-    {
-        const textures = uniform.textures;
-        textures[0] = 0;
-        textures[1] = 1;
-
-        const mediump = uniform.mediump;
-
-        // fragment: u_multipliers
-        mediump[0] = r;
-        mediump[1] = g;
-        mediump[2] = b;
-        mediump[3] = a;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} seed_r
-     * @param {number} seed_g
-     * @param {number} seed_b
-     * @param {number} seed_a
-     * @param {number} amp_r
-     * @param {number} amp_g
-     * @param {number} amp_b
-     * @param {number} amp_a
-     * @param {number} low_r
-     * @param {number} low_g
-     * @param {number} low_b
-     * @param {number} low_a
-     * @public
-     */
-    setNoiseUniform (
-        uniform,
-        seed_r, seed_g, seed_b, seed_a,
-        amp_r, amp_g, amp_b, amp_a,
-        low_r, low_g, low_b, low_a
-    ) {
-        const mediump = uniform.mediump;
-
-        // fragment: u_seed
-        mediump[0]  = seed_r;
-        mediump[1]  = seed_g;
-        mediump[2]  = seed_b;
-        mediump[3]  = seed_a;
-
-        // fragment: u_amp
-        mediump[4]  = amp_r;
-        mediump[5]  = amp_g;
-        mediump[6]  = amp_b;
-        mediump[7]  = amp_a;
-
-        // fragment: u_low
-        mediump[8]  = low_r;
-        mediump[9]  = low_g;
-        mediump[10] = low_b;
-        mediump[11] = low_a;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @public
-     */
-    setPaletteMapUniform (uniform)
-    {
-        const textures = uniform.textures;
-        textures[0] = 0;
-        textures[1] = 2;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} r
-     * @param {number} g
-     * @param {number} b
-     * @param {number} a
-     * @public
-     */
-    setPixelDissolveUniform (uniform, r, g, b, a)
-    {
-        const mediump = uniform.mediump;
-
-        // fragment: u_color
-        mediump[0] = r;
-        mediump[1] = g;
-        mediump[2] = b;
-        mediump[3] = a;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @public
-     */
-    setFlushSetPixelQueueUniform (uniform)
-    {
-        const highp = uniform.highp;
-
-        // vertex: u_matrix
-        highp[0] = 1;
-        highp[1] = 0;
-        highp[2] = 0;
-
-        highp[3] = 0;
-        highp[4] = -1;
-        highp[5] = 0;
-
-        highp[6] = 0;
-        highp[7] = 1;
-        highp[8] = 1;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} tr
-     * @param {number} tg
-     * @param {number} tb
-     * @param {number} ta
-     * @param {number} cr
-     * @param {number} cg
-     * @param {number} cb
-     * @param {number} ca
-     * @param {number} mr
-     * @param {number} mg
-     * @param {number} mb
-     * @param {number} ma
-     * @public
-     */
-    setThresholdUniform (
-        uniform, tr, tg, tb, ta, cr, cg, cb, ca, mr, mg, mb, ma
-    ) {
-
-        const mediump = uniform.mediump;
-
-        // fragment: u_threshold
-        mediump[0] = tr;
-        mediump[1] = tg;
-        mediump[2] = tb;
-        mediump[3] = ta;
-
-        // fragment: u_out_color
-        mediump[4] = cr;
-        mediump[5] = cg;
-        mediump[6] = cb;
-        mediump[7] = ca;
-
-        const integer = uniform.integer;
-
-        // fragment: u_masked
-        integer[0] = mr;
-        integer[1] = mg;
-        integer[2] = mb;
-        integer[3] = ma;
-    }
-}
-/**
- * @class
- */
-class BlendShaderVariantCollection
-{
-    /**
-     * @param {CanvasToWebGLContext}  context
-     * @param {WebGLRenderingContext} gl
-     * @param {WebGLShaderKeyword}    keyword
-     * @constructor
-     * @public
-     */
-    constructor (context, gl, keyword)
-    {
-        this._$context    = context;
-        this._$gl         = gl;
-        this._$keyword    = keyword;
-        this._$collection = new Map();
-    }
-
-    /**
-     * @param  {boolean} with_color_transform
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getNormalBlendShader (with_color_transform)
-    {
-        const key = `n${with_color_transform ? "y" : "n"}`;
-
-        if (!this._$collection.has(key)) {
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.BLEND(this._$keyword),
-                FragmentShaderSourceTexture.TEMPLATE(this._$keyword, with_color_transform)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getClipShader ()
-    {
-        const key = "c";
-
-        if (!this._$collection.has(key)) {
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.BLEND_CLIP(this._$keyword),
-                FragmentShaderSourceTexture.TEMPLATE(this._$keyword, false)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param  {string}  operation
-     * @param  {boolean} with_color_transform
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getBlendShader (operation, with_color_transform)
-    {
-        const key = `${operation}${with_color_transform ? "y" : "n"}`;
-
-        if (!this._$collection.has(key)) {
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.BLEND(this._$keyword),
-                FragmentShaderSourceBlend.TEMPLATE(this._$keyword, operation, with_color_transform)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number}  x
-     * @param {number}  y
-     * @param {number}  w
-     * @param {number}  h
-     * @param {array}   matrix
-     * @param {number}  render_width
-     * @param {number}  render_height
-     * @param {boolean} with_color_transform
-     * @param {number}  ct0
-     * @param {number}  ct1
-     * @param {number}  ct2
-     * @param {number}  ct3
-     * @param {number}  ct4
-     * @param {number}  ct5
-     * @param {number}  ct6
-     * @param {number}  ct7
-     * @method
-     * @public
-     */
-    setNormalBlendUniform (
-        uniform, x, y, w, h, matrix, render_width, render_height,
-        with_color_transform, ct0, ct1, ct2, ct3, ct4, ct5, ct6, ct7)
-    {
-        const highp = uniform.highp;
-
-        // vertex: u_offset
-        highp[0] = x;
-        highp[1] = y;
-        // vertex: u_size
-        highp[2] = w;
-        highp[3] = h;
-
-        // vertex: u_matrix
-        highp[4]  = matrix[0];
-        highp[5]  = matrix[1];
-        highp[6]  = matrix[2];
-
-        highp[8]  = matrix[3];
-        highp[9]  = matrix[4];
-        highp[10] = matrix[5];
-
-        highp[12] = matrix[6];
-        highp[13] = matrix[7];
-        highp[14] = matrix[8];
-
-        // vertex: u_viewport
-        highp[7]  = render_width;
-        highp[11] = render_height;
-
-        if (with_color_transform) {
-            const mediump = uniform.mediump;
-
-            // fragment: u_color_transform_mul
-            mediump[0] = ct0;
-            mediump[1] = ct1;
-            mediump[2] = ct2;
-            mediump[3] = ct3;
-            // fragment: u_color_transform_add
-            mediump[4] = ct4;
-            mediump[5] = ct5;
-            mediump[6] = ct6;
-            mediump[7] = ct7;
-        }
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number}  x
-     * @param {number}  y
-     * @param {number}  w
-     * @param {number}  h
-     * @param {array}   inverse_matrix
-     * @param {number}  render_width
-     * @param {number}  render_height
-     * @method
-     * @public
-     */
-    setClipUniform (
-        uniform, x, y, w, h, inverse_matrix, render_width, render_height
-    ) {
-
-        const highp = uniform.highp;
-
-        // vertex: u_offset
-        highp[0] = x;
-        highp[1] = y;
-        // vertex: u_size
-        highp[2] = w;
-        highp[3] = h;
-
-        // vertex: u_inverse_matrix
-        highp[4]  = inverse_matrix[0];
-        highp[5]  = inverse_matrix[1];
-        highp[6]  = inverse_matrix[2];
-
-        highp[8]  = inverse_matrix[3];
-        highp[9]  = inverse_matrix[4];
-        highp[10] = inverse_matrix[5];
-
-        highp[12] = inverse_matrix[6];
-        highp[13] = inverse_matrix[7];
-        highp[14] = inverse_matrix[8];
-
-        // vertex: u_viewport
-        highp[7]  = render_width;
-        highp[11] = render_height;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number}  x
-     * @param {number}  y
-     * @param {number}  w
-     * @param {number}  h
-     * @param {array}   matrix
-     * @param {number}  render_width
-     * @param {number}  render_height
-     * @param {boolean} with_color_transform
-     * @param {number}  ct0
-     * @param {number}  ct1
-     * @param {number}  ct2
-     * @param {number}  ct3
-     * @param {number}  ct4
-     * @param {number}  ct5
-     * @param {number}  ct6
-     * @param {number}  ct7
-     * @method
-     * @public
-     */
-    setBlendUniform (
-        uniform, x, y, w, h, matrix, render_width, render_height,
-        with_color_transform, ct0, ct1, ct2, ct3, ct4, ct5, ct6, ct7
-    ) {
-        const textures = uniform.textures;
-        textures[0] = 0;
-        textures[1] = 1;
-
-        const highp = uniform.highp;
-
-        // vertex: u_offset
-        highp[0] = x;
-        highp[1] = y;
-        // vertex: u_size
-        highp[2] = w;
-        highp[3] = h;
-
-        // vertex: u_matrix
-        highp[4]  = matrix[0];
-        highp[5]  = matrix[1];
-        highp[6]  = matrix[2];
-
-        highp[8]  = matrix[3];
-        highp[9]  = matrix[4];
-        highp[10] = matrix[5];
-
-        highp[12] = matrix[6];
-        highp[13] = matrix[7];
-        highp[14] = matrix[8];
-
-        // vertex: u_viewport
-        highp[7]  = render_width;
-        highp[11] = render_height;
-
-        if (with_color_transform) {
-            const mediump = uniform.mediump;
-
-            // fragment: u_color_transform_mul
-            mediump[0] = ct0;
-            mediump[1] = ct1;
-            mediump[2] = ct2;
-            mediump[3] = ct3;
-            // fragment: u_color_transform_add
-            mediump[4] = ct4;
-            mediump[5] = ct5;
-            mediump[6] = ct6;
-            mediump[7] = ct7;
-        }
-    }
-}
-
-/**
- * @class
- */
-class FilterShaderVariantCollection
-{
-    /**
-     * @param {CanvasToWebGLContext}  context
-     * @param {WebGLRenderingContext} gl
-     * @param {WebGLShaderKeyword}    keyword
-     * @constructor
-     * @public
-     */
-    constructor (context, gl, keyword)
-    {
-        this._$context    = context;
-        this._$gl         = gl;
-        this._$keyword    = keyword;
-        this._$collection = new Map();
-    }
-
-    /**
-     * @param  {number}  half_blur
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getBlurFilterShader (half_blur)
-    {
-        const key = `b${half_blur}`;
-
-        if (!this._$collection.has(key)) {
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.TEXTURE(this._$keyword),
-                FragmentShaderSourceBlurFilter.TEMPLATE(this._$keyword, half_blur)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param  {boolean} transforms_base
-     * @param  {boolean} transforms_blur
-     * @param  {boolean} is_glow
-     * @param  {string}  type
-     * @param  {boolean} knockout
-     * @param  {boolean} applies_strength
-     * @param  {boolean} is_gradient
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getBitmapFilterShader (
-        transforms_base, transforms_blur, is_glow,
-        type, knockout, applies_strength, is_gradient
-    ) {
-
-        const key1 = transforms_base ? "y" : "n";
-        const key2 = transforms_blur ? "y" : "n";
-        const key3 = is_glow ? "y" : "n";
-        const key4 = knockout ? "y" : "n";
-        const key5 = applies_strength ? "y" : "n";
-        const key = `f${key1}${key2}${key3}${type}${key4}${key5}`;
-
-        if (!this._$collection.has(key)) {
-            let texturesLength = 1;
-            if (transforms_base) { texturesLength++ }
-            if (is_gradient) { texturesLength++ }
-
-            let mediumpLength = (transforms_base ? 4 : 0)
-                + (transforms_blur ? 4 : 0)
-                + (applies_strength ? 1 : 0);
-            if (is_gradient) {
-                // do nothing
-            } else {
-                mediumpLength += is_glow ? 4 : 8;
-            }
-            mediumpLength = Util.$ceil(mediumpLength / 4);
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.TEXTURE(this._$keyword),
-                FragmentShaderSourceFilter.TEMPLATE(
-                    this._$keyword, texturesLength, mediumpLength,
-                    transforms_base, transforms_blur,
-                    is_glow, type, knockout,
-                    applies_strength, is_gradient
-                )
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getColorMatrixFilterShader ()
-    {
-        const key = "m";
-
-        if (!this._$collection.has(key)) {
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.TEXTURE(this._$keyword),
-                FragmentShaderSourceColorMatrixFilter.TEMPLATE(this._$keyword)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param  {number}  x
-     * @param  {number}  y
-     * @param  {boolean} preserve_alpha
-     * @param  {boolean} clamp
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getConvolutionFilterShader (x, y, preserve_alpha, clamp)
-    {
-        const key1 = ("0" + x).slice(-2);
-        const key2 = ("0" + y).slice(-2);
-        const key3 = preserve_alpha ? "y" : "n";
-        const key4 = clamp ? "y" : "n";
-        const key = `c${key1}${key2}${key3}${key4}`;
-
-        if (!this._$collection.has(key)) {
-            const mediumpLength = (clamp ? 1 : 2) + Util.$ceil(x * y / 4);
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.TEXTURE(this._$keyword),
-                FragmentShaderSourceConvolutionFilter.TEMPLATE(
-                    this._$keyword, mediumpLength,
-                    x, y, preserve_alpha, clamp
-                )
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param  {number} component_x
-     * @param  {number} component_y
-     * @param  {string} mode
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getDisplacementMapFilterShader (component_x, component_y, mode)
-    {
-        const key = `d${component_x}${component_y}${mode}`;
-
-        if (!this._$collection.has(key)) {
-            const mediumpLength = mode === DisplacementMapFilterMode.COLOR ? 3 : 2;
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.TEXTURE(this._$keyword),
-                FragmentShaderSourceDisplacementMapFilter.TEMPLATE(
-                    this._$keyword, mediumpLength,
-                    component_x, component_y, mode
-                )
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number}  width
-     * @param {number}  height
-     * @param {boolean} is_horizontal
-     * @param {number}  fraction
-     * @param {number}  samples
-     * @method
-     * @public
-     */
-    setBlurFilterUniform (uniform, width, height, is_horizontal, fraction, samples)
-    {
-        const mediump = uniform.mediump;
-
-        // fragment: u_offset
-        if (is_horizontal) {
-            mediump[0] = 1 / width;
-            mediump[1] = 0;
-        } else {
-            mediump[0] = 0;
-            mediump[1] = 1 / height;
-        }
-
-        // fragment: u_fraction
-        mediump[2] = fraction;
-
-        // fragment: u_samples
-        mediump[3] = samples;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number}  width
-     * @param {number}  height
-     * @param {number}  base_width
-     * @param {number}  base_height
-     * @param {number}  base_offset_x
-     * @param {number}  base_offset_y
-     * @param {number}  blur_width
-     * @param {number}  blur_height
-     * @param {number}  blur_offset_x
-     * @param {number}  blur_offset_y
-     * @param {boolean} is_glow
-     * @param {number}  strength
-     * @param {number}  color_r1
-     * @param {number}  color_g1
-     * @param {number}  color_b1
-     * @param {number}  color_a1
-     * @param {number}  color_r2
-     * @param {number}  color_g2
-     * @param {number}  color_b2
-     * @param {number}  color_a2
-     * @param {boolean} transforms_base
-     * @param {boolean} transforms_blur
-     * @param {boolean} applies_strength
-     * @param {boolean} is_gradient
-     * @method
-     * @public
-     */
-    setBitmapFilterUniform (
-        uniform, width, height,
-        base_width, base_height, base_offset_x, base_offset_y,
-        blur_width, blur_height, blur_offset_x, blur_offset_y,
-        is_glow, strength,
-        color_r1, color_g1, color_b1, color_a1,
-        color_r2, color_g2, color_b2, color_a2,
-        transforms_base, transforms_blur, applies_strength, is_gradient
-    ) {
-        let textures;
-        // fragment: u_textures
-        if (transforms_base) {
-            textures = uniform.textures;
-            textures[0] = 0;
-            textures[1] = 1;
-            if (is_gradient) {
-                textures[2] = 2;
-            }
-        } else if (is_gradient) {
-            textures = uniform.textures;
-            textures[0] = 0;
-            textures[1] = 2;
-        }
-
-        const mediump = uniform.mediump;
-        let i = 0;
-
-        if (transforms_base) {
-            // fragment: u_uv_scale
-            mediump[i]     = width / base_width;
-            mediump[i + 1] = height / base_height;
-            // fragment: u_uv_offset
-            mediump[i + 2] = base_offset_x / base_width;
-            mediump[i + 3] = (height - base_height - base_offset_y) / base_height;
-            i += 4;
-        }
-
-        if (transforms_blur) {
-            // fragment: u_st_scale
-            mediump[i]     = width / blur_width;
-            mediump[i + 1] = height / blur_height;
-            // fragment: u_st_offset
-            mediump[i + 2] = blur_offset_x / blur_width;
-            mediump[i + 3] = (height - blur_height - blur_offset_y) / blur_height;
-            i += 4;
-        }
-
-        if (is_gradient) {
-            // do nothing
-        } else if (is_glow) {
-            // fragment: u_color
-            mediump[i]     = color_r1;
-            mediump[i + 1] = color_g1;
-            mediump[i + 2] = color_b1;
-            mediump[i + 3] = color_a1;
-            i += 4;
-        } else {
-            // fragment: u_highlight_color
-            mediump[i]     = color_r1;
-            mediump[i + 1] = color_g1;
-            mediump[i + 2] = color_b1;
-            mediump[i + 3] = color_a1;
-            // fragment: u_shadow_color
-            mediump[i + 4] = color_r2;
-            mediump[i + 5] = color_g2;
-            mediump[i + 6] = color_b2;
-            mediump[i + 7] = color_a2;
-            i += 8;
-        }
-
-        if (applies_strength) {
-            // fragment: u_strength
-            mediump[i++] = strength;
-        }
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {array} matrix
-     * @method
-     * @public
-     */
-    setColorMatrixFilterUniform (uniform, matrix)
-    {
-        const mediump = uniform.mediump;
-
-        // fragment: u_mul
-        mediump[0]  = matrix[0];
-        mediump[1]  = matrix[1];
-        mediump[2]  = matrix[2];
-        mediump[3]  = matrix[3];
-
-        mediump[4]  = matrix[5];
-        mediump[5]  = matrix[6];
-        mediump[6]  = matrix[7];
-        mediump[7]  = matrix[8];
-
-        mediump[8]  = matrix[10];
-        mediump[9]  = matrix[11];
-        mediump[10] = matrix[12];
-        mediump[11] = matrix[13];
-
-        mediump[12] = matrix[15];
-        mediump[13] = matrix[16];
-        mediump[14] = matrix[17];
-        mediump[15] = matrix[18];
-
-        // fragment: u_add
-        mediump[16] = matrix[4]  / 255;
-        mediump[17] = matrix[9]  / 255;
-        mediump[18] = matrix[14] / 255;
-        mediump[19] = matrix[19] / 255;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number}  width
-     * @param {number}  height
-     * @param {array}   matrix
-     * @param {number}  divisor
-     * @param {number}  bias
-     * @param {boolean} clamp
-     * @param {number}  color_r
-     * @param {number}  color_g
-     * @param {number}  color_b
-     * @param {number}  color_a
-     * @method
-     * @public
-     */
-    setConvolutionFilterUniform (
-        uniform,
-        width, height, matrix, divisor, bias, clamp,
-        color_r, color_g, color_b, color_a
-    ) {
-        const mediump = uniform.mediump;
-
-        // fragment: u_rcp_size
-        mediump[0] = 1 / width;
-        mediump[1] = 1 / height;
-
-        // fragment: u_rcp_divisor
-        mediump[2] = 1 / divisor;
-
-        // fragment: u_bias
-        mediump[3] = bias / 255;
-
-        let i = 4;
-
-        if (!clamp) {
-            // fragment: u_substitute_color
-            mediump[i]     = color_r;
-            mediump[i + 1] = color_g;
-            mediump[i + 2] = color_b;
-            mediump[i + 3] = color_a;
-            i += 4;
-        }
-
-        // fragment: u_matrix
-        const length = matrix.length;
-        for (let j = 0; j < length; j++) {
-            mediump[i++] = matrix[j];
-        }
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} map_width
-     * @param {number} map_height
-     * @param {number} base_width
-     * @param {number} base_height
-     * @param {number} point_x
-     * @param {number} point_y
-     * @param {number} scale_x
-     * @param {number} scale_y
-     * @param {string} mode
-     * @param {number} color_r
-     * @param {number} color_g
-     * @param {number} color_b
-     * @param {number} color_a
-     * @method
-     * @public
-     */
-    setDisplacementMapFilterUniform (
-        uniform, map_width, map_height, base_width, base_height,
-        point_x, point_y, scale_x, scale_y, mode,
-        color_r, color_g, color_b, color_a
-    ) {
-        const textures = uniform.textures;
-        textures[0] = 0;
-        textures[1] = 1;
-
-        const mediump = uniform.mediump;
-
-        // fragment: u_uv_to_st_scale
-        mediump[0] = base_width  / map_width;
-        mediump[1] = base_height / map_height;
-        // fragment: u_uv_to_st_offset
-        mediump[2] = point_x / map_width;
-        mediump[3] = (base_height - map_height - point_y) / map_height;
-
-        // fragment: u_scale
-        mediump[4] =  scale_x / base_width;
-        mediump[5] = -scale_y / base_height;
-
-        if (mode === DisplacementMapFilterMode.COLOR) {
-            // fragment: u_substitute_color
-            mediump[8]  = color_r;
-            mediump[9]  = color_g;
-            mediump[10] = color_b;
-            mediump[11] = color_a;
-        }
-    }
-}
-/**
- * @class
- */
-class GradientLUTShaderVariantCollection
-{
-    /**
-     * @param {CanvasToWebGLContext}  context
-     * @param {WebGLRenderingContext} gl
-     * @param {WebGLShaderKeyword}    keyword
-     * @constructor
-     * @public
-     */
-    constructor (context, gl, keyword)
-    {
-        this._$context    = context;
-        this._$gl         = gl;
-        this._$keyword    = keyword;
-        this._$collection = new Map();
-    }
-
-    /**
-     * @param  {number}  stops_length
-     * @param  {boolean} is_linear_space
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getGradientLUTShader (stops_length, is_linear_space)
-    {
-        const key1 = ("00" + stops_length).slice(-3);
-        const key2 = is_linear_space ? "y" : "n";
-        const key = `l${key1}${key2}`;
-
-        if (!this._$collection.has(key)) {
-            const mediumpLength = Util.$ceil(stops_length * 5 / 4);
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                VertexShaderSource.TEXTURE(this._$keyword),
-                FragmentShaderSourceGradientLUT.TEMPLATE(this._$keyword, mediumpLength, stops_length, is_linear_space)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {array}  stops
-     * @param {number} begin
-     * @param {number} end
-     * @param {array}  table
-     * @method
-     * @public
-     */
-    setGradientLUTUniformForShape (uniform, stops, begin, end, table)
-    {
-        let i = 0;
-        const mediump = uniform.mediump;
-
-        // fragment: u_gradient_color
-        for (let j = begin; j < end; j++) {
-            const color = stops[j][1];
-            mediump[i++] = table[color[0]];
-            mediump[i++] = table[color[1]];
-            mediump[i++] = table[color[2]];
-            mediump[i++] = table[color[3]];
-        }
-
-        // fragment: u_gradient_t
-        for (let j = begin; j < end; j++) {
-            mediump[i++] = stops[j][0];
-        }
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {array}  ratios
-     * @param {array}  colors
-     * @param {array}  alphas
-     * @param {number} begin
-     * @param {number} end
-     * @method
-     * @public
-     */
-    setGradientLUTUniformForFilter (uniform, ratios, colors, alphas, begin, end)
-    {
-        let i = 0;
-        const mediump = uniform.mediump;
-
-        // fragment: u_gradient_color
-        for (let j = begin; j < end; j++) {
-            const color = colors[j];
-            mediump[i++] = ((color >> 16)       ) / 255;
-            mediump[i++] = (color  >>   8 & 0xFF) / 255;
-            mediump[i++] = (color         & 0xFF) / 255;
-            mediump[i++] = alphas[j];
-        }
-
-        // fragment: u_gradient_t
-        for (let j = begin; j < end; j++) {
-            mediump[i++] = ratios[j];
-        }
-    }
-}
-/**
- * @class
- */
-class GradientShapeShaderVariantCollection
-{
-    /**
-     * @param {CanvasToWebGLContext}  context
-     * @param {WebGLRenderingContext} gl
-     * @param {WebGLShaderKeyword}    keyword
-     * @constructor
-     * @public
-     */
-    constructor (context, gl, keyword)
-    {
-        this._$context    = context;
-        this._$gl         = gl;
-        this._$keyword    = keyword;
-        this._$collection = new Map();
-    }
-
-    /**
-     * @param  {boolean} is_stroke
-     * @param  {boolean} has_grid
-     * @param  {boolean} is_radial
-     * @param  {boolean} has_focal_point
-     * @param  {string}  spread_method
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getGradientShapeShader (
-        is_stroke, has_grid, is_radial, has_focal_point, spread_method
-    ) {
-
-        const key = this.createCollectionKey(
-            is_stroke, has_grid, is_radial, has_focal_point, spread_method
-        );
-
-        if (!this._$collection.has(key)) {
-            let highpLength = (has_grid ? 13 : 5) + (is_stroke ? 1 : 0) + 1;
-            const fragmentIndex = highpLength - 1;
-
-            let vertexShaderSource;
-            if (is_stroke) {
-                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
-                    this._$keyword, highpLength, fragmentIndex,
-                    true, has_grid
-                );
-            } else {
-                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
-                    this._$keyword, highpLength,
-                    true, false, has_grid
-                );
-            }
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                vertexShaderSource,
-                FragmentShaderSourceGradient.TEMPLATE(
-                    this._$keyword, highpLength, fragmentIndex,
-                    is_radial, has_focal_point, spread_method
-                )
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param  {boolean} is_stroke
-     * @param  {boolean} has_grid
-     * @param  {boolean} is_radial
-     * @param  {boolean} has_focal_point
-     * @param  {string}  spread_method
-     * @return {string}
-     * @method
-     * @private
-     */
-    createCollectionKey (is_stroke, has_grid, is_radial, has_focal_point, spread_method)
-    {
-        const key1 = is_stroke ? "y" : "n";
-        const key2 = has_grid  ? "y" : "n";
-        const key3 = is_radial ? "y" : "n";
-        const key4 = is_radial && has_focal_point ? "y" : "n";
-        let key5 = 0;
-        switch (spread_method) {
-            case "reflect":
-                key5 = 1;
-                break;
-            case "repeat":
-                key5 = 2;
-                break;
-        }
-
-        return `${key1}${key2}${key3}${key4}${key5}`;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {boolean} is_stroke
-     * @param {number}  half_width
-     * @param {number}  face
-     * @param {number}  miter_limit
-     * @param {boolean} has_grid
-     * @param {array}   matrix
-     * @param {array}   inverse_matrix
-     * @param {number}  viewport_width
-     * @param {number}  viewport_height
-     * @param {CanvasToWebGLContextGrid} grid
-     * @param {boolean} is_radial
-     * @param {array}   points
-     * @param {number}  focal_point_ratio
-     * @method
-     * @public
-     */
-    setGradientShapeUniform (
-        uniform,
-        is_stroke, half_width, face, miter_limit,
-        has_grid, matrix, inverse_matrix,
-        viewport_width, viewport_height, grid,
-        is_radial, points, focal_point_ratio
-    ) {
-        const highp = uniform.highp;
-
-        // vertex: u_matrix
-        highp[0]  = matrix[0];
-        highp[1]  = matrix[1];
-        highp[2]  = matrix[2];
-
-        highp[4]  = matrix[3];
-        highp[5]  = matrix[4];
-        highp[6]  = matrix[5];
-
-        highp[8]  = matrix[6];
-        highp[9]  = matrix[7];
-        highp[10] = matrix[8];
-
-        // vertex: u_inverse_matrix
-        highp[12] = inverse_matrix[0];
-        highp[13] = inverse_matrix[1];
-        highp[14] = inverse_matrix[2];
-
-        highp[16] = inverse_matrix[3];
-        highp[17] = inverse_matrix[4];
-        highp[18] = inverse_matrix[5];
-
-        highp[11] = inverse_matrix[6];
-        highp[15] = inverse_matrix[7];
-        highp[19] = inverse_matrix[8];
-
-        // vertex: u_viewport
-        highp[3] = viewport_width;
-        highp[7] = viewport_height;
-
-        let i = 20;
-        if (has_grid) {
-            // vertex: u_parent_matrix
-            highp[i]      = grid.parentMatrixA;
-            highp[i + 1]  = grid.parentMatrixB;
-            highp[i + 2]  = grid.parentMatrixC;
-
-            highp[i + 4]  = grid.parentMatrixD;
-            highp[i + 5]  = grid.parentMatrixE;
-            highp[i + 6]  = grid.parentMatrixF;
-
-            highp[i + 8]  = grid.parentMatrixG;
-            highp[i + 9]  = grid.parentMatrixH;
-            highp[i + 10] = grid.parentMatrixI;
-
-            // vertex: u_ancestor_matrix
-            highp[i + 12] = grid.ancestorMatrixA;
-            highp[i + 13] = grid.ancestorMatrixB;
-            highp[i + 14] = grid.ancestorMatrixC;
-
-            highp[i + 16] = grid.ancestorMatrixD;
-            highp[i + 17] = grid.ancestorMatrixE;
-            highp[i + 18] = grid.ancestorMatrixF;
-
-            highp[i + 20] = grid.ancestorMatrixG;
-            highp[i + 21] = grid.ancestorMatrixH;
-            highp[i + 22] = grid.ancestorMatrixI;
-
-            // vertex: u_parent_viewport
-            highp[i + 11] = grid.parentViewportX;
-            highp[i + 15] = grid.parentViewportY;
-            highp[i + 19] = grid.parentViewportW;
-            highp[i + 23] = grid.parentViewportH;
-
-            // vertex: u_grid_min
-            highp[i + 24] = grid.minXST;
-            highp[i + 25] = grid.minYST;
-            highp[i + 26] = grid.minXPQ;
-            highp[i + 27] = grid.minYPQ;
-            // vertex: u_grid_max
-            highp[i + 28] = grid.maxXST;
-            highp[i + 29] = grid.maxYST;
-            highp[i + 30] = grid.maxXPQ;
-            highp[i + 31] = grid.maxYPQ;
-
-            i = 52;
-        }
-
-        if (is_stroke) {
-            // vertex: u_half_width
-            highp[i]     = half_width;
-            // vertex: u_face
-            highp[i + 1] = face;
-            // vertex: u_miter_limit
-            highp[i + 2] = miter_limit;
-
-            i += 4;
-        }
-
-        if (is_radial) {
-            // fragment: u_radial_point
-            highp[i]     = points[5];
-            // fragment: u_focal_point_ratio
-            highp[i + 1] = focal_point_ratio;
-        } else {
-            // fragment: u_linear_points
-            highp[i]     = points[0];
-            highp[i + 1] = points[1];
-            highp[i + 2] = points[2];
-            highp[i + 3] = points[3];
-        }
-    }
-}
-
-/**
- * @class
- */
-class ShapeShaderVariantCollection
-{
-    /**
-     * @param {CanvasToWebGLContext}  context
-     * @param {WebGLRenderingContext} gl
-     * @param {WebGLShaderKeyword}    keyword
-     * @constructor
-     * @public
-     */
-    constructor (context, gl, keyword)
-    {
-        this._$context    = context;
-        this._$gl         = gl;
-        this._$keyword    = keyword;
-        this._$collection = new Map();
-    }
-
-    /**
-     * @param  {boolean} is_stroke
-     * @param  {boolean} has_grid
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getSolidColorShapeShader (is_stroke, has_grid)
-    {
-        const key = `s${is_stroke ? "y" : "n"}${has_grid ? "y" : "n"}`;
-
-        if (!this._$collection.has(key)) {
-            const highpLength = (has_grid ? 8 : 3) + (is_stroke ? 1 : 0);
-            const fragmentIndex = highpLength;
-
-            let vertexShaderSource;
-            if (is_stroke) {
-                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
-                    this._$keyword, highpLength, fragmentIndex,
-                    false, has_grid
-                );
-            } else {
-                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
-                    this._$keyword, highpLength,
-                    false, false, has_grid
-                );
-            }
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                vertexShaderSource,
-                FragmentShaderSource.SOLID_COLOR(this._$keyword)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param  {boolean} is_stroke
-     * @param  {boolean} repeat
-     * @param  {boolean} has_grid
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getBitmapShapeShader (is_stroke, repeat, has_grid)
-    {
-        const key = `b${is_stroke ? "y" : "n"}${repeat ? "y" : "n"}${has_grid ? "y" : "n"}`;
-
-        if (!this._$collection.has(key)) {
-            const highpLength = (has_grid ? 13 : 5) + (is_stroke ? 1 : 0);
-            const fragmentIndex = highpLength;
-
-            let vertexShaderSource;
-            if (is_stroke) {
-                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
-                    this._$keyword, highpLength, fragmentIndex,
-                    true, has_grid
-                );
-            } else {
-                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
-                    this._$keyword, highpLength,
-                    true, false, has_grid
-                );
-            }
-
-            const fragmentShaderSource = repeat
-                ? FragmentShaderSource.BITMAP_PATTERN(this._$keyword)
-                : FragmentShaderSource.BITMAP_CLIPPED(this._$keyword);
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                vertexShaderSource,
-                fragmentShaderSource
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param  {boolean} is_stroke
-     * @param  {boolean} has_grid
-     * @return {CanvasToWebGLShader}
-     * @method
-     * @public
-     */
-    getMaskShapeShader (is_stroke, has_grid)
-    {
-        const key = `m${is_stroke ? "y" : "n"}${has_grid ? "y" : "n"}`;
-
-        if (!this._$collection.has(key)) {
-            const highpLength = (has_grid ? 8 : 3) + (is_stroke ? 1 : 0);
-            const fragmentIndex = highpLength;
-
-            let vertexShaderSource;
-            if (is_stroke) {
-                vertexShaderSource = VertexShaderSourceStroke.TEMPLATE(
-                    this._$keyword, highpLength, fragmentIndex,
-                    false, has_grid
-                );
-            } else {
-                vertexShaderSource = VertexShaderSourceFill.TEMPLATE(
-                    this._$keyword, highpLength,
-                    false, true, has_grid
-                );
-            }
-
-            this._$collection.set(key, new CanvasToWebGLShader(
-                this._$gl, this._$context,
-                vertexShaderSource,
-                FragmentShaderSource.MASK(this._$keyword)
-            ));
-        }
-
-        return this._$collection.get(key);
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {boolean} is_stroke
-     * @param {number}  half_width
-     * @param {number}  face
-     * @param {number}  miter_limit
-     * @param {boolean} has_grid
-     * @param {array}   matrix
-     * @param {number}  viewport_width
-     * @param {number}  viewport_height
-     * @param {CanvasToWebGLContextGrid} grid
-     * @param {array}   color
-     * @param {number}  alpha
-     * @method
-     * @public
-     */
-    setSolidColorShapeUniform (
-        uniform,
-        is_stroke, half_width, face, miter_limit,
-        has_grid, matrix,
-        viewport_width, viewport_height, grid,
-        color, alpha
-    ) {
-        const highp = uniform.highp;
-        let i;
-
-        if (has_grid) {
-            // vertex: u_parent_matrix
-            highp[0]  = grid.parentmatrix_a;
-            highp[1]  = grid.parentmatrix_b;
-            highp[2]  = grid.parentmatrix_c;
-
-            highp[4]  = grid.parentmatrix_d;
-            highp[5]  = grid.parentmatrix_e;
-            highp[6]  = grid.parentmatrix_f;
-
-            highp[8]  = grid.parentmatrix_g;
-            highp[9]  = grid.parentmatrix_h;
-            highp[10] = grid.parentmatrix_i;
-
-            // vertex: u_ancestor_matrix
-            highp[12] = grid.ancestormatrix_a;
-            highp[13] = grid.ancestormatrix_b;
-            highp[14] = grid.ancestormatrix_c;
-
-            highp[16] = grid.ancestormatrix_d;
-            highp[17] = grid.ancestormatrix_e;
-            highp[18] = grid.ancestormatrix_f;
-
-            highp[20] = grid.ancestormatrix_g;
-            highp[21] = grid.ancestormatrix_h;
-            highp[22] = grid.ancestormatrix_i;
-
-            // vertex: u_viewport
-            highp[3]  = viewport_width;
-            highp[7]  = viewport_height;
-
-            // vertex: u_parent_viewport
-            highp[11] = grid.parentViewportX;
-            highp[15] = grid.parentViewportY;
-            highp[19] = grid.parentViewportW;
-            highp[23] = grid.parentViewportH;
-
-            // vertex: u_grid_min
-            highp[24] = grid.minXST;
-            highp[25] = grid.minYST;
-            highp[26] = grid.minXPQ;
-            highp[27] = grid.minYPQ;
-            // vertex: u_grid_max
-            highp[28] = grid.maxXST;
-            highp[29] = grid.maxYST;
-            highp[30] = grid.maxXPQ;
-            highp[31] = grid.maxYPQ;
-
-            i = 32;
-        } else {
-            // vertex: u_matrix
-            highp[0]  = matrix[0];
-            highp[1]  = matrix[1];
-            highp[2]  = matrix[2];
-
-            highp[4]  = matrix[3];
-            highp[5]  = matrix[4];
-            highp[6]  = matrix[5];
-
-            highp[8]  = matrix[6];
-            highp[9]  = matrix[7];
-            highp[10] = matrix[8];
-
-            // vertex: u_viewport
-            highp[3] = viewport_width;
-            highp[7] = viewport_height;
-
-            i = 12;
-        }
-
-        if (is_stroke) {
-            // vertex: u_half_width
-            highp[i]     = half_width;
-            // vertex: u_face
-            highp[i + 1] = face;
-            // vertex: u_miter_limit
-            highp[i + 2] = miter_limit;
-        }
-
-        const mediump = uniform.mediump;
-
-        // fragment: u_color
-        mediump[0] = color[0];
-        mediump[1] = color[1];
-        mediump[2] = color[2];
-        mediump[3] = color[3] * alpha;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {boolean} is_stroke
-     * @param {number}  half_width
-     * @param {number}  face
-     * @param {number}  miter_limit
-     * @param {boolean} has_grid
-     * @param {array}   matrix
-     * @param {array}   inverseMatrix
-     * @param {number}  viewport_width
-     * @param {number}  viewport_height
-     * @param {CanvasToWebGLContextGrid} grid
-     * @param {number}  texture_width
-     * @param {number}  texture_height
-     * @param {number}  mul1
-     * @param {number}  mul2
-     * @param {number}  mul3
-     * @param {number}  mul4
-     * @param {number}  add1
-     * @param {number}  add2
-     * @param {number}  add3
-     * @param {number}  add4
-     * @method
-     * @public
-     */
-    setBitmapShapeUniform (
-        uniform,
-        is_stroke, half_width, face, miter_limit,
-        has_grid, matrix, inverseMatrix,
-        viewport_width, viewport_height, grid,
-        texture_width, texture_height,
-        mul1, mul2, mul3, mul4,
-        add1, add2, add3, add4
-    ) {
-        const highp = uniform.highp;
-        let i;
-
-        // vertex: u_matrix
-        highp[0]  = matrix[0];
-        highp[1]  = matrix[1];
-        highp[2]  = matrix[2];
-
-        highp[4]  = matrix[3];
-        highp[5]  = matrix[4];
-        highp[6]  = matrix[5];
-
-        highp[8]  = matrix[6];
-        highp[9]  = matrix[7];
-        highp[10] = matrix[8];
-
-        // vertex: u_inverse_matrix
-        highp[12] = inverseMatrix[0];
-        highp[13] = inverseMatrix[1];
-        highp[14] = inverseMatrix[2];
-
-        highp[16] = inverseMatrix[3];
-        highp[17] = inverseMatrix[4];
-        highp[18] = inverseMatrix[5];
-
-        highp[11] = inverseMatrix[6];
-        highp[15] = inverseMatrix[7];
-        highp[19] = inverseMatrix[8];
-
-        // vertex: u_viewport
-        highp[3] = viewport_width;
-        highp[7] = viewport_height;
-
-        i = 20;
-
-        if (has_grid) {
-            // vertex: u_parent_matrix
-            highp[i]      = grid.parentmatrix_a;
-            highp[i + 1]  = grid.parentmatrix_b;
-            highp[i + 2]  = grid.parentmatrix_c;
-
-            highp[i + 4]  = grid.parentmatrix_d;
-            highp[i + 5]  = grid.parentmatrix_e;
-            highp[i + 6]  = grid.parentmatrix_f;
-
-            highp[i + 8]  = grid.parentmatrix_g;
-            highp[i + 9]  = grid.parentmatrix_h;
-            highp[i + 10] = grid.parentmatrix_i;
-
-            // vertex: u_ancestor_matrix
-            highp[i + 12] = grid.ancestormatrix_a;
-            highp[i + 13] = grid.ancestormatrix_b;
-            highp[i + 14] = grid.ancestormatrix_c;
-
-            highp[i + 16] = grid.ancestormatrix_d;
-            highp[i + 17] = grid.ancestormatrix_e;
-            highp[i + 18] = grid.ancestormatrix_f;
-
-            highp[i + 20] = grid.ancestormatrix_g;
-            highp[i + 21] = grid.ancestormatrix_h;
-            highp[i + 22] = grid.ancestormatrix_i;
-
-            // vertex: u_parent_viewport
-            highp[i + 11] = grid.parentViewportX;
-            highp[i + 15] = grid.parentViewportY;
-            highp[i + 19] = grid.parentViewportW;
-            highp[i + 23] = grid.parentViewportH;
-
-            // vertex: u_grid_min
-            highp[i + 24] = grid.minXST;
-            highp[i + 25] = grid.minYST;
-            highp[i + 26] = grid.minXPQ;
-            highp[i + 27] = grid.minYPQ;
-            // vertex: u_grid_max
-            highp[i + 28] = grid.maxXST;
-            highp[i + 29] = grid.maxYST;
-            highp[i + 30] = grid.maxXPQ;
-            highp[i + 31] = grid.maxYPQ;
-
-            i = 52;
-        }
-
-        if (is_stroke) {
-            // vertex: u_half_width
-            highp[i]     = half_width;
-            // vertex: u_face
-            highp[i + 1] = face;
-            // vertex: u_miter_limit
-            highp[i + 2] = miter_limit;
-        }
-
-        const mediump = uniform.mediump;
-
-        // fragment: u_uv
-        mediump[0] = texture_width;
-        mediump[1] = texture_height;
-
-        // fragment: u_color_transform_mul
-        mediump[4] = mul1;
-        mediump[5] = mul2;
-        mediump[6] = mul3;
-        mediump[7] = mul4;
-        // fragment: u_color_transform_add
-        mediump[8]  = add1;
-        mediump[9]  = add2;
-        mediump[10] = add3;
-        mediump[11] = add4;
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {boolean} has_grid
-     * @param {number}  matrix_a
-     * @param {number}  matrix_b
-     * @param {number}  matrix_c
-     * @param {number}  matrix_d
-     * @param {number}  matrix_e
-     * @param {number}  matrix_f
-     * @param {number}  matrix_g
-     * @param {number}  matrix_h
-     * @param {number}  matrix_i
-     * @param {number}  viewport_width
-     * @param {number}  viewport_height
-     * @param {CanvasToWebGLContextGrid} grid
-     * @method
-     * @public
-     */
-    setMaskShapeUniform (
-        uniform, has_grid,
-        matrix_a, matrix_b, matrix_c,
-        matrix_d, matrix_e, matrix_f,
-        matrix_g, matrix_h, matrix_i,
-        viewport_width, viewport_height, grid
-    ) {
-        const highp = uniform.highp;
-
-        if (has_grid) {
-            // vertex: u_parent_matrix
-            highp[0]  = grid.parentmatrix_a;
-            highp[1]  = grid.parentmatrix_b;
-            highp[2]  = grid.parentmatrix_c;
-
-            highp[4]  = grid.parentmatrix_d;
-            highp[5]  = grid.parentmatrix_e;
-            highp[6]  = grid.parentmatrix_f;
-
-            highp[8]  = grid.parentmatrix_g;
-            highp[9]  = grid.parentmatrix_h;
-            highp[10] = grid.parentmatrix_i;
-
-            // vertex: u_ancestor_matrix
-            highp[12] = grid.ancestormatrix_a;
-            highp[13] = grid.ancestormatrix_b;
-            highp[14] = grid.ancestormatrix_c;
-
-            highp[16] = grid.ancestormatrix_d;
-            highp[17] = grid.ancestormatrix_e;
-            highp[18] = grid.ancestormatrix_f;
-
-            highp[20] = grid.ancestormatrix_g;
-            highp[21] = grid.ancestormatrix_h;
-            highp[22] = grid.ancestormatrix_i;
-
-            // vertex: u_viewport
-            highp[3]  = viewport_width;
-            highp[7]  = viewport_height;
-
-            // vertex: u_parent_viewport
-            highp[11] = grid.parentViewportX;
-            highp[15] = grid.parentViewportY;
-            highp[19] = grid.parentViewportW;
-            highp[23] = grid.parentViewportH;
-
-            // vertex: u_grid_min
-            highp[24] = grid.minXST;
-            highp[25] = grid.minYST;
-            highp[26] = grid.minXPQ;
-            highp[27] = grid.minYPQ;
-            // vertex: u_grid_max
-            highp[28] = grid.maxXST;
-            highp[29] = grid.maxYST;
-            highp[30] = grid.maxXPQ;
-            highp[31] = grid.maxYPQ;
-        } else {
-            // vertex: u_matrix
-            highp[0]  = matrix_a;
-            highp[1]  = matrix_b;
-            highp[2]  = matrix_c;
-
-            highp[4]  = matrix_d;
-            highp[5]  = matrix_e;
-            highp[6]  = matrix_f;
-
-            highp[8]  = matrix_g;
-            highp[9]  = matrix_h;
-            highp[10] = matrix_i;
-
-            // vertex: u_viewport
-            highp[3] = viewport_width;
-            highp[7] = viewport_height;
-        }
-    }
-
-    /**
-     * @param {WebGLShaderUniform} uniform
-     * @param {number} width
-     * @param {number} height
-     * @method
-     * @public
-     */
-    setMaskShapeUniformIdentity (uniform, width, height)
-    {
-        const highp = uniform.highp;
-
-        // vertex: u_matrix
-        highp[0]  = 1;
-        highp[1]  = 0;
-        highp[2]  = 0;
-
-        highp[4]  = 0;
-        highp[5]  = 1;
-        highp[6]  = 0;
-
-        highp[8]  = 0;
-        highp[9]  = 0;
-        highp[10] = 1;
-
-        // vertex: u_viewport
-        highp[3] = width;
-        highp[7] = height;
-    }
-}
-
 /**
  * @class
  */
@@ -45210,9 +45183,17 @@ class Application
          * @private
          */
         next2d.fw.context = new Context(
-            config.stage.width, config.stage.height,
-            config.stage.fps, config.stage.options
+            this.config.stage.width,
+            this.config.stage.height,
+            this.config.stage.fps,
+            this.config.stage.options
         );
+
+        /**
+         * @type {Cache}
+         * @private
+         */
+        next2d.fw.cache = new Cache();
     }
 
     /**
@@ -45246,6 +45227,16 @@ class Application
     }
 
     /**
+     * @return {Cache}
+     * @readonly
+     * @public
+     */
+    get cache ()
+    {
+        return next2d.fw.cache;
+    }
+
+    /**
      * @param  {string} [name="top"]
      * @return {void}
      * @method
@@ -45260,51 +45251,59 @@ class Application
         const endPoint = this.config.endPoint;
 
         const requests = [];
-        for (let idx = 0; idx < request.before.length; ++idx) {
+        if (request.before) {
 
-            const object = request.before[idx];
+            for (let idx = 0; idx < request.before.length; ++idx) {
 
-            if (object.type === "json") {
+                const object = request.before[idx];
 
-                requests.push(
-                    fetch(`${endPoint}${object.path}`, {
-                        "method": object.method.toUpperCase()
-                    })
-                        .then((response) => { return response.json() })
-                        .then((data) => { return [object.name, data] })
-                );
+                if (object.cache && this.cache.has(object.name)) {
+                    requests.push([object.name, this.cache.get(object.name)]);
+                    continue;
+                }
 
-            } else {
+                if (object.type === "json") {
 
-                requests.push(new Promise((resolve, reject) =>
-                {
-                    const { URLRequest } = next2d.net;
-                    const { Loader } = next2d.display;
-                    const { Event, IOErrorEvent } = next2d.events;
+                    requests.push(
+                        fetch(`${endPoint}${object.path}`, {
+                            "method": object.method.toUpperCase()
+                        })
+                            .then((response) => { return response.json() })
+                            .then((data) => { return [object.name, data] })
+                    );
 
-                    const urlRequest  = new URLRequest(`${endPoint}${object.path}`);
-                    urlRequest.method = object.method;
+                } else {
 
-                    const loader = new Loader();
-                    loader
-                        .contentLoaderInfo
-                        .addEventListener(Event.COMPLETE, function (event)
-                        {
-                            resolve([
-                                this.object.name,
-                                event.currentTarget.content.getChildAt(0)
-                            ]);
-                        }.bind({ "object": object }));
+                    requests.push(new Promise((resolve, reject) =>
+                    {
+                        const { URLRequest } = next2d.net;
+                        const { Loader } = next2d.display;
+                        const { Event, IOErrorEvent } = next2d.events;
 
-                    loader
-                        .contentLoaderInfo
-                        .addEventListener(IOErrorEvent.IO_ERROR, () =>
-                        {
-                            reject();
-                        });
+                        const urlRequest  = new URLRequest(`${endPoint}${object.path}`);
+                        urlRequest.method = object.method;
 
-                    loader.load(urlRequest);
-                }));
+                        const loader = new Loader();
+                        loader
+                            .contentLoaderInfo
+                            .addEventListener(Event.COMPLETE, function (event)
+                            {
+                                resolve([
+                                    this.object.name,
+                                    event.currentTarget.content.getChildAt(0)
+                                ]);
+                            }.bind({ "object": object }));
+
+                        loader
+                            .contentLoaderInfo
+                            .addEventListener(IOErrorEvent.IO_ERROR, () =>
+                            {
+                                reject();
+                            });
+
+                        loader.load(urlRequest);
+                    }));
+                }
             }
         }
 
@@ -45317,7 +45316,67 @@ class Application
             })
             .then(() =>
             {
-                console.log("after");
+                if (request.after) {
+
+                    const requests = [];
+
+                    for (let idx = 0; idx < request.after.length; ++idx) {
+
+                        const object = request.after[idx];
+
+                        if (object.type === "json") {
+
+                            requests.push(
+                                fetch(`${endPoint}${object.path}`, {
+                                    "method": object.method.toUpperCase()
+                                })
+                                    .then((response) => { return response.json() })
+                                    .then((data) => { return [object.name, data] })
+                            );
+
+                        } else {
+
+                            requests.push(new Promise((resolve, reject) =>
+                            {
+                                const { URLRequest } = next2d.net;
+                                const { Loader } = next2d.display;
+                                const { Event, IOErrorEvent } = next2d.events;
+
+                                const urlRequest  = new URLRequest(`${endPoint}${object.path}`);
+                                urlRequest.method = object.method;
+
+                                const loader = new Loader();
+                                loader
+                                    .contentLoaderInfo
+                                    .addEventListener(Event.COMPLETE, function (event)
+                                    {
+                                        resolve([
+                                            this.object.name,
+                                            event.currentTarget.content.getChildAt(0)
+                                        ]);
+                                    }.bind({ "object": object }));
+
+                                loader
+                                    .contentLoaderInfo
+                                    .addEventListener(IOErrorEvent.IO_ERROR, () =>
+                                    {
+                                        reject();
+                                    });
+
+                                loader.load(urlRequest);
+                            }));
+                        }
+                    }
+
+                    if (requests.length) {
+                        Promise
+                            .all(requests)
+                            .then((response) =>
+                            {
+                                console.log(response);
+                            });
+                    }
+                }
             });
 
     }
@@ -45376,7 +45435,7 @@ class Context
 
     /**
      * @param  {string} name
-     * @return {void}
+     * @return {ViewModel}
      * @public
      */
     addChild (name)
@@ -45406,25 +45465,73 @@ class Context
 
     }
 }
-class Auth
-{
-
-}
 /**
  * @class
  */
-class Request
+class Cache
 {
+    /**
+     * @constructor
+     * @public
+     */
+    constructor()
+    {
+        this._$store = new Map();
+    }
 
+    /**
+     * @param {*} key
+     * @method
+     * @public
+     */
+    get (key)
+    {
+        return this._$store.has(key) ? this._$store.get(key) : null;
+    }
+
+    /**
+     * @param {*} key
+     * @param {*} value
+     * @method
+     * @public
+     */
+    set (key, value)
+    {
+        this._$store.set(key, value);
+    }
+
+    /**
+     * @param {*} key
+     * @return {boolean}
+     * @method
+     * @public
+     */
+    has (key)
+    {
+        return this._$store.has(key);
+    }
+
+    /**
+     * @param {*} key
+     * @return {void}
+     * @method
+     * @public
+     */
+    delete (key)
+    {
+        this._$store.delete(key);
+    }
+
+    /**
+     * @return {void}
+     * @method
+     * @public
+     */
+    clear ()
+    {
+        this._$store.clear();
+    }
 }
-/**
- * @class
- */
-class Response
-{
-
-}
-
 /**
  * @class
  * @extends {next2d.display.MovieClip}
@@ -45472,6 +45579,16 @@ class View extends next2d.display.MovieClip
     }
 
     /**
+     * @return {Cache}
+     * @readonly
+     * @public
+     */
+    get cache ()
+    {
+        return next2d.fw.cache;
+    }
+
+    /**
      * @return {void}
      * @abstract
      */
@@ -45510,6 +45627,16 @@ class ViewModel
     get response ()
     {
         return next2d.fw.response;
+    }
+
+    /**
+     * @return {Cache}
+     * @readonly
+     * @public
+     */
+    get cache ()
+    {
+        return next2d.fw.cache;
     }
 
     /**
@@ -45562,13 +45689,13 @@ next2d.fw.config = {
       "before": [
         {
           "type": "json",
-          "path": "text.json",
+          "path": "mock/api/text.json",
           "method": "get",
           "name": "text"
         },
         {
           "type": "content",
-          "path": "content.json",
+          "path": "mock/content/sample.json",
           "method": "get",
           "name": "topContent"
         }
@@ -45643,7 +45770,7 @@ class TopViewModel extends next2d.fw.ViewModel
         // main content
         const content = this.response.get("topContent");
 
-        content.x = this.config.stage.width  / 2;
+        content.x = this.config.stage.width  / 2 - 4;
         content.y = this.config.stage.height / 2;
 
         content.scaleX = 2;

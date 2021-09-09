@@ -3,13 +3,13 @@
     "before": [
       {
         "type": "json",
-        "path": "text.json",
+        "path": "mock/api/text.json",
         "method": "get",
         "name": "text"
       },
       {
         "type": "content",
-        "path": "content.json",
+        "path": "mock/content/sample.json",
         "method": "get",
         "name": "topContent"
       }],

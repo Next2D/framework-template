@@ -26,7 +26,7 @@ class TopViewModel extends next2d.fw.ViewModel
         // main content
         const content = this.response.get("topContent");
 
-        content.x = this.config.stage.width  / 2;
+        content.x = this.config.stage.width  / 2 - 4;
         content.y = this.config.stage.height / 2;
 
         content.scaleX = 2;
