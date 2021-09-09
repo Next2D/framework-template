@@ -19,20 +19,20 @@ class TopViewModel extends next2d.fw.ViewModel
      * @return {void}
      * @abstract
      */
-    added (view)
+    bind (view)
     {
         const { TextField, TextFieldAutoSize, TextFieldType } = next2d.text;
 
         // main content
-        const content = this.response.get("topContent");
+        const TopContent = this.packages.get("TopContent");
+        const topContent = new TopContent();
+        view.addChild(topContent);
 
-        content.x = this.config.stage.width  / 2 - 4;
-        content.y = this.config.stage.height / 2;
+        topContent.x = this.config.stage.width  / 2 - 4;
+        topContent.y = this.config.stage.height / 2;
 
-        content.scaleX = 2;
-        content.scaleY = 2;
-
-        view.addChild(content);
+        topContent.scaleX = 2;
+        topContent.scaleY = 2;
 
         // Hello, World.
         const textField = new TextField();
@@ -40,10 +40,11 @@ class TopViewModel extends next2d.fw.ViewModel
 
         textField.autoSize = TextFieldAutoSize.CENTER;
         textField.type     = TextFieldType.INPUT;
-        textField.text     = this.response.get("text").word;
+        textField.text     = this.response.get("TopText").word;
 
         textField.x = this.config.stage.width / 2 - textField.width / 2;
-        textField.y = content.y + content.height / 2 + textField.height;
+        textField.y = topContent.y + topContent.height / 2 + textField.height;
+
     }
 
     /**
@@ -51,8 +52,7 @@ class TopViewModel extends next2d.fw.ViewModel
      * @return {void}
      * @abstract
      */
-    removed (view)
+    unbind (view)
     {
-        console.log("removed", view);
     }
 }

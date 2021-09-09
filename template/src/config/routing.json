@@ -1,18 +1,19 @@
 {
   "top": {
-    "before": [
+    "requests": [
       {
         "type": "json",
         "path": "mock/api/text.json",
         "method": "get",
-        "name": "text"
+        "cache": false,
+        "name": "TopText"
       },
       {
         "type": "content",
         "path": "mock/content/sample.json",
         "method": "get",
-        "name": "topContent"
-      }],
-    "after": []
+        "cache": false,
+        "name": "TopContent"
+      }]
   }
 }

@@ -12,10 +12,4 @@ class TopView extends next2d.fw.View
     {
         super();
     }
-
-    /**
-     * @return {void}
-     * @abstract
-     */
-    initialize () {}
 }
