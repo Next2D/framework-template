@@ -4,7 +4,7 @@
 
 # Next2D Framework Template
 
-Next2D Framework base template.\
+Next2D Framework default template.\
 Create Next2D apps with no build configuration.
 
 ## Quick Start
