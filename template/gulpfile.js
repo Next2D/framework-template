@@ -137,7 +137,10 @@ function browser (done)
 {
     browserSync.init({
         "server": {
-            "baseDir": `${__dirname}/dist`,
+            "baseDir": [
+                `${__dirname}/mock`,
+                `${__dirname}/dist`
+            ],
             "index": "index.html"
         },
         "reloadOnRestart": true

@@ -21,30 +21,52 @@ class TopViewModel extends next2d.fw.ViewModel
      */
     bind (view)
     {
-        const { TextField, TextFieldAutoSize, TextFieldType } = next2d.text;
+        const { Event, MouseEvent } = next2d.events;
+        const { MovieClip } = next2d.display;
+        const { TextField, TextFieldAutoSize } = next2d.text;
 
         // main content
         const TopContent = this.packages.get("TopContent");
         const topContent = new TopContent();
-        view.addChild(topContent);
+        topContent.addEventListener(Event.ENTER_FRAME, function (event)
+        {
+            const content = event.currentTarget;
+            if (content.currentFrame === content.totalFrames) {
+                view.button.visible = true;
+                content.removeEventListener(Event.ENTER_FRAME, event.listener);
+            }
+        }.bind(this));
 
-        topContent.x = this.config.stage.width  / 2 - 4;
+        topContent.x = this.config.stage.width  / 2;
         topContent.y = this.config.stage.height / 2;
 
-        topContent.scaleX = 2;
-        topContent.scaleY = 2;
+        topContent.scaleX = 0.25;
+        topContent.scaleY = 0.25;
 
-        // Hello, World.
+        view.addChild(topContent);
+
+        // click button
+        const button = new MovieClip();
+
+        button.name       = "button";
+        button.visible    = false;
+        button.buttonMode = true;
+
+        button.addEventListener(MouseEvent.CLICK, function ()
+        {
+            this.app.gotoView("home");
+        }.bind(this));
+
         const textField = new TextField();
-        view.addChild(textField);
 
         textField.autoSize = TextFieldAutoSize.CENTER;
-        textField.type     = TextFieldType.INPUT;
         textField.text     = this.response.get("TopText").word;
 
         textField.x = this.config.stage.width / 2 - textField.width / 2;
         textField.y = topContent.y + topContent.height / 2 + textField.height;
 
+        button.addChild(textField);
+        view.addChild(button);
     }
 
     /**

@@ -3,17 +3,28 @@
     "requests": [
       {
         "type": "json",
-        "path": "mock/api/text.json",
+        "path": "api/top.json",
         "method": "get",
         "cache": false,
         "name": "TopText"
       },
       {
         "type": "content",
-        "path": "mock/content/sample.json",
+        "path": "content/sample.json",
+        "method": "get",
+        "cache": false
+      }
+    ]
+  },
+  "home": {
+    "requests": [
+      {
+        "type": "json",
+        "path": "api/home.json",
         "method": "get",
         "cache": false,
-        "name": "TopContent"
-      }]
+        "name": "HomeText"
+      }
+    ]
   }
 }
