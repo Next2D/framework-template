@@ -40,9 +40,6 @@ class TopViewModel extends next2d.fw.ViewModel
         topContent.x = this.config.stage.width  / 2;
         topContent.y = this.config.stage.height / 2;
 
-        topContent.scaleX = 0.25;
-        topContent.scaleY = 0.25;
-
         view.addChild(topContent);
 
         // click button
