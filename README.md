@@ -41,6 +41,7 @@ app-test
 │       └── sample.json
 ├── test // Unit Test directory
 │   └── model
+│       └── default empty
 └── src
     ├── App.js
     ├── Header.file
@@ -49,10 +50,13 @@ app-test
     │   ├── config.json // Configuration files for each environment.
     │   ├── routing.json // Request settings before loading the view.
     │   └── stage.json // Display(Stage) area setting. 
-    ├── content
+    ├── content // Symbolic access to JSON created with NoCode Tool
     │   └── top
     │       └── TopContent.js
+    │   └── home
+    │       └── HomeContent.js
     ├── model // business logic
+    │       └── default empty
     └── view // Per-page View, ViewModel files.
         ├── top
         │   ├── TopView.js
