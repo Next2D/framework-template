@@ -4,15 +4,11 @@
       {
         "type": "json",
         "path": "api/top.json",
-        "method": "get",
-        "cache": false,
         "name": "TopText"
       },
       {
         "type": "content",
-        "path": "content/sample.json",
-        "method": "get",
-        "cache": false
+        "path": "content/sample.json"
       }
     ]
   },
@@ -21,8 +17,6 @@
       {
         "type": "json",
         "path": "api/home.json",
-        "method": "get",
-        "cache": false,
         "name": "HomeText"
       }
     ]
