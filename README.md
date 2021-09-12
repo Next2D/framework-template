@@ -29,33 +29,37 @@ app-test
 ├── .eslintignore
 ├── .eslintrc.json
 ├── .gitattributes
-├── dist
+├── dist // Destination of built sources. 
 │   ├── index.html
-│   └── mock
-│       ├── api
-│       │   └── text.json
-│       └── content
-│           └── sample.json
-├── file
+│   └── app.js
+├── file // Directory containing .n2d files.
 │   └── sample.n2d
-├── test
+├── mock // Mock directory for development.
+│   ├── api
+│   │   └── text.json
+│   └── content
+│       └── sample.json
+├── test // Unit Test directory
 │   └── model
 └── src
     ├── App.js
     ├── Header.file
     ├── Footer.file
     ├── config
-    │   ├── config.json
-    │   ├── routing.json
-    │   └── stage.json
+    │   ├── config.json // Configuration files for each environment.
+    │   ├── routing.json // Request settings before loading the view.
+    │   └── stage.json // Display(Stage) area setting. 
     ├── content
     │   └── top
     │       └── TopContent.js
-    ├── model
-    └── view
-        └── top
-            ├── TopView.js
-            └── TopViewModel.js
+    ├── model // business logic
+    └── view // Per-page View, ViewModel files.
+        ├── top
+        │   ├── TopView.js
+        │   └── TopViewModel.js
+        └── home
+            ├── HomeView.js
+            └── HomeViewModel.js
 ```
 
 ## License
