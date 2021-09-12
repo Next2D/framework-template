@@ -3,6 +3,7 @@
   "height": 240,
   "fps": 12,
   "options": {
-    "base": "."
+    "base": ".",
+    "fullScreen": true
   }
 }

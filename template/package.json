@@ -6,8 +6,8 @@
     "lint": "gulp lint"
   },
   "devDependencies": {
-    "@next2d/framework": "^0.0.1",
-    "@next2d/player": "^0.0.2",
+    "@next2d/framework": "^0.0.4",
+    "@next2d/player": "^1.2.6",
     "browser-sync": "^2.27.5",
     "glob": "^7.1.7",
     "gulp": "^4.0.2",
