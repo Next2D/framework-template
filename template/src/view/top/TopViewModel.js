@@ -65,13 +65,4 @@ class TopViewModel extends next2d.fw.ViewModel
         button.addChild(textField);
         view.addChild(button);
     }
-
-    /**
-     * @param  {next2d.fw.View} view
-     * @return {void}
-     * @abstract
-     */
-    unbind (view)
-    {
-    }
 }

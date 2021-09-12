@@ -59,13 +59,4 @@ class HomeViewModel extends next2d.fw.ViewModel
 
         view.addChild(textField);
     }
-
-    /**
-     * @param  {next2d.fw.View} view
-     * @return {void}
-     * @abstract
-     */
-    unbind (view)
-    {
-    }
 }
