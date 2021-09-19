@@ -1,3 +1,0 @@
-if (!("App" in window.next2d.fw)) {
-    ((window) => {
-        "use strict";

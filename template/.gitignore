@@ -3,5 +3,5 @@ coverage
 .DS_Store
 .idea
 Thumbs.db
-src/Config.file
-src/Packages.file
+src/Packages.js
+src/config/Config.js

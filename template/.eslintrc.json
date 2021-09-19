@@ -2,6 +2,9 @@
   "env": {
     "es6": true
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": "eslint:recommended",
   "rules": {
     "no-var": "error",
@@ -74,7 +77,6 @@
     "no-dupe-args": "error",
     "no-extra-boolean-cast": "error",
     "no-obj-calls": "error",
-    "no-console": "warn",
     "no-extra-semi": "warn"
   }
 }

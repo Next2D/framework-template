@@ -2,7 +2,7 @@
  * @class
  * @extends {next2d.fw.Context}
  */
-class HomeContent extends next2d.fw.Content
+export class HomeContent extends next2d.fw.Content
 {
     /**
      * @constructor

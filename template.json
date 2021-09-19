@@ -1,23 +1,8 @@
 {
   "package": {
     "dependencies": {
-      "browser-sync": "^2.27.5",
-      "gulp": "^4.0.2",
-      "gulp-concat": "^2.6.1",
-      "gulp-eslint": "^6.0.0",
-      "gulp-preprocess": "^4.0.2",
-      "gulp-uglify-es": "^3.0.0",
-      "jasmine": "^3.8.0",
-      "jasmine-core": "^3.8.0",
-      "karma": "^6.3.4",
-      "karma-chrome-launcher": "^3.1.0",
-      "karma-coverage": "^2.0.3",
-      "karma-firefox-launcher": "^2.1.1",
-      "karma-jasmine": "^4.0.1",
-      "karma-safari-launcher": "^1.0.0",
-      "karma-spec-reporter": "^0.0.32",
-      "minimist": "^1.2.5",
-      "glob": "^7.1.7"
+      "eslint": "^7.32.0",
+      "eslint-webpack-plugin": "^3.0.1"
     }
   }
 }

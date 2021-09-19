@@ -2,7 +2,7 @@
  * @class
  * @extends {next2d.fw.ViewModel}
  */
-class TopViewModel extends next2d.fw.ViewModel
+export class TopViewModel extends next2d.fw.ViewModel
 {
     /**
      * @param {next2d.fw.View} view

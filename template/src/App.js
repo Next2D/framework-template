@@ -2,14 +2,15 @@
  * @class
  * @extends {next2d.fw.Application}
  */
-class App extends next2d.fw.Application
+export class App extends next2d.fw.Application
 {
     /**
-     * @param {object} [config=null]
+     * @param {object} config
+     * @param {array}  packages
      * @public
      */
-    constructor (config = null)
+    constructor (config, packages)
     {
-        super(config);
+        super(config, packages);
     }
 }
