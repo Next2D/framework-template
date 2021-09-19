@@ -19,37 +19,35 @@ npm start
 
 ```sh
 app-test
-├── README.md
-├── node_modules
-├── package.json
-├── package-lock.json
-├── gulpfile.js
-├── karma.conf.js
-├── .gitignore
 ├── .eslintignore
 ├── .eslintrc.json
 ├── .gitattributes
-├── dist // Destination of built sources. 
-│   ├── index.html
-│   └── app.js
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── README.md
+├── webpack.config.js
+├── node_modules
 ├── file // Directory containing .n2d files.
 │   └── sample.n2d
 ├── mock // Mock directory for development.
 │   ├── api
-│   │   └── text.json
+│   │   ├── home.json
+│   │   └── top.json
 │   └── content
 │       └── sample.json
 ├── test // Unit Test directory
 │   └── model
 │       └── default empty
 └── src
+    ├── index.js
     ├── App.js
-    ├── Header.file
-    ├── Footer.file
+    ├── Packages.js
     ├── config
     │   ├── config.json // Configuration files for each environment.
     │   ├── routing.json // Request settings before loading the view.
     │   └── stage.json // Display(Stage) area setting. 
+    │   └── Config.js
     ├── content // Symbolic access to JSON created with NoCode Tool
     │   └── top
     │       └── TopContent.js
