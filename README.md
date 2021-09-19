@@ -46,7 +46,7 @@ app-test
     ├── config
     │   ├── config.json // Configuration files for each environment.
     │   ├── routing.json // Request settings before loading the view.
-    │   └── stage.json // Display(Stage) area setting. 
+    │   ├── stage.json // Display(Stage) area setting. 
     │   └── Config.js
     ├── content // Symbolic access to JSON created with NoCode Tool
     │   └── top
