@@ -49,7 +49,7 @@ export class TopViewModel extends next2d.fw.ViewModel
         button.visible    = false;
         button.buttonMode = true;
 
-        button.addEventListener(MouseEvent.CLICK, function ()
+        button.addEventListener(MouseEvent.MOUSE_UP, function ()
         {
             this.app.gotoView("home");
         }.bind(this));

@@ -13,4 +13,13 @@ export class App extends next2d.fw.Application
     {
         super(config, packages);
     }
+
+    /**
+     * @return {void}
+     * @public
+     */
+    initialize ()
+    {
+        // initial processing
+    }
 }
