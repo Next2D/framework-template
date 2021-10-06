@@ -19,6 +19,6 @@ if (document.readyState === "loading") {
 
 } else {
 
-    new App(config, packages).gotoView("top");
+    new App(config, packages).gotoView();
 
 }
