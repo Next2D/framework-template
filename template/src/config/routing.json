@@ -8,7 +8,9 @@
       },
       {
         "type": "content",
-        "path": "content/sample.json"
+        "path": "content/sample.json",
+        "name": "MainContent",
+        "cache": true
       }
     ]
   },
@@ -18,6 +20,12 @@
         "type": "json",
         "path": "api/home.json",
         "name": "HomeText"
+      },
+      {
+        "type": "content",
+        "path": "content/sample.json",
+        "name": "MainContent",
+        "cache": true
       }
     ]
   }

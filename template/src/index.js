@@ -12,7 +12,7 @@ if (document.readyState === "loading") {
     const initialize = (event) =>
     {
         event.target.removeEventListener("DOMContentLoaded", initialize);
-        new App(config, packages).gotoView("top");
+        new App(config, packages).gotoView();
     };
 
     window.addEventListener("DOMContentLoaded", initialize);
