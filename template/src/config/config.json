@@ -12,6 +12,7 @@
     "endPoint": "/"
   },
   "all": {
+    "loading": true,
     "spa": true
   }
 }
