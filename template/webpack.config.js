@@ -16,7 +16,7 @@ module.exports = {
         // new ESLintPlugin({
         //     "fix": true
         // }),
-        new Next2DWebpackAutoLoaderPlugin(env())
+        new Next2DWebpackAutoLoaderPlugin(env(), { "LICENSE": false })
     ],
     "devServer": {
         "static": [
