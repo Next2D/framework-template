@@ -7,6 +7,12 @@ const Next2DWebpackAutoLoaderPlugin = require("@next2d/webpack-auto-loader-plugi
 module.exports = {
     "mode": "development",
     "entry": "./src/index.js",
+    "watchOptions": {
+        "ignored": [
+            path.resolve(__dirname, "src/config/Config.js"),
+            path.resolve(__dirname, "src/Packages.js")
+        ]
+    },
     "output": {
         "filename": "app.js",
         "path": path.join(__dirname, `/${env()}`)
