@@ -16,4 +16,9 @@ You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.
+Launches the test runner.
+
+### `npm run build -- --env=prd`
+
+Builds the app for the environment specified by env=***.
+The build will be minified and optimized for the best performance.
