@@ -29,6 +29,7 @@ module.exports = {
             { "directory": path.join(__dirname, `/${env()}`) },
             { "directory": path.join(__dirname, "/mock") }
         ],
+        "watchFiles": "src/config/*.json",
         "historyApiFallback": true,
         "compress": false,
         "open": true
