@@ -17,6 +17,12 @@ module.exports = {
         "filename": "app.js",
         "path": path.join(__dirname, `/${env()}`)
     },
+    "module": {
+        "rules": [{
+            "test": /\.(png|svg|jpg|jpeg|gif)$/i,
+            "type": "asset/inline"
+        }]
+    },
     "plugins": [
         // If you use eslint, please uncomment it.
         // new ESLintPlugin({
