@@ -13,6 +13,8 @@
   },
   "all": {
     "loading": true,
-    "spa": true
+    "gotoView": {
+      "callback": null
+    }
   }
 }
