@@ -12,6 +12,7 @@
     "endPoint": "/"
   },
   "all": {
+    "spa": true,
     "loading": true,
     "gotoView": {
       "callback": null
