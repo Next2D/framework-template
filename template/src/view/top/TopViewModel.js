@@ -21,48 +21,53 @@ export class TopViewModel extends next2d.fw.ViewModel
      */
     bind (view)
     {
-        const { Event, MouseEvent } = next2d.events;
-        const { MovieClip } = next2d.display;
-        const { TextField, TextFieldAutoSize } = next2d.text;
-
-        // main content
-        const TopContent = this.packages.get("TopContent");
-        const topContent = new TopContent();
-        topContent.addEventListener(Event.ENTER_FRAME, function (event)
+        new Promise((resolve) =>
         {
-            const content = event.currentTarget;
-            if (content.currentFrame === content.totalFrames) {
-                view.button.visible = true;
-                content.removeEventListener(Event.ENTER_FRAME, event.listener);
-            }
-        }.bind(this));
+            const { Event } = next2d.events;
 
-        topContent.x = this.config.stage.width  / 2;
-        topContent.y = this.config.stage.height / 2;
+            // main content
+            const TopContent = this.packages.get("TopContent");
 
-        view.addChild(topContent);
+            const topContent = view.addChild(new TopContent());
+            topContent.addEventListener(Event.ENTER_FRAME, (event) =>
+            {
+                const content = event.currentTarget;
+                if (content.currentFrame === content.totalFrames) {
+                    view.button.visible = true;
+                    content.removeEventListener(Event.ENTER_FRAME, event.listener);
+                }
+            });
 
-        // click button
-        const button = new MovieClip();
+            topContent.x = this.config.stage.width  / 2;
+            topContent.y = this.config.stage.height / 2;
 
-        button.name       = "button";
-        button.visible    = false;
-        button.buttonMode = true;
+            resolve(topContent);
+        })
+            .then((top_content) =>
+            {
+                const { MouseEvent } = next2d.events;
+                const { MovieClip } = next2d.display;
+                const { TextField, TextFieldAutoSize } = next2d.text;
 
-        button.addEventListener(MouseEvent.MOUSE_UP, function ()
-        {
-            this.app.gotoView("home");
-        }.bind(this));
+                // click button
+                const button = view.addChild(new MovieClip());
 
-        const textField = new TextField();
+                button.name       = "button";
+                button.visible    = false;
+                button.buttonMode = true;
 
-        textField.autoSize = TextFieldAutoSize.CENTER;
-        textField.text     = this.response.get("TopText").word;
+                button.addEventListener(MouseEvent.MOUSE_UP, () =>
+                {
+                    this.app.gotoView("home");
+                });
 
-        textField.x = this.config.stage.width / 2 - textField.width / 2;
-        textField.y = topContent.y + topContent.height / 2 + textField.height;
+                const textField = button.addChild(new TextField());
 
-        button.addChild(textField);
-        view.addChild(button);
+                textField.autoSize = TextFieldAutoSize.CENTER;
+                textField.text     = this.response.get("TopText").word;
+
+                textField.x = this.config.stage.width / 2 - textField.width / 2;
+                textField.y = top_content.y + top_content.height / 2 + textField.height;
+            });
     }
 }

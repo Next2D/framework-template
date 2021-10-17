@@ -21,42 +21,47 @@ export class HomeViewModel extends next2d.fw.ViewModel
      */
     bind (view)
     {
-        const { MouseEvent } = next2d.events;
-        const { TextField, TextFieldAutoSize, TextFieldType } = next2d.text;
-
-        // main content
-        const TopContent = this.packages.get("HomeContent");
-        const topContent = new TopContent();
-
-        topContent.buttonMode = true;
-        topContent.addEventListener(MouseEvent.MOUSE_DOWN, (event) =>
+        new Promise((resolve) =>
         {
-            event.currentTarget.startDrag();
-        });
+            const { MouseEvent } = next2d.events;
 
-        topContent.addEventListener(MouseEvent.MOUSE_UP, (event) =>
-        {
-            event.currentTarget.stopDrag();
-        });
+            // main content
+            const HomeContent = this.packages.get("HomeContent");
+            const homeContent = view.addChild(new HomeContent());
 
-        topContent.x = this.config.stage.width  / 2 - 4;
-        topContent.y = this.config.stage.height / 2;
+            homeContent.buttonMode = true;
+            homeContent.addEventListener(MouseEvent.MOUSE_DOWN, (event) =>
+            {
+                event.currentTarget.startDrag();
+            });
 
-        topContent.scaleX = 2;
-        topContent.scaleY = 2;
+            homeContent.addEventListener(MouseEvent.MOUSE_UP, (event) =>
+            {
+                event.currentTarget.stopDrag();
+            });
 
-        view.addChild(topContent);
+            homeContent.x = this.config.stage.width  / 2 - 4;
+            homeContent.y = this.config.stage.height / 2;
 
-        // Hello, World.
-        const textField = new TextField();
+            homeContent.scaleX = 2;
+            homeContent.scaleY = 2;
 
-        textField.autoSize = TextFieldAutoSize.CENTER;
-        textField.type     = TextFieldType.INPUT;
-        textField.text     = this.response.get("HomeText").word;
+            resolve(homeContent);
+        })
+            .then((home_content) =>
+            {
+                const { TextField, TextFieldAutoSize, TextFieldType } = next2d.text;
 
-        textField.x = this.config.stage.width / 2 - textField.width / 2;
-        textField.y = topContent.y + topContent.height / 2 + textField.height;
+                // Hello, World.
+                const textField = view.addChild(new TextField());
 
-        view.addChild(textField);
+                textField.autoSize = TextFieldAutoSize.CENTER;
+                textField.type     = TextFieldType.INPUT;
+                textField.text     = this.response.get("HomeText").word;
+
+                textField.x = this.config.stage.width / 2 - textField.width / 2;
+                textField.y = home_content.y + home_content.height / 2 + textField.height;
+            });
+
     }
 }
