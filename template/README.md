@@ -27,9 +27,17 @@ Launches the test runner.
 Builds the app for the environment specified by env=***.
 The build will be minified and optimized for the best performance.
 
+### config.json
+
+| name | value | description |
+| --- | --- | --- |
+| `spa` | boolean(default:true) | As a Single Page Application, the scene can be controlled by URL. |
+| `loading` | boolean(default:true) | Setting whether or not to display the loading screen until the preparation for screen transition is complete. |
+| `gotoView`.`callback` | string or array (default:null) | You can specify the class to call back after the gotoView function finishes. |
+
 ### routing.json
 
-Properties that can be set in the requests property.
+Properties that can be set in the `requests` property.
 
 | name | value | description |
 | --- | --- | --- |
