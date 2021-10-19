@@ -29,6 +29,21 @@ The build will be minified and optimized for the best performance.
 
 ## Configuration JSON
 
+### stage.json
+
+| name | value | description |
+| --- | --- | --- |
+| `width` | int(default:240) | This is the setting for the width of the display area. |
+| `height` | int(default:240) | This is the setting for the height of the display area. |
+| `fps` | int(default:12) | The number of times to draw per second. |
+
+#### Option settings
+
+| `base` | string(default:.) | The value to be set if the URL is not set at the time of the request. |
+| `fullScreen` | boolean(default:true) | It will be drawn beyond the width and height set in the fullscreen setting and stage. |
+| `tagId` | string(default:empty) | Set value of the ID of the DOM where you want to set the drawing. |
+| `bgColor` | array [R,G,B,A] or false(default:false) | RGBA can be specified from 0-255. |
+
 ### config.json
 
 You can set a common value for each environment.\
