@@ -24,10 +24,15 @@ Launches the test runner.
 
 ### `npm run build -- --env=prd`
 
-Builds the app for the environment specified by env=***.
+Builds the app for the environment specified by env=***.\
 The build will be minified and optimized for the best performance.
 
+## Configuration JSON
+
 ### config.json
+
+You can set a common value for each environment.\
+The values below all are available for all environments.
 
 | name | value | description |
 | --- | --- | --- |
