@@ -38,7 +38,7 @@ The values below all are available for all environments.
 | --- | --- | --- |
 | `spa` | boolean(default:true) | As a Single Page Application, the scene can be controlled by URL. |
 | `loading` | boolean(default:true) | Setting whether or not to display the loading screen until the preparation for screen transition is complete. |
-| `gotoView`.`callback` | string or array (default:null) | You can specify the class to call back after the gotoView function finishes. |
+| `gotoView`.`callback` | string or array (default:null) | You can specify the class to call back after the `gotoView` function finishes. |
 
 ### routing.json
 
