@@ -1,7 +1,7 @@
 {
   "name": "@next2d/framework-template",
   "description": "Next2D Framework default template.",
-  "version": "1.0.21",
+  "version": "1.1.0",
   "homepage": "https://next2d.app",
   "bugs": "https://github.com/Next2D/framework-template/issues/new",
   "author": "Toshiyuki Ienaga<ienaga@tvon.jp>",

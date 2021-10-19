@@ -3,12 +3,12 @@
     "requests": [
       {
         "type": "json",
-        "path": "api/top.json",
+        "path": "{{endPoint}}api/top.json",
         "name": "TopText"
       },
       {
         "type": "content",
-        "path": "content/sample.json",
+        "path": "{{endPoint}}content/sample.json",
         "name": "MainContent",
         "cache": true
       }
@@ -18,12 +18,12 @@
     "requests": [
       {
         "type": "json",
-        "path": "api/home.json",
+        "path": "{{endPoint}}api/home.json",
         "name": "HomeText"
       },
       {
         "type": "content",
-        "path": "content/sample.json",
+        "path": "{{endPoint}}content/sample.json",
         "name": "MainContent",
         "cache": true
       }
