@@ -32,7 +32,7 @@ The build will be minified and optimized for the best performance.
 Properties that can be set in the requests property.
 
 | name | value | description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | `type` | `json` or `content` or `image` | The value is fixed as described. |
 | `path` | {{endPoint}}path/to/api | Get the value of the string enclosed in {{***}} from config.json. |
 | `name` | string | When the name is set, the data retrieved with the name as the key will be set in the Response Map. |
