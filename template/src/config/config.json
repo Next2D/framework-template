@@ -17,7 +17,7 @@
       "callback": "Loading"
     },
     "gotoView": {
-      "callback": null
+      "callback": ["Background"]
     }
   }
 }

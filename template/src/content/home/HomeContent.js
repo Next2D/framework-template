@@ -12,4 +12,12 @@ export class HomeContent extends next2d.fw.Content
     {
         super();
     }
+
+    /**
+     * @return {string}
+     */
+    get namespace ()
+    {
+        return "HomeContent";
+    }
 }

@@ -1,3 +1,5 @@
+import { TopContent } from "../../content/top/TopContent";
+
 /**
  * @class
  * @extends {next2d.fw.ViewModel}
@@ -26,8 +28,6 @@ export class TopViewModel extends next2d.fw.ViewModel
             const { Event } = next2d.events;
 
             // main content
-            const TopContent = this.packages.get("TopContent");
-
             const topContent = view.addChild(new TopContent());
             topContent.addEventListener(Event.ENTER_FRAME, (event) =>
             {
@@ -45,29 +45,34 @@ export class TopViewModel extends next2d.fw.ViewModel
         })
             .then((top_content) =>
             {
-                const { MouseEvent } = next2d.events;
-                const { MovieClip } = next2d.display;
-                const { TextField, TextFieldAutoSize } = next2d.text;
-
-                // click button
-                const button = view.addChild(new MovieClip());
-
-                button.name       = "button";
-                button.visible    = false;
-                button.buttonMode = true;
-
-                button.addEventListener(MouseEvent.MOUSE_UP, () =>
+                return new Promise((resolve) =>
                 {
-                    this.app.gotoView("home");
+                    const { MouseEvent } = next2d.events;
+                    const { MovieClip } = next2d.display;
+                    const { TextField, TextFieldAutoSize } = next2d.text;
+
+                    // click button
+                    const button = view.addChild(new MovieClip());
+
+                    button.name       = "button";
+                    button.visible    = false;
+                    button.buttonMode = true;
+
+                    button.addEventListener(MouseEvent.MOUSE_UP, () =>
+                    {
+                        this.app.gotoView("home");
+                    });
+
+                    const textField = button.addChild(new TextField());
+
+                    textField.autoSize = TextFieldAutoSize.CENTER;
+                    textField.text     = this.response.get("TopText").word;
+
+                    textField.x = this.config.stage.width / 2 - textField.width / 2;
+                    textField.y = top_content.y + top_content.height / 2 + textField.height;
+
+                    resolve();
                 });
-
-                const textField = button.addChild(new TextField());
-
-                textField.autoSize = TextFieldAutoSize.CENTER;
-                textField.text     = this.response.get("TopText").word;
-
-                textField.x = this.config.stage.width / 2 - textField.width / 2;
-                textField.y = top_content.y + top_content.height / 2 + textField.height;
             });
     }
 }

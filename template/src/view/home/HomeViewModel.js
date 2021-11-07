@@ -1,3 +1,5 @@
+import { HomeContent } from "../../content/home/HomeContent";
+
 /**
  * @class
  * @extends {next2d.fw.ViewModel}
@@ -26,7 +28,6 @@ export class HomeViewModel extends next2d.fw.ViewModel
             const { MouseEvent } = next2d.events;
 
             // main content
-            const HomeContent = this.packages.get("HomeContent");
             const homeContent = view.addChild(new HomeContent());
 
             homeContent.buttonMode = true;
@@ -50,17 +51,22 @@ export class HomeViewModel extends next2d.fw.ViewModel
         })
             .then((home_content) =>
             {
-                const { TextField, TextFieldAutoSize, TextFieldType } = next2d.text;
+                return new Promise((resolve) =>
+                {
+                    const { TextField, TextFieldAutoSize, TextFieldType } = next2d.text;
 
-                // Hello, World.
-                const textField = view.addChild(new TextField());
+                    // Hello, World.
+                    const textField = view.addChild(new TextField());
 
-                textField.autoSize = TextFieldAutoSize.CENTER;
-                textField.type     = TextFieldType.INPUT;
-                textField.text     = this.response.get("HomeText").word;
+                    textField.autoSize = TextFieldAutoSize.CENTER;
+                    textField.type     = TextFieldType.INPUT;
+                    textField.text     = this.response.get("HomeText").word;
 
-                textField.x = this.config.stage.width / 2 - textField.width / 2;
-                textField.y = home_content.y + home_content.height / 2 + textField.height;
+                    textField.x = this.config.stage.width / 2 - textField.width / 2;
+                    textField.y = home_content.y + home_content.height / 2 + textField.height;
+
+                    resolve();
+                });
             });
 
     }
