@@ -13,7 +13,9 @@
   },
   "all": {
     "spa": true,
-    "loading": true,
+    "loading": {
+      "callback": "Loading"
+    },
     "gotoView": {
       "callback": null
     }
