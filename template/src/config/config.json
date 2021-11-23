@@ -1,15 +1,35 @@
 {
   "local": {
-    "endPoint": "/"
+    "api": {
+      "endPoint": "/"
+    },
+    "content": {
+      "endPoint": "/"
+    }
   },
   "dev": {
-    "endPoint": "/"
+    "api": {
+      "endPoint": "/"
+    },
+    "content": {
+      "endPoint": "/"
+    }
   },
   "stg": {
-    "endPoint": "/"
+    "api": {
+      "endPoint": "/"
+    },
+    "content": {
+      "endPoint": "/"
+    }
   },
   "prd": {
-    "endPoint": "/"
+    "api": {
+      "endPoint": "/"
+    },
+    "content": {
+      "endPoint": "/"
+    }
   },
   "all": {
     "spa": true,
@@ -17,7 +37,7 @@
       "callback": "Loading"
     },
     "gotoView": {
-      "callback": ["Background"]
+      "callback": ["callback.Background"]
     }
   }
 }

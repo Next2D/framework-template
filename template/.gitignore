@@ -5,3 +5,4 @@ coverage
 Thumbs.db
 src/Packages.js
 src/config/Config.js
+dist

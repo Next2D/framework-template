@@ -3,12 +3,12 @@
     "requests": [
       {
         "type": "json",
-        "path": "{{endPoint}}api/top.json",
+        "path": "{{ api.endPoint }}api/top.json",
         "name": "TopText"
       },
       {
         "type": "content",
-        "path": "{{endPoint}}content/sample.json",
+        "path": "{{ content.endPoint }}content/sample.json",
         "name": "MainContent",
         "cache": true
       }
@@ -17,13 +17,16 @@
   "home": {
     "requests": [
       {
-        "type": "json",
-        "path": "{{endPoint}}api/home.json",
-        "name": "HomeText"
+        "type": "custom",
+        "class": "api.HomeText",
+        "access": "static",
+        "method": "get",
+        "name": "HomeText",
+        "cache": true
       },
       {
         "type": "content",
-        "path": "{{endPoint}}content/sample.json",
+        "path": "{{ content.endPoint }}content/sample.json",
         "name": "MainContent",
         "cache": true
       }
