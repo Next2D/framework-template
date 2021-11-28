@@ -59,11 +59,16 @@ The values below all are available for all environments.
 
 ### routing.json
 
-Properties that can be set in the `requests` property.
+| name | value | default | description |
+| --- | --- | --- | --- |
+| `private` | boolean | false | Controls direct access; if set to true, TopView will be activated. |
+| `requests` | array | null | Send a request to the specified location before accessing the View. The information received will be set in next2d.fw.response with name as the key. |
+
+#### Properties that can be set in the `requests` property.
 
 | name | value | default | description |
 | --- | --- | --- | --- |
-| `type` | `json` or `content` or `image` or `custom` | `content` | The value is fixed as described. |
+| `type` | string | `content` | The following fixed values are available for this property. `json`, `content`, `image` and `custom` |
 | `path` | {{ api.endPoint }}path/to/api | empty | Get the value of the string enclosed in {{***}} from config.json. |
 | `name` | string | empty | When the name is set, the data retrieved with the name as the key will be set in the Response Map. |
 | `cache` | boolean | false | Caches the retrieved data using the value set in name as a key. |
@@ -72,7 +77,7 @@ Properties that can be set in the `requests` property.
 | `access` | `public` or `static` | `public` | Allows you to specify access to the function that will perform the request. You can specify `public` or `static`. (Only invoked when type is custom). |
 | `method` | string | empty | You can specify a function to execute the request. (only fired when type is custom). |
 
-### Directory Configuration
+## Directory Configuration
 
 ```sh
 project
@@ -80,6 +85,9 @@ project
 │   ├── index.js
 │   ├── App.js
 │   ├── Packages.js // It will be generated automatically.
+│   │
+│   ├── component
+│   │   └── default empty
 │   │
 │   ├── config
 │   │   ├── config.json  // Configuration files for each environment.
@@ -98,7 +106,9 @@ project
 │   │
 │   ├── model // business logic
 │   │   ├── callbask
-│   │   │   └── default empty
+│   │   │   └── Background.js
+│   │   ├── api
+│   │   │   └── HomeText.js
 │   │   └── default empty
 │   │
 │   └── view // Per-page View, ViewModel files.
