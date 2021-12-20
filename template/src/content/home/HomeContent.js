@@ -20,4 +20,12 @@ export class HomeContent extends next2d.fw.Content
     {
         return "HomeContent";
     }
+
+    /**
+     * @return {string}
+     */
+    get contentName ()
+    {
+        return "MainContent";
+    }
 }

@@ -18,12 +18,12 @@ export class HomeViewModel extends next2d.fw.ViewModel
 
     /**
      * @param  {next2d.fw.View} view
-     * @return {void}
+     * @return {Promise|void}
      * @abstract
      */
     bind (view)
     {
-        new Promise((resolve) =>
+        return new Promise((resolve) =>
         {
             const { MouseEvent } = next2d.events;
 
