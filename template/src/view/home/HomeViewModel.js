@@ -1,4 +1,4 @@
-import { HomeContent } from "../../content/home/HomeContent";
+import { HomeContent } from "../../content/HomeContent";
 
 /**
  * @class

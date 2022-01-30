@@ -1,4 +1,4 @@
-import { TopContent } from "../../content/top/TopContent";
+import { TopContent } from "../../content/TopContent";
 
 /**
  * @class
