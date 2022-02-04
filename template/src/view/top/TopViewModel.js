@@ -19,7 +19,7 @@ export class TopViewModel extends next2d.fw.ViewModel
     /**
      * @param  {next2d.fw.View} view
      * @return {Promise|void}
-     * @abstract
+     * @public
      */
     bind (view)
     {

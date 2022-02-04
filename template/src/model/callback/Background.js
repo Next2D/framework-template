@@ -8,7 +8,7 @@ export class Background extends next2d.fw.Model
      * @constructor
      * @public
      */
-    constructor()
+    constructor ()
     {
         super();
 
