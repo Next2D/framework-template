@@ -52,10 +52,10 @@ export class Background extends next2d.fw.Model
 
         const stage = this.context.root.stage;
         if (!stage.hasEventListener(Event.RESIZE)) {
-            stage.addEventListener(Event.RESIZE, function ()
+            stage.addEventListener(Event.RESIZE, () =>
             {
                 this._$createShape();
-            }.bind(this));
+            });
         }
 
         this._$createShape();
