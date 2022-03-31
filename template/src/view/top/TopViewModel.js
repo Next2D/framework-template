@@ -1,4 +1,6 @@
 import { TopContent } from "../../content/TopContent";
+import { TextComponent } from "../../component/TextComponent";
+import { ButtonComponent } from "../../component/ButtonComponent";
 
 /**
  * @class
@@ -23,56 +25,51 @@ export class TopViewModel extends next2d.fw.ViewModel
      */
     bind (view)
     {
-        return new Promise((resolve) =>
-        {
-            const { Event } = next2d.events;
-
-            // main content
-            const topContent = view.addChild(new TopContent());
-            topContent.addEventListener(Event.ENTER_FRAME, (event) =>
+        return this
+            .factory()
+            .then(() =>
             {
-                const content = event.currentTarget;
-                if (content.currentFrame === content.totalFrames) {
-                    view.button.visible = true;
-                    content.removeEventListener(Event.ENTER_FRAME, event.listener);
-                }
-            });
+                const { Event } = next2d.events;
 
-            topContent.x = this.config.stage.width  / 2;
-            topContent.y = this.config.stage.height / 2;
+                const topContent = view.addChild(new TopContent());
+                topContent.addEventListener(Event.ENTER_FRAME, (event) =>
+                {
+                    const content = event.currentTarget;
+                    if (content.currentFrame === content.totalFrames) {
+                        view.button.visible = true;
+                        content.removeEventListener(Event.ENTER_FRAME, event.listener);
+                    }
+                });
 
-            resolve(topContent);
-        })
+                topContent.x = this.config.stage.width  / 2;
+                topContent.y = this.config.stage.height / 2;
+
+                return topContent;
+            })
             .then((top_content) =>
             {
-                return new Promise((resolve) =>
+                const { MouseEvent } = next2d.events;
+                const { TextFieldAutoSize } = next2d.text;
+
+                // click button
+                const button   = view.addChild(ButtonComponent.factory());
+                button.name    = "button";
+                button.visible = false;
+
+                button.addEventListener(MouseEvent.MOUSE_UP, () =>
                 {
-                    const { MouseEvent } = next2d.events;
-                    const { MovieClip } = next2d.display;
-                    const { TextField, TextFieldAutoSize } = next2d.text;
-
-                    // click button
-                    const button = view.addChild(new MovieClip());
-
-                    button.name       = "button";
-                    button.visible    = false;
-                    button.buttonMode = true;
-
-                    button.addEventListener(MouseEvent.MOUSE_UP, () =>
-                    {
-                        this.app.gotoView("home");
-                    });
-
-                    const textField = button.addChild(new TextField());
-
-                    textField.autoSize = TextFieldAutoSize.CENTER;
-                    textField.text     = this.response.get("TopText").word;
-
-                    textField.x = this.config.stage.width / 2 - textField.width / 2;
-                    textField.y = top_content.y + top_content.height / 2 + textField.height;
-
-                    resolve();
+                    this.app.gotoView("home");
                 });
+
+                const textField = button.addChild(TextComponent.factory(
+                    this.response.get("TopText").word,
+                    {
+                        "autoSize": TextFieldAutoSize.CENTER
+                    }
+                ));
+
+                textField.x = this.config.stage.width / 2 - textField.width / 2;
+                textField.y = top_content.y + top_content.height / 2 + textField.height;
             });
     }
 }

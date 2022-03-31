@@ -1,4 +1,6 @@
 import { HomeContent } from "../../content/HomeContent";
+import { TextComponent } from "../../component/TextComponent";
+import { ButtonComponent } from "../../component/ButtonComponent";
 
 /**
  * @class
@@ -23,51 +25,50 @@ export class HomeViewModel extends next2d.fw.ViewModel
      */
     bind (view)
     {
-        return new Promise((resolve) =>
-        {
-            const { MouseEvent } = next2d.events;
-
-            // main content
-            const homeContent = view.addChild(new HomeContent());
-
-            homeContent.buttonMode = true;
-            homeContent.addEventListener(MouseEvent.MOUSE_DOWN, (event) =>
+        return this
+            .factory()
+            .then(() =>
             {
-                event.currentTarget.startDrag();
-            });
+                const { MouseEvent } = next2d.events;
 
-            homeContent.addEventListener(MouseEvent.MOUSE_UP, (event) =>
-            {
-                event.currentTarget.stopDrag();
-            });
+                // main content
+                const homeContent = view.addChild(
+                    ButtonComponent.factory(new HomeContent())
+                );
 
-            homeContent.x = this.config.stage.width  / 2 - 4;
-            homeContent.y = this.config.stage.height / 2;
+                homeContent.addEventListener(MouseEvent.MOUSE_DOWN, (event) =>
+                {
+                    event.currentTarget.startDrag();
+                });
 
-            homeContent.scaleX = 2;
-            homeContent.scaleY = 2;
+                homeContent.addEventListener(MouseEvent.MOUSE_UP, (event) =>
+                {
+                    event.currentTarget.stopDrag();
+                });
 
-            resolve(homeContent);
-        })
+                homeContent.x = this.config.stage.width  / 2 - 4;
+                homeContent.y = this.config.stage.height / 2;
+
+                homeContent.scaleX = 2;
+                homeContent.scaleY = 2;
+
+                return homeContent;
+            })
             .then((home_content) =>
             {
-                return new Promise((resolve) =>
-                {
-                    const { TextField, TextFieldAutoSize, TextFieldType } = next2d.text;
+                const { TextFieldAutoSize, TextFieldType } = next2d.text;
 
-                    // Hello, World.
-                    const textField = view.addChild(new TextField());
+                // Hello, World.
+                const textField = view.addChild(TextComponent.factory(
+                    this.response.get("HomeText").word,
+                    {
+                        "autoSize": TextFieldAutoSize.CENTER,
+                        "type": TextFieldType.INPUT
+                    }
+                ));
 
-                    textField.autoSize = TextFieldAutoSize.CENTER;
-                    textField.type     = TextFieldType.INPUT;
-                    textField.text     = this.response.get("HomeText").word;
-
-                    textField.x = this.config.stage.width / 2 - textField.width / 2;
-                    textField.y = home_content.y + home_content.height / 2 + textField.height;
-
-                    resolve();
-                });
+                textField.x = this.config.stage.width / 2 - textField.width / 2;
+                textField.y = home_content.y + home_content.height / 2 + textField.height;
             });
-
     }
 }
