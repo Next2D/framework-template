@@ -137,5 +137,5 @@ project
 ```
 
 ### Chart Flow
-![Chart Flow](https://github.com/Next2D/Framework/blob/main/Framework_Chart_Flow.svg)
+![Chart Flow](https://raw.githubusercontent.com/Next2D/framework/main/Framework_Flowchart.svg)
 
