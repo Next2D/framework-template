@@ -1,6 +1,6 @@
-import { HomeContent } from "../../content/HomeContent";
-import { TextComponent } from "../../component/TextComponent";
-import { ButtonComponent } from "../../component/ButtonComponent";
+import { HomeContent } from "/src/content/HomeContent";
+import { TextComponent } from "/src/component/TextComponent";
+import { ButtonComponent } from "/src/component/ButtonComponent";
 
 /**
  * @class

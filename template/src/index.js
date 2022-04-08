@@ -3,9 +3,9 @@
 import "@next2d/player";
 import "@next2d/framework";
 
-import { App } from "./App";
-import { config } from "./config/Config";
-import { packages } from "./Packages";
+import { App } from "/src/App";
+import { config } from "/src/config/Config";
+import { packages } from "/src/Packages";
 
 if (document.readyState === "loading") {
 

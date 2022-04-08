@@ -31,8 +31,15 @@ module.exports = {
             { "directory": path.join(__dirname, "/dist") },
             { "directory": path.join(__dirname, "/mock") }
         ],
+        "watchFiles": "src/config/*.json",
         "historyApiFallback": true,
         "compress": false,
         "open": true
+    },
+    "watchOptions": {
+        "ignored": [
+            path.resolve(__dirname, "src/config/Config.js"),
+            path.resolve(__dirname, "src/Packages.js")
+        ]
     }
 };
