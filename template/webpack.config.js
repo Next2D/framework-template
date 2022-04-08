@@ -6,7 +6,7 @@ const Next2DWebpackAutoLoaderPlugin = require("@next2d/webpack-auto-loader-plugi
 
 module.exports = {
     "mode": "development",
-    "entry": "./src/index.js",
+    "entry": path.resolve(__dirname, "src/index.js"),
     "output": {
         "filename": "app.js",
         "path": path.join(__dirname, "/dist")
