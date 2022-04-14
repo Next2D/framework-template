@@ -9,7 +9,7 @@ module.exports = {
     "entry": path.resolve(__dirname, "src/index.js"),
     "output": {
         "filename": "app.js",
-        "path": path.join(__dirname, "/dist")
+        "path": path.resolve(__dirname, "dist")
     },
     "module": {
         "rules": [
@@ -28,8 +28,8 @@ module.exports = {
     ],
     "devServer": {
         "static": [
-            { "directory": path.join(__dirname, "/dist") },
-            { "directory": path.join(__dirname, "/mock") }
+            { "directory": path.resolve(__dirname, "dist") },
+            { "directory": path.resolve(__dirname, "mock") }
         ],
         "watchFiles": "src/config/*.json",
         "historyApiFallback": true,
