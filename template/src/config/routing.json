@@ -1,11 +1,6 @@
 {
-  "top": {
+  "@sample": {
     "requests": [
-      {
-        "type": "json",
-        "path": "{{ api.endPoint }}api/top.json",
-        "name": "TopText"
-      },
       {
         "type": "content",
         "path": "{{ content.endPoint }}content/sample.json",
@@ -14,20 +9,31 @@
       }
     ]
   },
+  "top": {
+    "requests": [
+      {
+        "type": "cluster",
+        "path": "@sample"
+      },
+      {
+        "type": "json",
+        "path": "{{ api.endPoint }}api/top.json",
+        "name": "TopText"
+      }
+    ]
+  },
   "home": {
     "requests": [
+      {
+        "type": "cluster",
+        "path": "@sample"
+      },
       {
         "type": "custom",
         "class": "api.HomeText",
         "access": "static",
         "method": "get",
         "name": "HomeText",
-        "cache": true
-      },
-      {
-        "type": "content",
-        "path": "{{ content.endPoint }}content/sample.json",
-        "name": "MainContent",
         "cache": true
       }
     ]
