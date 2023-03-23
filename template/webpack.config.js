@@ -11,11 +11,6 @@ module.exports = {
         "filename": "app.js",
         "path": path.resolve(__dirname, "dist")
     },
-    "resolve": {
-        "alias": {
-            "@": path.resolve(__dirname, "src")
-        }
-    },
     "module": {
         "rules": [
             {

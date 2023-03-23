@@ -1,6 +1,6 @@
-import { TopContent } from "@/content/TopContent";
-import { TextComponent } from "@/component/TextComponent";
-import { ButtonComponent } from "@/component/ButtonComponent";
+import { TopContent } from "/src/content/TopContent";
+import { TextComponent } from "/src/component/TextComponent";
+import { ButtonComponent } from "/src/component/ButtonComponent";
 
 /**
  * @class
