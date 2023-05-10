@@ -1,5 +1,6 @@
 {
   "name": "@next2d/framework-template",
+  "version": "0.0.1",
   "description": "Next2D Framework default template.",
   "author": "Toshiyuki Ienaga <ienaga@tvon.jp>",
   "license": "MIT",
@@ -9,13 +10,15 @@
     "build": "webpack --mode production",
     "lint": "eslint src/**/*.js",
     "test": "npx jest",
-    "generate": "npx @next2d/view-generator"
+    "generate": "npx @next2d/view-generator",
+    "build2": "npx @next2d/builder"
   },
   "devDependencies": {
     "@next2d/env": "^1.0.1",
     "@next2d/framework": "^1.3.0",
     "@next2d/player": "^1.13.0",
     "@next2d/webpack-auto-loader-plugin": "^1.5.0",
+    "electron": "^24.2.0",
     "eslint": "^8.36.0",
     "eslint-webpack-plugin": "^4.0.0",
     "webpack": "^5.76.1",

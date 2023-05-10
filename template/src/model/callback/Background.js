@@ -1,8 +1,7 @@
 /**
  * @class
- * @extends {next2d.fw.Model}
  */
-export class Background extends next2d.fw.Model
+export class Background
 {
     /**
      * @constructor
@@ -10,8 +9,6 @@ export class Background extends next2d.fw.Model
      */
     constructor ()
     {
-        super();
-
         if (!Background.shape) {
 
             const { Shape, GradientType } = next2d.display;
@@ -20,8 +17,9 @@ export class Background extends next2d.fw.Model
             const shape = new Shape();
             shape.name = "background";
 
-            const width  = this.config.stage.width;
-            const height = this.config.stage.height;
+            const config = next2d.fw.config;
+            const width  = config.stage.width;
+            const height = config.stage.height;
 
             const matrix = new Matrix();
             matrix.createGradientBox(width, height, Math.PI / 2);
@@ -50,7 +48,8 @@ export class Background extends next2d.fw.Model
     {
         const { Event } = next2d.events;
 
-        const stage = this.context.root.stage;
+        const context = next2d.fw.context;
+        const stage = context.root.stage;
         if (!stage.hasEventListener(Event.RESIZE)) {
             stage.addEventListener(Event.RESIZE, () =>
             {
@@ -67,14 +66,17 @@ export class Background extends next2d.fw.Model
      */
     _$createShape ()
     {
-        const view = this.context.view;
+        const config  = next2d.fw.config;
+        const context = next2d.fw.context;
+
+        const view = context.view;
         if (!view) {
             return ;
         }
 
-        const root   = this.context.root;
-        const width  = this.config.stage.width;
-        const height = this.config.stage.height;
+        const root   = context.root;
+        const width  = config.stage.width;
+        const height = config.stage.height;
 
         let shape = view.getChildByName("background");
         if (!shape) {

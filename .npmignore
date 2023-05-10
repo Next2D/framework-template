@@ -2,3 +2,4 @@
 template/dist/app.js
 template/node_modules
 template/package.json
+template/electron.index.json

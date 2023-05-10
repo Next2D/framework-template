@@ -1,6 +1,6 @@
-import { TopContent } from "/src/content/TopContent";
-import { TextComponent } from "/src/component/TextComponent";
-import { ButtonComponent } from "/src/component/ButtonComponent";
+import { TopContent } from "@/model/application/content/TopContent";
+import { TextComponent } from "@/model/application/component/TextComponent";
+import { ButtonComponent } from "@/model/application/component/ButtonComponent";
 
 /**
  * @class
@@ -41,8 +41,9 @@ export class TopViewModel extends next2d.fw.ViewModel
                     }
                 });
 
-                topContent.x = this.config.stage.width  / 2;
-                topContent.y = this.config.stage.height / 2;
+                const config = next2d.fw.config;
+                topContent.x = config.stage.width  / 2;
+                topContent.y = config.stage.height / 2;
 
                 return topContent;
             })
@@ -58,17 +59,20 @@ export class TopViewModel extends next2d.fw.ViewModel
 
                 button.addEventListener(MouseEvent.MOUSE_UP, () =>
                 {
-                    this.app.gotoView("home");
+                    const app = next2d.fw.application;
+                    app.gotoView("home");
                 });
 
+
                 const textField = button.addChild(TextComponent.factory(
-                    this.response.get("TopText").word,
+                    next2d.fw.response.get("TopText").word,
                     {
                         "autoSize": TextFieldAutoSize.CENTER
                     }
                 ));
 
-                textField.x = this.config.stage.width / 2 - textField.width / 2;
+                const config = next2d.fw.config;
+                textField.x = config.stage.width / 2 - textField.width / 2;
                 textField.y = top_content.y + top_content.height / 2 + textField.height;
             });
     }

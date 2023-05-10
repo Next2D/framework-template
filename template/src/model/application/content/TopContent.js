@@ -11,12 +11,4 @@ export class TopContent extends next2d.fw.Content
     {
         return "TopContent";
     }
-
-    /**
-     * @return {string}
-     */
-    get contentName ()
-    {
-        return "MainContent";
-    }
 }

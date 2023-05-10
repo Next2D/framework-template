@@ -58,7 +58,7 @@ The values below all are available for all environments.
 | `gotoView`.`callback` | string or array | ["callback.Background"] | You can specify the class to call back after the `gotoView` function finishes. |
 
 ### routing.json
-The top properties that can be set for routing are alphanumeric characters, slashes, hyphens, and underscores. Access the View class in CamelCase using the slash, hyphen, and underscore as keys.
+The top properties that can be set for routing are alphanumeric characters, slashes, hyphens, and underscores. Access the View class in CamelCase using the slash as keys.
 
 #### Example
 In the case of the sample below, access is enabled at `https://example.com/quest/list` and the context is set to `QuestListView.js`.

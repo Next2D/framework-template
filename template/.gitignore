@@ -8,3 +8,4 @@ Thumbs.db
 
 src/Packages.js
 src/config/Config.js
+electron.index.json

@@ -1,10 +1,10 @@
 {
   "local": {
     "api": {
-      "endPoint": "/"
+      "endPoint": "https://next2d-tutorial.s3.ap-northeast-1.amazonaws.com/mock/"
     },
     "content": {
-      "endPoint": "/"
+      "endPoint": "https://next2d-tutorial.s3.ap-northeast-1.amazonaws.com/mock/"
     }
   },
   "dev": {
@@ -25,10 +25,10 @@
   },
   "prd": {
     "api": {
-      "endPoint": "/"
+      "endPoint": "https://next2d-tutorial.s3.ap-northeast-1.amazonaws.com/mock/"
     },
     "content": {
-      "endPoint": "/"
+      "endPoint": "https://next2d-tutorial.s3.ap-northeast-1.amazonaws.com/mock/"
     }
   },
   "all": {

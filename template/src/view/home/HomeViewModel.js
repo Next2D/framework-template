@@ -1,6 +1,6 @@
-import { HomeContent } from "/src/content/HomeContent";
-import { TextComponent } from "/src/component/TextComponent";
-import { ButtonComponent } from "/src/component/ButtonComponent";
+import { HomeContent } from "@/model/application/content/HomeContent";
+import { TextComponent } from "@/model/application/component/TextComponent";
+import { ButtonComponent } from "@/model/application/component/ButtonComponent";
 
 /**
  * @class
@@ -46,8 +46,9 @@ export class HomeViewModel extends next2d.fw.ViewModel
                     event.currentTarget.stopDrag();
                 });
 
-                homeContent.x = this.config.stage.width  / 2 - 4;
-                homeContent.y = this.config.stage.height / 2;
+                const config = next2d.fw.config;
+                homeContent.x = config.stage.width  / 2 - 4;
+                homeContent.y = config.stage.height / 2;
 
                 homeContent.scaleX = 2;
                 homeContent.scaleY = 2;
@@ -60,14 +61,15 @@ export class HomeViewModel extends next2d.fw.ViewModel
 
                 // Hello, World.
                 const textField = view.addChild(TextComponent.factory(
-                    this.response.get("HomeText").word,
+                    next2d.fw.response.get("HomeText").word,
                     {
                         "autoSize": TextFieldAutoSize.CENTER,
                         "type": TextFieldType.INPUT
                     }
                 ));
 
-                textField.x = this.config.stage.width / 2 - textField.width / 2;
+                const config = next2d.fw.config;
+                textField.x = config.stage.width / 2 - textField.width / 2;
                 textField.y = home_content.y + home_content.height / 2 + textField.height;
             });
     }

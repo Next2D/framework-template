@@ -30,7 +30,7 @@
       },
       {
         "type": "custom",
-        "class": "api.HomeText",
+        "class": "infrastructure.repository.HomeTextRepository",
         "access": "static",
         "method": "get",
         "name": "HomeText",
