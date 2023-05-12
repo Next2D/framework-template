@@ -9,6 +9,13 @@ module.exports = {
         "version": "0.0.1",
         "main": "electron.js"
     },
+    "files": [
+        "!__tests__/{,/**/*}",
+        "!file/{,/**/*}",
+        "!mock/{,/**/*}",
+        "!src/{,/**/*}",
+        "!icon/{,/**/*}"
+    ],
     "mac": {
         "target": "dmg",
         "icon": "icon/macos/icon.icns"
