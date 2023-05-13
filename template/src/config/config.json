@@ -37,7 +37,7 @@
       "callback": "Loading"
     },
     "gotoView": {
-      "callback": ["callback.Background"]
+      "callback": ["domain.callback.Background"]
     }
   }
 }
