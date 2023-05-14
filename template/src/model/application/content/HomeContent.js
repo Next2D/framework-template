@@ -10,6 +10,6 @@ export class HomeContent extends next2d.fw.Content
      */
     get namespace ()
     {
-        return "next2d.TopContent";
+        return "HomeContent";
     }
 }
