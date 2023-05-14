@@ -1,10 +1,10 @@
 {
   "local": {
     "api": {
-      "endPoint": "https://next2d-tutorial.s3.ap-northeast-1.amazonaws.com/mock/"
+      "endPoint": "/"
     },
     "content": {
-      "endPoint": "https://next2d-tutorial.s3.ap-northeast-1.amazonaws.com/mock/"
+      "endPoint": "/"
     }
   },
   "dev": {
@@ -37,7 +37,7 @@
       "callback": "Loading"
     },
     "gotoView": {
-      "callback": ["callback.Background"]
+      "callback": ["domain.callback.Background"]
     }
   }
 }

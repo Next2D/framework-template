@@ -1,6 +1,5 @@
-import { HomeContent } from "@/model/application/content/HomeContent";
-import { TextComponent } from "@/model/application/component/TextComponent";
-import { ButtonComponent } from "@/model/application/component/ButtonComponent";
+import { HomeButtonTemplate } from "@/model/ui/component/template/home/HomeButtonTemplate";
+import { HomeTextTemplate } from "@/model/ui/component/template/home/HomeTextTemplate";
 
 /**
  * @class
@@ -9,16 +8,6 @@ import { ButtonComponent } from "@/model/application/component/ButtonComponent";
 export class HomeViewModel extends next2d.fw.ViewModel
 {
     /**
-     * @param {next2d.fw.View} view
-     * @constructor
-     * @public
-     */
-    constructor (view)
-    {
-        super(view);
-    }
-
-    /**
      * @param  {next2d.fw.View} view
      * @return {Promise|void}
      * @public
@@ -26,51 +15,22 @@ export class HomeViewModel extends next2d.fw.ViewModel
     bind (view)
     {
         return this
-            .factory()
-            .then(() =>
+            .factory(view)
+            .then((view) =>
             {
-                const { MouseEvent } = next2d.events;
+                /**
+                 * アニメーションをNoCodeToolのJSONから生成
+                 * Generate animation from NoCodeTool's JSON
+                 */
+                const homeContent = new HomeButtonTemplate().factory();
+                view.addChild(homeContent);
 
-                // main content
-                const homeContent = view.addChild(
-                    ButtonComponent.factory(new HomeContent())
-                );
-
-                homeContent.addEventListener(MouseEvent.MOUSE_DOWN, (event) =>
-                {
-                    event.currentTarget.startDrag();
-                });
-
-                homeContent.addEventListener(MouseEvent.MOUSE_UP, (event) =>
-                {
-                    event.currentTarget.stopDrag();
-                });
-
-                const config = next2d.fw.config;
-                homeContent.x = config.stage.width  / 2 - 4;
-                homeContent.y = config.stage.height / 2;
-
-                homeContent.scaleX = 2;
-                homeContent.scaleY = 2;
-
-                return homeContent;
-            })
-            .then((home_content) =>
-            {
-                const { TextFieldAutoSize, TextFieldType } = next2d.text;
-
-                // Hello, World.
-                const textField = view.addChild(TextComponent.factory(
-                    next2d.fw.response.get("HomeText").word,
-                    {
-                        "autoSize": TextFieldAutoSize.CENTER,
-                        "type": TextFieldType.INPUT
-                    }
-                ));
-
-                const config = next2d.fw.config;
-                textField.x = config.stage.width / 2 - textField.width / 2;
-                textField.y = home_content.y + home_content.height / 2 + textField.height;
+                /**
+                 * Hello, Worldのテキストを生成
+                 * Generate Hello, World text
+                 */
+                const homeTextField = new HomeTextTemplate().factory(homeContent);
+                view.addChild(homeTextField);
             });
     }
 }

@@ -7,11 +7,10 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode production",
+    "build": "npx @next2d/builder",
     "lint": "eslint src/**/*.js",
     "test": "npx jest",
-    "generate": "npx @next2d/view-generator",
-    "build2": "npx @next2d/builder"
+    "generate": "npx @next2d/view-generator"
   },
   "devDependencies": {
     "@next2d/env": "^1.0.1",
