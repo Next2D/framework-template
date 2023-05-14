@@ -8,15 +8,15 @@ import { TopButtonTemplate } from "@/model/ui/component/template/top/TopButtonTe
 export class TopViewModel extends next2d.fw.ViewModel
 {
     /**
-     * @param  {next2d.fw.View} view
-     * @return {Promise|void}
+     * @param  {View} view
+     * @return {Promise}
      * @public
      */
     bind (view)
     {
         return this
-            .factory()
-            .then(() =>
+            .factory(view)
+            .then((view) =>
             {
                 /**
                  * ロゴアニメーションをNoCodeToolのJSONから生成

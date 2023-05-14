@@ -6,15 +6,18 @@
 The basic style is one View and one ViewModel per screen.  
 It is recommended that the directory structure be created in the first block of the camelCase.  
 
-## Directory Structure
+## Example of directory structure
 
 ```sh
 project
 └── src
     └── view
-        └── top
-            ├── TopView.js
-            └── TopViewModel.js
+        ├── top
+        │   ├── TopView.js
+        │   └── TopViewModel.js
+        └── home
+            ├── HomeView.js
+            └── HomeViewModel.js
 ```
 
 ## Generator

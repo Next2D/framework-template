@@ -15,8 +15,8 @@ export class HomeViewModel extends next2d.fw.ViewModel
     bind (view)
     {
         return this
-            .factory()
-            .then(() =>
+            .factory(view)
+            .then((view) =>
             {
                 /**
                  * アニメーションをNoCodeToolのJSONから生成
