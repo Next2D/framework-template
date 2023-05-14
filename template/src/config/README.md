@@ -48,6 +48,16 @@ The following items are available in `all` that affect functionality.
 | `loading.callback`  | string          | Loading                 | 画面遷移の準備が完了するまでの間、ローディング画面を表示するかどうかを設定します。コールバックとして設定されたクラスのstart関数とend関数を呼び出します。 <br> Sets whether or not the loading screen is displayed until the preparation for screen transition is completed. Calls the start and end functions of the class set as the callback. |
 | `gotoView.callback` | string or array | ["callback.Background"] | gotoView関数が終了した後にコールバックするクラスを指定できます。 <br> You can specify the class to be called back after the gotoView function exits.                                                                                                                                                |
 
+### config.json platform
+
+`platform`の値は書き出し時に自動で生成されます。  
+値は、`macos`、`windows`、`ios`、`android`、`web`の固定値となります。  
+プラットフォーム固有の判定などで利用が可能です。  
+
+The `platform` value is automatically generated when exporting.  
+The values are fixed values for `macos`, `windows`, `ios`, `android`, and `web`.  
+It can be used for platform-specific judgments, etc.  
+
 ## routing.json
 
 ルーティングに設定できるトッププロパティは、英数字、スラッシュです。  
