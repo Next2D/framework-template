@@ -10,9 +10,9 @@ export class HomeTextRepository
     static get ()
     {
         return fetch(`${next2d.fw.config.api.endPoint}api/home.json`)
-            .then((responce) =>
+            .then((response) =>
             {
-                return responce.json();
+                return response.json();
             })
             .catch((error) =>
             {

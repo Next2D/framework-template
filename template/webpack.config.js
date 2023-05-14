@@ -1,15 +1,16 @@
 const path = require("path");
-const env  = require("@next2d/env");
+const env = require("@next2d/env");
 
 const ESLintPlugin = require("eslint-webpack-plugin");
 const Next2DWebpackAutoLoaderPlugin = require("@next2d/webpack-auto-loader-plugin");
+const object = env();
 
 module.exports = {
     "mode": "development",
     "entry": path.resolve(__dirname, "src/index.js"),
     "output": {
         "filename": "app.js",
-        "path": path.resolve(__dirname, `dist/web/${env()}`)
+        "path": path.resolve(__dirname, `dist/web/${object.environment}`)
     },
     "resolve": {
         "alias": {
@@ -29,11 +30,11 @@ module.exports = {
         // new ESLintPlugin({
         //     "fix": true
         // }),
-        new Next2DWebpackAutoLoaderPlugin(env(), { "LICENSE": false })
+        new Next2DWebpackAutoLoaderPlugin(object, { "LICENSE": false })
     ],
     "devServer": {
         "static": [
-            { "directory": path.resolve(__dirname, `dist/web/${env()}`) },
+            { "directory": path.resolve(__dirname, `dist/web/${object.environment}`) },
             { "directory": path.resolve(__dirname, "mock") }
         ],
         "watchFiles": "src/config/*.json",

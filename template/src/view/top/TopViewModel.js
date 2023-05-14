@@ -1,6 +1,5 @@
-import { TopContent } from "@/model/application/content/TopContent";
-import { TextComponent } from "@/model/application/component/TextComponent";
-import { ButtonComponent } from "@/model/application/component/ButtonComponent";
+import { TopContentTemplate } from "@/model/ui/component/template/top/TopContentTemplate";
+import { TopButtonTemplate } from "@/model/ui/component/template/top/TopButtonTemplate";
 
 /**
  * @class
@@ -9,71 +8,29 @@ import { ButtonComponent } from "@/model/application/component/ButtonComponent";
 export class TopViewModel extends next2d.fw.ViewModel
 {
     /**
-     * @param {next2d.fw.View} view
-     * @constructor
-     * @public
-     */
-    constructor (view)
-    {
-        super(view);
-    }
-
-    /**
-     * @param  {next2d.fw.View} view
-     * @return {Promise|void}
+     * @param  {View} view
+     * @return {Promise}
      * @public
      */
     bind (view)
     {
         return this
-            .factory()
-            .then(() =>
+            .factory(view)
+            .then((view) =>
             {
-                const { Event } = next2d.events;
+                /**
+                 * ロゴアニメーションをNoCodeToolのJSONから生成
+                 * Logo animation generated from NoCodeTool's JSON
+                 */
+                const topContent = new TopContentTemplate().factory();
+                view.addChild(topContent);
 
-                const topContent = view.addChild(new TopContent());
-                topContent.addEventListener(Event.ENTER_FRAME, (event) =>
-                {
-                    const content = event.currentTarget;
-                    if (content.currentFrame === content.totalFrames) {
-                        view.button.visible = true;
-                        content.removeEventListener(Event.ENTER_FRAME, event.listener);
-                    }
-                });
-
-                const config = next2d.fw.config;
-                topContent.x = config.stage.width  / 2;
-                topContent.y = config.stage.height / 2;
-
-                return topContent;
-            })
-            .then((top_content) =>
-            {
-                const { MouseEvent } = next2d.events;
-                const { TextFieldAutoSize } = next2d.text;
-
-                // click button
-                const button   = view.addChild(ButtonComponent.factory());
-                button.name    = "button";
-                button.visible = false;
-
-                button.addEventListener(MouseEvent.MOUSE_UP, () =>
-                {
-                    const app = next2d.fw.application;
-                    app.gotoView("home");
-                });
-
-
-                const textField = button.addChild(TextComponent.factory(
-                    next2d.fw.response.get("TopText").word,
-                    {
-                        "autoSize": TextFieldAutoSize.CENTER
-                    }
-                ));
-
-                const config = next2d.fw.config;
-                textField.x = config.stage.width / 2 - textField.width / 2;
-                textField.y = top_content.y + top_content.height / 2 + textField.height;
+                /**
+                 * ボタンエリアを生成
+                 * Generate button area
+                 */
+                const button = new TopButtonTemplate().factory(topContent);
+                view.addChild(button);
             });
     }
 }
