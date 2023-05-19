@@ -14,7 +14,9 @@ module.exports = {
         "!file/{,/**/*}",
         "!mock/{,/**/*}",
         "!src/{,/**/*}",
-        "!icon/{,/**/*}"
+        "!icon/{,/**/*}",
+        "!ios/{,/**/*}",
+        "!android/{,/**/*}"
     ],
     "mac": {
         "target": "dmg",
