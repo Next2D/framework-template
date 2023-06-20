@@ -1,11 +1,12 @@
 import { HomeButtonTemplate } from "@/model/ui/component/template/home/HomeButtonTemplate";
 import { HomeTextTemplate } from "@/model/ui/component/template/home/HomeTextTemplate";
+import { ViewModel } from "@next2d/framework";
 
 /**
  * @class
- * @extends {next2d.fw.ViewModel}
+ * @extends {ViewModel}
  */
-export class HomeViewModel extends next2d.fw.ViewModel
+export class HomeViewModel extends ViewModel
 {
     /**
      * @param  {next2d.fw.View} view

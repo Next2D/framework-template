@@ -27,9 +27,7 @@ module.exports = {
     },
     "plugins": [
         // If you use eslint, please uncomment it.
-        // new ESLintPlugin({
-        //     "fix": true
-        // }),
+        // new ESLintPlugin(),
         new Next2DWebpackAutoLoaderPlugin(object, { "LICENSE": false })
     ],
     "devServer": {
@@ -47,5 +45,8 @@ module.exports = {
             path.resolve(__dirname, "src/config/Config.js"),
             path.resolve(__dirname, "src/Packages.js")
         ]
+    },
+    "performance": {
+        "hints": false
     }
 };

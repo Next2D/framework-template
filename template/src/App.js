@@ -1,8 +1,10 @@
+import { Application } from "@next2d/framework";
+
 /**
  * @class
- * @extends {next2d.fw.Application}
+ * @extends {Application}
  */
-export class App extends next2d.fw.Application
+export class App extends Application
 {
     /**
      * @param {object} config

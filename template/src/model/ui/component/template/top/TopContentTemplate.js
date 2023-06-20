@@ -1,5 +1,6 @@
 import { TopContent } from "@/model/application/content/TopContent";
 import { TopContentEnterFrameEvent } from "@/model/domain/event/top/TopContentEnterFrameEvent";
+import { config } from "@/config/Config";
 
 /**
  * @class
@@ -32,7 +33,6 @@ export class TopContentTemplate
          */
         const topContent = new TopContent();
 
-        const config = next2d.fw.config;
         topContent.x = config.stage.width  / 2;
         topContent.y = config.stage.height / 2;
 

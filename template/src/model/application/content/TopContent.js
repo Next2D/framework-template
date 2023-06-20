@@ -1,9 +1,11 @@
+import { Content } from "@next2d/framework";
+
 /**
  * @see file/sample.n2d
  * @class
- * @extends {next2d.fw.Context}
+ * @extends {Context}
  */
-export class TopContent extends next2d.fw.Content
+export class TopContent extends Content
 {
     /**
      * @return {string}
