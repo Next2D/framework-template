@@ -1,3 +1,5 @@
+import { app } from "@";
+
 /**
  * @class
  */
@@ -10,7 +12,6 @@ export class TopButtonMouseUpEvent
      */
     execute ()
     {
-        const app = next2d.fw.application;
         app.gotoView("home");
     }
 }

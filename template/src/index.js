@@ -1,24 +1,24 @@
 "use strict";
 
-import "@next2d/player";
-import "@next2d/framework";
-
 import { App } from "@/App";
 import { config } from "@/config/Config";
 import { packages } from "@/Packages";
 
+export let app = null;
 if (document.readyState === "loading") {
 
     const initialize = (event) =>
     {
         event.target.removeEventListener("DOMContentLoaded", initialize);
-        new App(config, packages).gotoView();
+        app = new App(config, packages);
+        app.gotoView();
     };
 
     window.addEventListener("DOMContentLoaded", initialize);
 
 } else {
 
-    new App(config, packages).gotoView();
+    app = new App(config, packages);
+    app.gotoView();
 
 }

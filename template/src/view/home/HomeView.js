@@ -1,8 +1,10 @@
+import { View } from "@next2d/framework";
+
 /**
  * @class
- * @extends {next2d.fw.View}
+ * @extends {View}
  */
-export class HomeView extends next2d.fw.View
+export class HomeView extends View
 {
     /**
      * @constructor

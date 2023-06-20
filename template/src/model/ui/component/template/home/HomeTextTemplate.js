@@ -1,4 +1,6 @@
 import { TextComponent } from "@/model/ui/component/atom/TextComponent";
+import { config } from "@/config/Config";
+import { response } from "@next2d/framework";
 
 /**
  * @class
@@ -12,18 +14,15 @@ export class HomeTextTemplate
      */
     factory (home_content)
     {
-        const { TextFieldAutoSize, TextFieldType } = next2d.text;
-
         // Hello, World.
         const textField = TextComponent.factory(
-            next2d.fw.response.get("HomeText").word,
+            response.get("HomeText").word,
             {
-                "autoSize": TextFieldAutoSize.CENTER,
-                "type": TextFieldType.INPUT
+                "autoSize": "center",
+                "type": "input"
             }
         );
 
-        const config = next2d.fw.config;
         textField.x = config.stage.width / 2 - textField.width / 2;
         textField.y = home_content.y + home_content.height / 2 + textField.height;
 
