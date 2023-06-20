@@ -1,3 +1,5 @@
+import { context } from "@next2d/framework";
+
 /**
  * @class
  */
@@ -21,7 +23,7 @@ export class TopContentEnterFrameEvent
             const { Event } = next2d.events;
             content.removeEventListener(Event.ENTER_FRAME, event.listener);
 
-            const view = next2d.fw.context.view;
+            const view = context.view;
             view.button.visible = true;
         }
     }

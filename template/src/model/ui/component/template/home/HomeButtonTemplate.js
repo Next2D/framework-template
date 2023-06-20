@@ -2,6 +2,7 @@ import { ButtonComponent } from "@/model/ui/component/atom/ButtonComponent";
 import { HomeContent } from "@/model/application/content/HomeContent";
 import { HomeButtonMouseDownEvent } from "@/model/domain/event/home/HomeButtonMouseDownEvent";
 import { HomeButtonMouseUpEvent } from "@/model/domain/event/home/HomeButtonMouseUpEvent";
+import { config } from "@/config/Config";
 
 /**
  * @class
@@ -36,7 +37,6 @@ export class HomeButtonTemplate
     {
         const homeContent = ButtonComponent.factory(new HomeContent());
 
-        const config = next2d.fw.config;
         homeContent.x = config.stage.width  / 2 - 4;
         homeContent.y = config.stage.height / 2;
 

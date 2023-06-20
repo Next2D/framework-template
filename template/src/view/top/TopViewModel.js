@@ -1,11 +1,12 @@
 import { TopContentTemplate } from "@/model/ui/component/template/top/TopContentTemplate";
 import { TopButtonTemplate } from "@/model/ui/component/template/top/TopButtonTemplate";
+import { ViewModel } from "@next2d/framework";
 
 /**
  * @class
- * @extends {next2d.fw.ViewModel}
+ * @extends {ViewModel}
  */
-export class TopViewModel extends next2d.fw.ViewModel
+export class TopViewModel extends ViewModel
 {
     /**
      * @param  {View} view

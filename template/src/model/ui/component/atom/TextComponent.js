@@ -4,9 +4,10 @@
 export class TextComponent
 {
     /**
-     * @param {string} text
-     * @param {object} [props=null]
-     * @param {object} [format=null]
+     * @param  {string} text
+     * @param  {object} [props=null]
+     * @param  {object} [format=null]
+     * @return {next2d.text.TextField}
      * @method
      * @static
      */

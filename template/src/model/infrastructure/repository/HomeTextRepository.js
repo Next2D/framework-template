@@ -1,3 +1,5 @@
+import { config } from "@/config/Config";
+
 /**
  * @class
  */
@@ -9,7 +11,7 @@ export class HomeTextRepository
      */
     static get ()
     {
-        return fetch(`${next2d.fw.config.api.endPoint}api/home.json`)
+        return fetch(`${config.api.endPoint}api/home.json`)
             .then((response) =>
             {
                 return response.json();

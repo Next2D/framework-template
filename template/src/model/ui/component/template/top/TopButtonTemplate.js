@@ -1,6 +1,8 @@
 import { ButtonComponent } from "@/model/ui/component/atom/ButtonComponent";
 import { TopButtonMouseUpEvent } from "@/model/domain/event/top/TopButtonMouseUpEvent";
 import { TextComponent } from "@/model/ui/component/atom/TextComponent";
+import { config } from "@/config/Config";
+import { response } from "@next2d/framework";
 
 /**
  * @class
@@ -43,16 +45,13 @@ export class TopButtonTemplate
             this._$buttonComponentMouseUpEvent.execute();
         });
 
-        const { TextFieldAutoSize } = next2d.text;
-
         const textField = TextComponent.factory(
-            next2d.fw.response.get("TopText").word,
+            response.get("TopText").word,
             {
-                "autoSize": TextFieldAutoSize.CENTER
+                "autoSize": "center"
             }
         );
 
-        const config = next2d.fw.config;
         textField.x = config.stage.width / 2 - textField.width / 2;
         textField.y = top_content.y + top_content.height / 2 + textField.height;
 

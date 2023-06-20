@@ -1,3 +1,6 @@
+import { config } from "@/config/Config";
+import { context } from "@next2d/framework";
+
 /**
  * @class
  */
@@ -11,13 +14,12 @@ export class Background
     {
         if (!Background.shape) {
 
-            const { Shape, GradientType } = next2d.display;
+            const { Shape }  = next2d.display;
             const { Matrix } = next2d.geom;
 
             const shape = new Shape();
             shape.name = "background";
 
-            const config = next2d.fw.config;
             const width  = config.stage.width;
             const height = config.stage.height;
 
@@ -27,7 +29,7 @@ export class Background
             shape
                 .graphics
                 .beginGradientFill(
-                    GradientType.LINEAR,
+                    "linear",
                     ["#1461A0", "#ffffff"],
                     [0.6, 1],
                     [0, 255],
@@ -48,7 +50,6 @@ export class Background
     {
         const { Event } = next2d.events;
 
-        const context = next2d.fw.context;
         const stage = context.root.stage;
         if (!stage.hasEventListener(Event.RESIZE)) {
             stage.addEventListener(Event.RESIZE, () =>
@@ -66,9 +67,6 @@ export class Background
      */
     _$createShape ()
     {
-        const config  = next2d.fw.config;
-        const context = next2d.fw.context;
-
         const view = context.view;
         if (!view) {
             return ;
