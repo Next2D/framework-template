@@ -51,8 +51,13 @@ It may be a good idea to create a `service` directory to be responsible for acce
 #### Example of cooperation with NoCode Tool
 
 `namespace`にNoCode Toolのシンボルに設定した名前を追記する事で動的生成が可能になります。  
-Dynamic generation is enabled by appending the name set for the NoCode Tool symbol in the `namespace` field.  
-
+継承先は、`MovieClipContent`,`TextFieldContent`,`VideoContent`,`ShapeContent`が選択できます。  
+シンボルの元となるDisplayObjectに合わせて継承を行ってください。  
+  
+Dynamic generation is enabled by appending the name set in the NoCode Tool symbol to `namespace`.  
+You can select `MovieClipContent`, `TextFieldContent`, `VideoContent`, or `ShapeContent` as the inheritance destination.  
+Inherit according to the DisplayObject that is the source of the symbol.
+  
 ```javascript
 import { MovieClipContent } from "@next2d/framework";
 
