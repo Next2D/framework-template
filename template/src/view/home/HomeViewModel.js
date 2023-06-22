@@ -1,6 +1,6 @@
 import { ViewModel } from "@next2d/framework";
-import {HomeButtonTemplate} from "@/model/ui/component/template/home/HomeButtonTemplate";
-import {HomeTextTemplate} from "@/model/ui/component/template/home/HomeTextTemplate";
+import { HomeButtonTemplate } from "@/model/ui/component/template/home/HomeButtonTemplate";
+import { HomeTextTemplate } from "@/model/ui/component/template/home/HomeTextTemplate";
 
 /**
  * @class
