@@ -17,8 +17,6 @@
     "generate": "npx @next2d/view-generator"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
-    "@babel/preset-env": "^7.21.5",
     "@capacitor/android": "^5.0.3",
     "@capacitor/cli": "^5.0.3",
     "@capacitor/core": "^5.0.3",
