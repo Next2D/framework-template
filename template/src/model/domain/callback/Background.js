@@ -44,6 +44,7 @@ export class Background
 
     /**
      * @return {void}
+     * @method
      * @public
      */
     execute ()
@@ -63,6 +64,7 @@ export class Background
 
     /**
      * @return {void}
+     * @method
      * @private
      */
     _$createShape ()
