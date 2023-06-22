@@ -10,7 +10,8 @@ export class HomeViewModel extends ViewModel
 {
     /**
      * @param  {next2d.fw.View} view
-     * @return {Promise|void}
+     * @return {Promise}
+     * @method
      * @public
      */
     bind (view)

@@ -11,6 +11,7 @@ export class TopViewModel extends ViewModel
     /**
      * @param  {View} view
      * @return {Promise}
+     * @method
      * @public
      */
     bind (view)

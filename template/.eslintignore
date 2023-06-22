@@ -1,2 +1,3 @@
 **/node_modules/*
 src/Packages.js
+src/config/Config.js
