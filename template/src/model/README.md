@@ -54,12 +54,14 @@ It may be a good idea to create a `service` directory to be responsible for acce
 Dynamic generation is enabled by appending the name set for the NoCode Tool symbol in the `namespace` field.  
 
 ```javascript
+import { MovieClipContent } from "@next2d/framework";
+
 /**
  * @see file/sample.n2d
  * @class
- * @extends {next2d.fw.Context}
+ * @extends {MovieClipContent}
  */
-export class TopContent extends next2d.fw.Content
+export class TopContent extends MovieClipContent
 {
     /**
      * @return {string}
