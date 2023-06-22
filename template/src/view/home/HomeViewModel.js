@@ -1,6 +1,6 @@
-import { HomeButtonTemplate } from "@/model/ui/component/template/home/HomeButtonTemplate";
-import { HomeTextTemplate } from "@/model/ui/component/template/home/HomeTextTemplate";
 import { ViewModel } from "@next2d/framework";
+import {HomeButtonTemplate} from "@/model/ui/component/template/home/HomeButtonTemplate";
+import {HomeTextTemplate} from "@/model/ui/component/template/home/HomeTextTemplate";
 
 /**
  * @class
@@ -9,7 +9,18 @@ import { ViewModel } from "@next2d/framework";
 export class HomeViewModel extends ViewModel
 {
     /**
-     * @param  {next2d.fw.View} view
+     * @param  {View} view
+     * @return {void}
+     * @method
+     * @public
+     */
+    unbind (view)
+    {
+        console.log(view);
+    }
+
+    /**
+     * @param  {View} view
      * @return {Promise}
      * @method
      * @public

@@ -33,18 +33,20 @@ npm run generate
 ```
 
 ## View Class
-メインコンテキストにアタッチされるコンテナの役割を担うのがViewクラスです。\
-その為、記述は至ってシンプルで、routing.jsonで設定した値のキャメルケースでファイルを作成し、next2d.fw.Viewを継承するのが基本のスタイルです。\
-特殊な要件がない限り、Viewでロジックを組む事はありません。
-
+メインコンテキストにアタッチされるコンテナの役割を担うのがViewクラスです。  
+その為、記述は至ってシンプルで、routing.jsonで設定した値のキャメルケースでファイルを作成し、`View`クラスを継承するのが基本のスタイルです。  
+特殊な要件がない限り、Viewでロジックを組む事はありません。  
+  
 The View class plays the role of a container attached to the main context.  
-Therefore, the description is quite simple. The basic style is to create a file with a camelCase of values set in routing.json and inherit from next2d.fw.View.  
-Unless there are special requirements, there is no logic in the View.  
-
+Therefore, the description is quite simple. The basic style is to create a file with a camelCase of values set in routing.json and inherit from the `View` class.  
+Unless there are special requirements, we do not build logic in View.  
+  
 ### View class source
 
 ```javascript
-export class TopView extends next2d.fw.View
+import { View } from "@next2d/framework";
+
+export class TopView extends View
 {
     /**
      * @constructor
@@ -69,25 +71,27 @@ It is recommended that the ViewModel only allow access to model/ui/component/tem
 ### ViewModel class source
 
 ```javascript
+import { ViewModel } from "@next2d/framework";
 import { TopContentTemplate } from "@/model/ui/component/template/top/TopContentTemplate";
 import { TopButtonTemplate } from "@/model/ui/component/template/top/TopButtonTemplate";
 
 /**
  * @class
- * @extends {next2d.fw.ViewModel}
+ * @extends {ViewModel}
  */
-export class TopViewModel extends next2d.fw.ViewModel
+export class TopViewModel extends ViewModel
 {
     /**
-     * @param  {next2d.fw.View} view
+     * @param  {View} view
      * @return {Promise}
+     * @method
      * @public
      */
     bind (view)
     {
         return this
-            .factory()
-            .then(() =>
+            .factory(view)
+            .then((view) =>
             {
                 /**
                  * ロゴアニメーションをNoCodeToolのJSONから生成
@@ -106,8 +110,9 @@ export class TopViewModel extends next2d.fw.ViewModel
     }
 
     /**
-     * @param  {next2d.fw.View} view
+     * @param  {View} view
      * @return {void}
+     * @method
      * @public
      */
     unbind (view)

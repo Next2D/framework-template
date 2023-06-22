@@ -17,12 +17,12 @@ JSON file for setting the display area.
 
 ### Stage Option settings
 
-| name         | value    | default | description                                                                                                                                                                                                              |
-|--------------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `base`       | string   | "."     | 相対パスでJSONを取得する場合、ここで設定したURLがrootとして適用されます。絶対パスの場合はここで設定したURLは適用されません。 <br> When acquiring JSON by relative path, the URL set here will be applied as the root. For absolute paths, the URL set here will not be applied. |
-| `fullScreen` | boolean  | true    | Stageクラスで設定した幅と高さを超えて画面全体に描画されます。 <br> It will be drawn on the entire screen beyond the width and height set in the Stage class.                                                                                         |
-| `tagId`      | string   | null    | IDを指定すると、指定したIDのエレメント内で描画を行います。 <br> When an ID is specified, drawing will be performed within the element with the specified ID.                                                                                        |
-| `bgColor`    | array    | null    | 背景色の[R,G,B,A]の配列は0～255で指定できます。falseは無色透明です。 <br> The [R,G,B,A] array of background colors can be specified from 0 to 255. false is colorless and transparent.                                                            |
+| name         | value    | default        | description                                                                                                                                                                                                              |
+|--------------|----------|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `base`       | string   | "."            | 相対パスでJSONを取得する場合、ここで設定したURLがrootとして適用されます。絶対パスの場合はここで設定したURLは適用されません。 <br> When acquiring JSON by relative path, the URL set here will be applied as the root. For absolute paths, the URL set here will not be applied. |
+| `fullScreen` | boolean  | true           | Stageクラスで設定した幅と高さを超えて画面全体に描画されます。 <br> It will be drawn on the entire screen beyond the width and height set in the Stage class.                                                                                         |
+| `tagId`      | string   | null           | IDを指定すると、指定したIDのエレメント内で描画を行います。 <br> When an ID is specified, drawing will be performed within the element with the specified ID.                                                                                        |
+| `bgColor`    | string   | "transparent"  | 背景色を16進数で指定できます。デフォルトは無色透明です。 <br> You can specify a background color in hexadecimal. The default is colorless.                                                                                                          |
 
 ## config.json
 
@@ -84,10 +84,10 @@ Context is set to the QuestListView class.
 
 ## Second level property settings
 
-| name        | value    | default | description                                                                                                                                                                                                                               |
-|-------------|----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `private`   | boolean  | false   | SPAモードでも直接のアクセスを制御した時に利用します。trueに設定し直接アクセスすると、TopViewが読み込まれます。 <br> This is used when direct access is controlled even in SPA mode; if set to true and direct access is made, TopView will be loaded.                                     |
-| `requests`  | array    | null    | Viewにアクセスする前に、指定した先にリクエストを送信します。受け取った情報は、nameをキーにnext2d.fw.responseにセットされます。 <br> Before accessing the View, a request is sent to the specified destination. The information received is set in next2d.fw.response with name as the key.　 |
+| name        | value    | default | description                                                                                                                                                                                                               |
+|-------------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `private`   | boolean  | false   | SPAモードでも直接のアクセスを制御した時に利用します。trueに設定し直接アクセスすると、TopViewが読み込まれます。 <br> This is used when direct access is controlled even in SPA mode; if set to true and direct access is made, TopView will be loaded.                     |
+| `requests`  | array    | null    | Viewにアクセスする前に、指定した先にリクエストを送信します。受け取った情報は、nameをキーに`response`にセットされます。 <br> Before accessing the View, a request is sent to the specified destination. The information received is set in `response` with name as the key.  |
 
 
 ### requests
@@ -100,7 +100,7 @@ The following items are available for setting up the requests array
 |------------|-----------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `type`     | string          | content  | `json`、`content`、`custom`の固定値が利用可能です。 <br> Fixed values for `json`, `content`, and `custom` are available.                                                                                                                                                                           |
 | `path`     | string          | empty    | `{{***}}`で囲むと、`config.json`の変数を取得できます。例）{{ api.endPoint }}path/to/api <br> Enclose the variables in `{{***}}` to get the variables in `config.json`. Example: {{ api.endPoint }}path/to/api                                                                                          |
-| `name`     | string          | empty    | `name`を設定すると、設定した値をキーとして`next2d.fw.response`にセットされます。画面遷移すると前の画面で取得した`response`データは初期化されます。 <br> When `name` is set, the set value is set to `next2d.fw.response` as a key. When the screen transitions, the `response` data acquired on the previous screen is initialized.         |
+| `name`     | string          | empty    | `name`を設定すると、設定した値をキーとして`response`にセットされます。画面遷移すると前の画面で取得した`response`データは初期化されます。 <br> When `name` is set, the set value is set to `response` as a key. When the screen transitions, the `response` data acquired on the previous screen is initialized.                             |
 | `cache`    | boolean         | false    | `name`で設定した値をキーにして、取得したデータをキャッシュします。キャッシュしたデータは画面遷移しても初期化される事はありません。 <br> Cache the retrieved data using the value set in `name` as a key. Cached data will not be initialized after a screen transition.                                                                            |
 | `callback` | string or array | null     | リクエスト完了後にコールバックするクラスを指定することができます。コントラクターを起動後、取得した値を第一引数にセットし、`execute`関数がコールされます。 <br> You can specify a class to be called back after the request is completed. After invoking the contractor, the `execute` function is called with the retrieved value set as the first argument. |
 | `class`    | string          | empty    | リクエストを実行するクラスを指定することができます。(typeがcustomのときのみ呼び出されます。） <br> You can specify a class to execute the request. (This is only called when type is custom.)                                                                                                                                 |

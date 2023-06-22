@@ -1,6 +1,6 @@
+import { ViewModel } from "@next2d/framework";
 import { TopContentTemplate } from "@/model/ui/component/template/top/TopContentTemplate";
 import { TopButtonTemplate } from "@/model/ui/component/template/top/TopButtonTemplate";
-import { ViewModel } from "@next2d/framework";
 
 /**
  * @class
@@ -8,6 +8,17 @@ import { ViewModel } from "@next2d/framework";
  */
 export class TopViewModel extends ViewModel
 {
+    /**
+     * @param  {View} view
+     * @return {void}
+     * @method
+     * @public
+     */
+    unbind (view)
+    {
+        console.log(view);
+    }
+
     /**
      * @param  {View} view
      * @return {Promise}
