@@ -18,6 +18,7 @@ export class App extends Application
 
     /**
      * @return {void}
+     * @method
      * @public
      */
     initialize ()

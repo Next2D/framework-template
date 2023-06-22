@@ -1,14 +1,16 @@
-import { Content } from "@next2d/framework";
+import { MovieClipContent } from "@next2d/framework";
 
 /**
  * @see file/sample.n2d
  * @class
- * @extends {Content}
+ * @extends {MovieClipContent}
  */
-export class HomeContent extends Content
+export class HomeContent extends MovieClipContent
 {
     /**
      * @return {string}
+     * @readonly
+     * @public
      */
     get namespace ()
     {
