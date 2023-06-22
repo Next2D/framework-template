@@ -1,7 +1,11 @@
 {
   "package": {
     "dependencies": {
-      "@typescript-eslint/parser": "*"
+      "@babel/core": "*",
+      "@babel/preset-env": "*",
+      "@typescript-eslint/parser": "*",
+      "eslint": "*",
+      "eslint-webpack-plugin": "*"
     }
   }
 }
