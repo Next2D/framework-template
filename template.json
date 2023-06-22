@@ -1,5 +1,7 @@
 {
   "package": {
-    "dependencies": {}
+    "dependencies": {
+      "@typescript-eslint/parser": "*"
+    }
   }
 }

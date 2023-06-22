@@ -26,6 +26,7 @@
     "@next2d/env": "*",
     "@next2d/framework": "*",
     "@next2d/webpack-auto-loader-plugin": "*",
+    "@typescript-eslint/parser": "^5.60.0",
     "electron": "^24.3.1",
     "eslint": "^8.41.0",
     "eslint-webpack-plugin": "^4.0.1",
