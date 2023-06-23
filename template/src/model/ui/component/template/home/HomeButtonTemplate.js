@@ -29,7 +29,7 @@ export class HomeButtonTemplate
     }
 
     /**
-     * @return {Sprite}
+     * @return {HomeContent}
      * @method
      * @public
      */

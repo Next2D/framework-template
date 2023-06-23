@@ -44,6 +44,8 @@ export class HomeViewModel extends ViewModel
                  */
                 const homeTextField = new HomeTextTemplate().factory(homeContent);
                 view.addChild(homeTextField);
+
+                return Promise.resolve(view);
             });
     }
 }
