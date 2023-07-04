@@ -44,6 +44,8 @@ export class TopViewModel extends ViewModel
                  */
                 const button = new TopButtonTemplate().factory(topContent);
                 view.addChild(button);
+
+                return Promise.resolve(view);
             });
     }
 }
