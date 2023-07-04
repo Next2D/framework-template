@@ -1,24 +1,36 @@
 "use strict";
 
+import "@next2d/framework";
+
 import { App } from "@/App";
 import { config } from "@/config/Config";
 import { packages } from "@/Packages";
 
-export let app = null;
+const app = new App(config, packages);
 if (document.readyState === "loading") {
 
     const initialize = (event) =>
     {
         event.target.removeEventListener("DOMContentLoaded", initialize);
-        app = new App(config, packages);
-        app.gotoView();
+        app
+            .run()
+            .then(() =>
+            {
+                app.gotoView();
+            });
     };
 
     window.addEventListener("DOMContentLoaded", initialize);
 
 } else {
 
-    app = new App(config, packages);
-    app.gotoView();
+    app
+        .run()
+        .then(() =>
+        {
+            app.gotoView();
+        });
 
 }
+
+export { app };
