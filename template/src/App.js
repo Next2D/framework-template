@@ -15,14 +15,4 @@ export class App extends Application
     {
         super(config, packages);
     }
-
-    /**
-     * @return {void}
-     * @method
-     * @public
-     */
-    initialize ()
-    {
-        // initial processing
-    }
 }
