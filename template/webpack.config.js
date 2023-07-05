@@ -1,5 +1,5 @@
 const path = require("path");
-const env = require("@next2d/env");
+const env  = require("@next2d/env");
 
 const ESLintPlugin = require("eslint-webpack-plugin");
 const Next2DWebpackAutoLoaderPlugin = require("@next2d/webpack-auto-loader-plugin");
@@ -27,7 +27,7 @@ module.exports = {
     },
     "plugins": [
         // If you use eslint, please uncomment it.
-        // new ESLintPlugin(),
+        new ESLintPlugin(),
         new Next2DWebpackAutoLoaderPlugin(object, { "LICENSE": false })
     ],
     "devServer": {
