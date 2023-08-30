@@ -1,3 +1,5 @@
+import { TextField } from "@next2d/display";
+
 /**
  * @class
  */
@@ -13,8 +15,6 @@ export class TextComponent
      */
     static factory (text = "", props = null, format = null)
     {
-        const { TextField } = next2d.text;
-
         const textField = new TextField();
 
         if (props) {
@@ -33,24 +33,28 @@ export class TextComponent
         }
 
         if (format) {
-
-            const textFormat = textField.defaultTextFormat;
-
             const keys = Object.keys(format);
-            for (let idx = 0; idx < keys.length; idx++) {
+            if (keys.length) {
+                const textFormat = textField.defaultTextFormat;
 
-                const name = keys[idx];
+                for (let idx = 0; idx < keys.length; idx++) {
 
-                if (!(name in textFormat)) {
-                    continue;
+                    const name = keys[idx];
+
+                    if (!(name in textFormat)) {
+                        continue;
+                    }
+
+                    textFormat[name] = format[name];
                 }
 
-                textFormat[name] = format[name];
+                textField.defaultTextFormat = textFormat;
             }
         }
 
         textField.text = text;
 
+        console.log(textField);
         return textField;
     }
 }
