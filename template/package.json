@@ -17,18 +17,18 @@
     "generate": "npx @next2d/view-generator"
   },
   "devDependencies": {
-    "@capacitor/android": "^5.1.0",
-    "@capacitor/cli": "^5.1.0",
-    "@capacitor/core": "^5.1.0",
-    "@capacitor/ios": "^5.1.0",
+    "@capacitor/android": "^5.3.0",
+    "@capacitor/cli": "^5.3.0",
+    "@capacitor/core": "^5.3.0",
+    "@capacitor/ios": "^5.3.0",
     "@next2d/env": "^1.1.1",
-    "@next2d/framework": "^1.5.12",
+    "@next2d/framework": "^1.6.2",
     "@next2d/webpack-auto-loader-plugin": "^1.6.4",
-    "@typescript-eslint/parser": "^5.61.0",
-    "electron": "^25.2.0",
-    "eslint": "^8.44.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "electron": "^26.1.0",
+    "eslint": "^8.48.0",
     "eslint-webpack-plugin": "^4.0.1",
-    "webpack": "^5.88.1",
+    "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   }
