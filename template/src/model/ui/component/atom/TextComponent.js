@@ -9,7 +9,7 @@ export class TextComponent
      * @param  {string} text
      * @param  {object} [props=null]
      * @param  {object} [format=null]
-     * @return {next2d.text.TextField}
+     * @return {TextField}
      * @method
      * @static
      */
@@ -54,7 +54,6 @@ export class TextComponent
 
         textField.text = text;
 
-        console.log(textField);
         return textField;
     }
 }
