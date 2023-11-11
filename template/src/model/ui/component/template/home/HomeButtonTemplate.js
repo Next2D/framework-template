@@ -1,59 +1,31 @@
+// @ts-ignore
+import { config } from "@/config/Config";
 import { ButtonComponent } from "@/model/ui/component/atom/ButtonComponent";
 import { HomeContent } from "@/model/application/content/HomeContent";
-import { HomeButtonMouseDownEvent } from "@/model/domain/event/home/HomeButtonMouseDownEvent";
-import { HomeButtonMouseUpEvent } from "@/model/domain/event/home/HomeButtonMouseUpEvent";
-import { config } from "@/config/Config";
+import { execute as homeButtonMouseDownEvent } from "@/model/domain/event/home/HomeButtonMouseDownEvent";
+import { execute as homeButtonMouseUpEvent } from "@/model/domain/event/home/HomeButtonMouseUpEvent";
+import { MouseEvent } from "@next2d/events";
 
 /**
- * @class
+ * @description Home画面のキャラクターを生成
+ *              Generate characters for the Home screen
+ *
+ * @return {HomeContent}
+ * @method
+ * @public
  */
-export class HomeButtonTemplate
+export const execute = () =>
 {
-    /**
-     * @constructor
-     * @public
-     */
-    constructor ()
-    {
-        /**
-         * @type {HomeButtonMouseDownEvent}
-         * @private
-         */
-        this._$homeButtonMouseDownEvent = new HomeButtonMouseDownEvent();
+    const homeContent = ButtonComponent.factory(new HomeContent());
 
-        /**
-         * @type {HomeButtonMouseUpEvent}
-         * @private
-         */
-        this._$homeButtonMouseUpEvent = new HomeButtonMouseUpEvent();
-    }
+    homeContent.x = config.stage.width  / 2 - 4;
+    homeContent.y = config.stage.height / 2;
 
-    /**
-     * @return {HomeContent}
-     * @method
-     * @public
-     */
-    factory ()
-    {
-        const homeContent = ButtonComponent.factory(new HomeContent());
+    homeContent.scaleX = 2;
+    homeContent.scaleY = 2;
 
-        homeContent.x = config.stage.width  / 2 - 4;
-        homeContent.y = config.stage.height / 2;
+    homeContent.addEventListener(MouseEvent.MOUSE_DOWN, homeButtonMouseDownEvent);
+    homeContent.addEventListener(MouseEvent.MOUSE_UP, homeButtonMouseUpEvent);
 
-        homeContent.scaleX = 2;
-        homeContent.scaleY = 2;
-
-        const { MouseEvent } = next2d.events;
-        homeContent.addEventListener(MouseEvent.MOUSE_DOWN, (event) =>
-        {
-            this._$homeButtonMouseDownEvent.execute(event);
-        });
-
-        homeContent.addEventListener(MouseEvent.MOUSE_UP, (event) =>
-        {
-            this._$homeButtonMouseUpEvent.execute(event);
-        });
-
-        return homeContent;
-    }
-}
+    return homeContent;
+};

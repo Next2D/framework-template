@@ -1,6 +1,6 @@
 import { ViewModel } from "@next2d/framework";
-import { HomeButtonTemplate } from "@/model/ui/component/template/home/HomeButtonTemplate";
-import { HomeTextTemplate } from "@/model/ui/component/template/home/HomeTextTemplate";
+import { execute as homeButtonTemplate } from "@/model/ui/component/template/home/HomeButtonTemplate";
+import { execute as homeTextTemplate } from "@/model/ui/component/template/home/HomeTextTemplate";
 
 /**
  * @class
@@ -35,14 +35,14 @@ export class HomeViewModel extends ViewModel
                  * アニメーションをNoCodeToolのJSONから生成
                  * Generate animation from NoCodeTool's JSON
                  */
-                const homeContent = new HomeButtonTemplate().factory();
+                const homeContent = homeButtonTemplate();
                 view.addChild(homeContent);
 
                 /**
                  * Hello, Worldのテキストを生成
                  * Generate Hello, World text
                  */
-                const homeTextField = new HomeTextTemplate().factory(homeContent);
+                const homeTextField = homeTextTemplate(homeContent);
                 view.addChild(homeTextField);
 
                 return Promise.resolve(view);
