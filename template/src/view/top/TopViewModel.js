@@ -1,4 +1,4 @@
-import { View, ViewModel } from "@next2d/framework";
+import { ViewModel } from "@next2d/framework";
 import { execute as topContentTemplate } from "@/model/ui/component/template/top/TopContentTemplate";
 import { execute as topButtonTemplate } from "@/model/ui/component/template/top/TopButtonTemplate";
 
