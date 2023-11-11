@@ -1,3 +1,5 @@
+import { MovieClip } from "@next2d/display";
+
 /**
  * @class
  */
@@ -10,8 +12,6 @@ export class ButtonComponent
      */
     static factory (content = null)
     {
-        const { MovieClip } = next2d.display;
-
         const button = content || new MovieClip();
         button.buttonMode = true;
 
