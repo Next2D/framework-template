@@ -1,6 +1,6 @@
-import { ViewModel } from "@next2d/framework";
-import { TopContentTemplate } from "@/model/ui/component/template/top/TopContentTemplate";
-import { TopButtonTemplate } from "@/model/ui/component/template/top/TopButtonTemplate";
+import { View, ViewModel } from "@next2d/framework";
+import { execute as topContentTemplate } from "@/model/ui/component/template/top/TopContentTemplate";
+import { execute as topButtonTemplate } from "@/model/ui/component/template/top/TopButtonTemplate";
 
 /**
  * @class
@@ -32,17 +32,17 @@ export class TopViewModel extends ViewModel
             .then((view) =>
             {
                 /**
-                 * ロゴアニメーションをNoCodeToolのJSONから生成
-                 * Logo animation generated from NoCodeTool's JSON
+                 * ロゴアニメーションをAnimation ToolのJSONから生成
+                 * Logo animation generated from Animation Tool JSON
                  */
-                const topContent = new TopContentTemplate().factory();
-                view.addChild(topContent);
+                const topContent = topContentTemplate();
+                view.addChild(topContentTemplate());
 
                 /**
                  * ボタンエリアを生成
                  * Generate button area
                  */
-                const button = new TopButtonTemplate().factory(topContent);
+                const button = topButtonTemplate(topContent);
                 view.addChild(button);
 
                 return Promise.resolve(view);

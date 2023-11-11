@@ -1,5 +1,72 @@
+// @ts-ignore
 import { config } from "@/config/Config";
 import { context } from "@next2d/framework";
+import { Shape } from "@next2d/display";
+import { Event } from "@next2d/events";
+import { Matrix } from "@next2d/geom";
+import { $currentPlayer } from "@next2d/util";
+
+const shape = new Shape();
+shape.name = "background";
+
+/**
+ * @description 背景のグラデーション描画をセット
+ *              Set background gradient drawing
+ *
+ * @return {void}
+ * @method
+ * @private
+ */
+const drawGradient = () =>
+{
+    const width  = config.stage.width;
+    const height = config.stage.height;
+
+    const matrix = new Matrix();
+    matrix.createGradientBox(width, height, Math.PI / 2);
+
+    shape
+        .graphics
+        .clear()
+        .beginGradientFill(
+            "linear",
+            ["#1461A0", "#ffffff"],
+            [0.6, 1],
+            [0, 255],
+            matrix
+        )
+        .drawRect(0, 0, width, height)
+        .endFill();
+};
+
+/**
+ * @description 表示範囲に合わせてShapeを拡大・縮小
+ *              Scale the shape to fit the display area
+ *
+ * @return {void}
+ * @method
+ * @private
+ */
+const changeScale = () =>
+{
+    const width  = config.stage.width;
+    const height = config.stage.height;
+    const player = $currentPlayer();
+
+    const tx = player.x;
+    if (tx) {
+        const scaleX = player.scaleX;
+        shape.scaleX = (width + tx * 2 / scaleX) / width;
+        shape.x = -tx / scaleX;
+    }
+
+    const ty = player.y;
+    if (ty) {
+        const scaleY = player.scaleY;
+        shape.scaleY = (height + ty * 2 / scaleY) / height;
+        shape.y = -ty / scaleY;
+    }
+};
 
 /**
  * @class
@@ -7,103 +74,33 @@ import { context } from "@next2d/framework";
 export class Background
 {
     /**
-     * @constructor
-     * @public
-     */
-    constructor ()
-    {
-        if (!Background.shape) {
-
-            const { Shape }  = next2d.display;
-            const { Matrix } = next2d.geom;
-
-            const shape = new Shape();
-            shape.name = "background";
-
-            const width  = config.stage.width;
-            const height = config.stage.height;
-
-            const matrix = new Matrix();
-            matrix.createGradientBox(width, height, Math.PI / 2);
-
-            shape
-                .graphics
-                .beginGradientFill(
-                    "linear",
-                    ["#1461A0", "#ffffff"],
-                    [0.6, 1],
-                    [0, 255],
-                    matrix
-                )
-                .drawRect(0, 0, width, height)
-                .endFill();
-
-            Background.shape = shape;
-        }
-    }
-
-    /**
+     * @description 背景のShapeを表示されるviewにセット
+     *              Set the background shape to the view to be displayed
+     *
      * @return {void}
      * @method
      * @public
      */
     execute ()
     {
-        const { Event } = next2d.events;
-
-        const stage = context.root.stage;
-        if (!stage.hasEventListener(Event.RESIZE)) {
-            stage.addEventListener(Event.RESIZE, () =>
-            {
-                this._$createShape();
-            });
-        }
-
-        this._$createShape();
-    }
-
-    /**
-     * @return {void}
-     * @method
-     * @private
-     */
-    _$createShape ()
-    {
         const view = context.view;
         if (!view) {
             return ;
         }
 
-        const root   = context.root;
-        const width  = config.stage.width;
-        const height = config.stage.height;
-
-        let shape = view.getChildByName("background");
-        if (!shape) {
-            shape = view.addChildAt(Background.shape, 0);
+        const stage = context.root.stage;
+        if (stage && !stage.hasEventListener(Event.RESIZE)) {
+            stage.addEventListener(Event.RESIZE, () =>
+            {
+                changeScale();
+            });
         }
 
-        const player = root.stage.player;
-
-        const tx = player.x;
-        if (tx) {
-            const scaleX = player.scaleX;
-            shape.scaleX = (width + tx * 2 / scaleX) / width;
-            shape.x = -tx / scaleX;
+        if (config.stage.width !== shape.width) {
+            drawGradient();
+            changeScale();
         }
 
-        const ty = player.y;
-        if (ty) {
-            const scaleY = player.scaleY;
-            shape.scaleY = (height + ty * 2 / scaleY) / height;
-            shape.y = -ty / scaleY;
-        }
+        view.addChildAt(shape, 0);
     }
 }
-
-/**
- * @type {next2d.display.Shape}
- * @default null
- * @static
- */
-Background.shape = null;

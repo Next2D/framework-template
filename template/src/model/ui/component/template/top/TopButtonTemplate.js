@@ -1,62 +1,41 @@
-import { ButtonComponent } from "@/model/ui/component/atom/ButtonComponent";
-import { TopButtonMouseUpEvent } from "@/model/domain/event/top/TopButtonMouseUpEvent";
-import { TextComponent } from "@/model/ui/component/atom/TextComponent";
+// @ts-ignore
 import { config } from "@/config/Config";
+import { ButtonComponent } from "@/model/ui/component/atom/ButtonComponent";
+import { execute as topButtonMouseUpEvent } from "@/model/domain/event/top/TopButtonMouseUpEvent";
+import { execute as textComponent } from "@/model/ui/component/atom/TextComponent";
 import { response } from "@next2d/framework";
+import { MouseEvent } from "@next2d/events";
 
 /**
- * @class
+ * @description Topページのボタンを生成
+ *              Generate Top page button
+ *
+ * @return {MovieClip}
+ * @method
+ * @public
  */
-export class TopButtonTemplate
+export const execute = (top_content) =>
 {
-    /**
-     * @constructor
-     * @public
-     */
-    constructor ()
-    {
-        /**
-         * @type {TopButtonMouseUpEvent}
-         * @private
-         */
-        this._$buttonComponentMouseUpEvent = new TopButtonMouseUpEvent();
-    }
+    const button = ButtonComponent.factory();
 
     /**
-     * @param  {TopContent} top_content
-     * @return {Sprite}
-     * @method
-     * @public
+     * @see domain/event/top/TopButtonMouseUpEvent.js
+     * ドメイン層から専用のイベントを起動
+     * Launch dedicated events from the domain layer
      */
-    factory (top_content)
-    {
-        const button   = ButtonComponent.factory();
-        button.name    = "button";
-        button.visible = false;
+    button.addEventListener(MouseEvent.MOUSE_UP, topButtonMouseUpEvent);
 
-        const { MouseEvent } = next2d.events;
-        button.addEventListener(MouseEvent.MOUSE_UP, () =>
+    const textField = textComponent(
+        response.get("TopText").word,
         {
-            /**
-             * @see domain/event/top/TopButtonMouseUpEvent.js
-             * ドメイン層から専用のイベントを起動
-             * Launch dedicated events from the domain layer
-             */
-            this._$buttonComponentMouseUpEvent.execute();
-        });
+            "autoSize": "center"
+        }
+    );
 
-        const textField = TextComponent.factory(
-            response.get("TopText").word,
-            {
-                "autoSize": "center"
-            }
-        );
+    textField.x = config.stage.width / 2 - textField.width / 2;
+    textField.y = top_content.y + top_content.height / 2 + textField.height;
 
-        textField.x = config.stage.width / 2 - textField.width / 2;
-        textField.y = top_content.y + top_content.height / 2 + textField.height;
+    button.addChild(textField);
 
-        button.addChild(textField);
-
-        return button;
-    }
-}
+    return button;
+};

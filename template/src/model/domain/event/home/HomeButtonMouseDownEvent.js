@@ -1,16 +1,13 @@
 /**
- * @class
+ * @description Home画面のキャラクターの移動開始処理
+ *              Processes the start of character movement on the Home screen.
+ * 
+ * @return {void}
+ * @method
+ * @public
  */
-export class HomeButtonMouseDownEvent
+export const execute = (event) =>
 {
-    /**
-     * @param  {next2d.events.Event} event
-     * @return {void}
-     * @method
-     * @public
-     */
-    execute (event)
-    {
-        event.currentTarget.startDrag();
-    }
-}
+    const sprite = event.currentTarget;
+    sprite.startDrag();
+};
