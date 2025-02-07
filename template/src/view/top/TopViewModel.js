@@ -10,13 +10,13 @@ export class TopViewModel extends ViewModel
 {
     /**
      * @param  {View} view
-     * @return {void}
+     * @return {Promise<View>}
      * @method
      * @public
      */
-    unbind (view)
+    async unbind (view)
     {
-        console.log(view);
+        return super.unbind(view);
     }
 
     /**
@@ -25,27 +25,19 @@ export class TopViewModel extends ViewModel
      * @method
      * @public
      */
-    bind (view)
+    async bind (view)
     {
-        return this
-            .factory(view)
-            .then((view) =>
-            {
-                /**
-                 * ロゴアニメーションをAnimation ToolのJSONから生成
-                 * Logo animation generated from Animation Tool JSON
-                 */
-                const topContent = topContentTemplate();
-                view.addChild(topContentTemplate());
+        /**
+         * ロゴアニメーションをAnimation ToolのJSONから生成
+         * Logo animation generated from Animation Tool JSON
+         */
+        const topContent = topContentTemplate();
+        view.addChild(topContentTemplate());
 
-                /**
-                 * ボタンエリアを生成
-                 * Generate button area
-                 */
-                const button = topButtonTemplate(topContent);
-                view.addChild(button);
-
-                return Promise.resolve(view);
-            });
+        /**
+         * ボタンエリアを生成
+         * Generate button area
+         */
+        view.addChild(topButtonTemplate(topContent));
     }
 }
