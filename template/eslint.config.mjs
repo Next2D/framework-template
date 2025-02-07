@@ -1,6 +1,4 @@
-import unusedImports from "eslint-plugin-unused-imports";
 import globals from "globals";
-import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -9,77 +7,58 @@ import { FlatCompat } from "@eslint/eslintrc";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-    "baseDirectory": __dirname,
-    "recommendedConfig": js.configs.recommended,
-    "allConfig": js.configs.all
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all
 });
 
-export default [{
-    "ignores": [
-        "**/node_modules/*",
-        "**/dist",
-        "**/build",
-        "**/json",
-        "**/@types",
-        "**/.github",
-        "**/*.test.ts"
-    ],
-}, ...compat.extends("plugin:@typescript-eslint/eslint-recommended"), {
-    "plugins": {
-        "unused-imports": unusedImports
-    },
-
-    "languageOptions": {
-        "globals": {
-            ...globals.browser
+export default [...compat.extends("eslint:recommended"), {
+    languageOptions: {
+        globals: {
+            ...globals.browser,
         },
 
-        "parser": tsParser,
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        ecmaVersion: "latest",
+        sourceType: "module",
     },
 
-    "rules": {
-        "no-unused-vars": "off",
-        "unused-imports/no-unused-imports": "error",
-
-        "unused-imports/no-unused-vars": ["warn", {
-            "vars": "all",
-            "varsIgnorePattern": "^_",
-            "args": "after-used",
-            "argsIgnorePattern": "^_"
-        }],
-
+    rules: {
         "no-var": "error",
 
-        "semi": ["error", "always", {
-            "omitLastInOneLineBlock": true
+        semi: ["error", "always", {
+            omitLastInOneLineBlock: true,
         }],
 
         "block-spacing": "error",
 
-        "indent": ["error", 4, {
-            "SwitchCase": 1
+        indent: ["error", 4, {
+            SwitchCase: 1,
         }],
 
         "no-mixed-spaces-and-tabs": "error",
 
         "no-multiple-empty-lines": ["error", {
-            "max": 1
+            max: 1,
         }],
 
         "no-trailing-spaces": "error",
         "space-infix-ops": "error",
         "dot-notation": "error",
-        "eqeqeq": "error",
-        "quotes": ["error", "double"],
+        eqeqeq: "error",
+        quotes: ["error", "double"],
         "no-else-return": "error",
         "no-loop-func": "error",
         "arrow-parens": "error",
         "arrow-spacing": "error",
         "no-undef": "off",
         "comma-dangle": "warn",
-        "no-use-before-define": "off",
+
+        "no-unused-vars": ["error", {
+            vars: "local",
+            args: "all",
+        }],
+
+        "no-use-before-define": "error",
         "no-const-assign": "error",
         "space-before-blocks": "error",
         "no-unexpected-multiline": "error",
@@ -87,10 +66,10 @@ export default [{
         "quote-props": ["error", "always"],
 
         "max-len": ["error", {
-            "code": 200,
-            "ignoreStrings": true,
-            "ignoreComments": true,
-            "ignoreTemplateLiterals": true
+            code: 200,
+            ignoreStrings: true,
+            ignoreComments: true,
+            ignoreTemplateLiterals: true,
         }],
 
         "no-debugger": "error",
@@ -106,7 +85,7 @@ export default [{
         "use-isnan": "error",
         "block-scoped-var": "error",
         "no-caller": "error",
-        "curly": "error",
+        curly: "error",
         "no-case-declarations": "error",
         "no-floating-decimal": "error",
         "no-eq-null": "error",
@@ -133,7 +112,6 @@ export default [{
         "no-dupe-args": "error",
         "no-extra-boolean-cast": "error",
         "no-obj-calls": "error",
-        "no-console": "off",
-        "no-extra-semi": "warn"
-    }
+        "no-extra-semi": "warn",
+    },
 }];
