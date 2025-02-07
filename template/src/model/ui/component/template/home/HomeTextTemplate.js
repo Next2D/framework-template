@@ -17,8 +17,7 @@ export const execute = (home_content) =>
     // Hello, World.
     const text = response.has("HomeText") ? response.get("HomeText").word : "";
     const textField = textComponent(text, {
-        "autoSize": "left",
-        "border": true,
+        "autoSize": "center",
         "type": "input"
     });
 

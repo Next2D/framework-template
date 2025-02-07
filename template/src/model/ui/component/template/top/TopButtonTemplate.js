@@ -19,7 +19,6 @@ export const execute = (top_content) =>
 
     const text = response.has("TopText") ? response.get("TopText").word : "";
     const textField = textComponent(text, {
-        "border": true,
         "autoSize": "center"
     });
 
