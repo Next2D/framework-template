@@ -1,20 +1,18 @@
 import { MovieClip } from "@next2d/display";
 
 /**
- * @class
+ * @description 指定したコンテンツをボタンモードに設定します。
+ *              Sets the specified content to button mode.
+ *
+ * @param  {MovieClip} content 
+ * @return {MovieClip|content}
+ * @method
+ * @public
  */
-export class ButtonComponent
+export const execute = (content) =>
 {
-    /**
-     * @param {Sprite} [content=null]
-     * @method
-     * @static
-     */
-    static factory (content = null)
-    {
-        const button = content || new MovieClip();
-        button.buttonMode = true;
+    const button = content || new MovieClip();
+    button.buttonMode = true;
 
-        return button;
-    }
+    return button;
 }

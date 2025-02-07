@@ -1,4 +1,3 @@
-// @ts-ignore
 import { config } from "@/config/Config";
 
 /**
@@ -10,16 +9,9 @@ export class HomeTextRepository
      * @return {Promise}
      * @static
      */
-    static get ()
+    static async get ()
     {
-        return fetch(`${config.api.endPoint}api/home.json`)
-            .then((response) =>
-            {
-                return response.json();
-            })
-            .catch((error) =>
-            {
-                console.error(error);
-            });
+        const response = await fetch(`${config.api.endPoint}api/home.json`);
+        return await response.json();
     }
 }

@@ -21,7 +21,7 @@ export class HomeViewModel extends ViewModel
 
     /**
      * @param  {View} view
-     * @return {Promise}
+     * @return {Promise<void>}
      * @method
      * @public
      */

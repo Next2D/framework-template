@@ -21,7 +21,7 @@ export class TopViewModel extends ViewModel
 
     /**
      * @param  {View} view
-     * @return {Promise}
+     * @return {Promise<void>}
      * @method
      * @public
      */
@@ -32,7 +32,7 @@ export class TopViewModel extends ViewModel
          * Logo animation generated from Animation Tool JSON
          */
         const topContent = topContentTemplate();
-        view.addChild(topContentTemplate());
+        view.addChild(topContent);
 
         /**
          * ボタンエリアを生成
