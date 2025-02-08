@@ -1,6 +1,7 @@
 import { config } from "@/config/Config";
 import { execute as textComponent } from "@/model/ui/component/atom/TextComponent";
 import { app } from "@next2d/framework";
+import { Event } from "@next2d/events";
 
 /**
  * @description Home画面のTextFieldを作成
@@ -19,6 +20,11 @@ export const execute = (home_content) =>
     const textField = textComponent(text, {
         "autoSize": "center",
         "type": "input"
+    });
+
+    textField.addEventListener(Event.INPUT, () =>
+    {
+        textField.x = config.stage.width / 2 - textField.width / 2;
     });
 
     textField.x = config.stage.width / 2 - textField.width / 2;
