@@ -1,29 +1,22 @@
 "use strict";
 
 import { app } from "@next2d/framework";
-// @ts-ignore
 import { config } from "@/config/Config";
-// @ts-ignore
 import { packages } from "@/Packages";
 
 /**
- * @return {void}
+ * @return {Promise<void>}
  * @method
  * @private
  */
-const boot = (event) =>
+const boot = async (event) =>
 {
     if (event && event.target) {
         event.target.removeEventListener("DOMContentLoaded", boot);
     }
 
-    app
-        .initialize(config, packages)
-        .run()
-        .then(() =>
-        {
-            app.gotoView();
-        });
+    await app.initialize(config, packages).run();
+    await app.gotoView();
 };
 
 if (document.readyState === "loading") {

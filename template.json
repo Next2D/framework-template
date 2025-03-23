@@ -1,7 +1,10 @@
 {
   "package": {
-    "dependencies": {
-      "eslint": "*"
+    "devDependencies": {
+      "eslint": "*",
+      "eslint-plugin-unused-imports": "*",
+      "@eslint/eslintrc": "*",
+      "@eslint/js": "*"
     }
   }
 }

@@ -10,42 +10,34 @@ export class HomeViewModel extends ViewModel
 {
     /**
      * @param  {View} view
-     * @return {void}
+     * @return {Promise<View>}
      * @method
      * @public
      */
-    unbind (view)
+    async unbind (view)
     {
-        console.log(view);
+        return super.unbind(view);
     }
 
     /**
      * @param  {View} view
-     * @return {Promise}
+     * @return {Promise<void>}
      * @method
      * @public
      */
-    bind (view)
+    async bind (view)
     {
-        return this
-            .factory(view)
-            .then((view) =>
-            {
-                /**
-                 * アニメーションをNoCodeToolのJSONから生成
-                 * Generate animation from NoCodeTool's JSON
-                 */
-                const homeContent = homeButtonTemplate();
-                view.addChild(homeContent);
+        /**
+         * アニメーションをAnimation ToolのJSONから生成
+         * Generate animation from Animation Tool's JSON
+         */
+        const homeContent = homeButtonTemplate();
+        view.addChild(homeContent);
 
-                /**
-                 * Hello, Worldのテキストを生成
-                 * Generate Hello, World text
-                 */
-                const homeTextField = homeTextTemplate(homeContent);
-                view.addChild(homeTextField);
-
-                return Promise.resolve(view);
-            });
+        /**
+         * Hello, Worldのテキストを生成
+         * Generate Hello, World text
+         */
+        view.addChild(homeTextTemplate(homeContent));
     }
 }

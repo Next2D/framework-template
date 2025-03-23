@@ -1,7 +1,7 @@
-// @ts-ignore
 import { config } from "@/config/Config";
 import { execute as textComponent } from "@/model/ui/component/atom/TextComponent";
-import { response } from "@next2d/framework";
+import { app } from "@next2d/framework";
+import { Event } from "@next2d/events";
 
 /**
  * @description Home画面のTextFieldを作成
@@ -13,14 +13,19 @@ import { response } from "@next2d/framework";
  */
 export const execute = (home_content) =>
 {
+    const response = app.getResponse();
+
     // Hello, World.
-    const textField = textComponent(
-        response.get("HomeText").word,
-        {
-            "autoSize": "center",
-            "type": "input"
-        }
-    );
+    const text = response.has("HomeText") ? response.get("HomeText").word : "";
+    const textField = textComponent(text, {
+        "autoSize": "center",
+        "type": "input"
+    });
+
+    textField.addEventListener(Event.INPUT, () =>
+    {
+        textField.x = config.stage.width / 2 - textField.width / 2;
+    });
 
     textField.x = config.stage.width / 2 - textField.width / 2;
     textField.y = home_content.y + home_content.height / 2 + textField.height;
