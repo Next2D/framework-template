@@ -1,7 +1,7 @@
 {
   "name": "@next2d/framework-template",
   "description": "Next2D Framework default JavaScript template.",
-  "version": "3.0.8",
+  "version": "4.0.0",
   "homepage": "https://next2d.app",
   "bugs": "https://github.com/Next2D/framework-template/issues/new",
   "author": "Toshiyuki Ienaga<ienaga@next2d.app>",
