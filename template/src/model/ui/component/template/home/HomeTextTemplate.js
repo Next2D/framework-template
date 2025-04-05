@@ -22,7 +22,7 @@ export const execute = (home_content) =>
         "type": "input"
     });
 
-    textField.addEventListener(Event.INPUT, () =>
+    textField.addEventListener(Event.CHANGE, () =>
     {
         textField.x = config.stage.width / 2 - textField.width / 2;
     });
