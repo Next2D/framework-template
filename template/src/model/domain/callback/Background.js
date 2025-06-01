@@ -20,6 +20,11 @@ export class Background
     constructor ()
     {
         this.shape = new Shape();
+        stage.addEventListener(Event.RESIZE, () =>
+        {
+            backgroundDrawService(this);
+            backgroundChangeScaleService(this);
+        });
     }
 
     /**
@@ -39,17 +44,11 @@ export class Background
         }
 
         const shape = this.shape;
-        if (stage && !stage.hasEventListener(Event.RESIZE)) {
-            stage.addEventListener(Event.RESIZE, () =>
-            {
-                backgroundChangeScaleService(this);
-                backgroundDrawService(this);
-            });
-        }
-
-        if (config.stage.width !== shape.width) {
-            backgroundChangeScaleService(this);
+        if (config.stage.width !== shape.width
+            || config.stage.height !== shape.height
+        ) {
             backgroundDrawService(this);
+            backgroundChangeScaleService(this);
         }
 
         /**
