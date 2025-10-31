@@ -19,18 +19,18 @@
     "generate": "npx @next2d/view-generator"
   },
   "devDependencies": {
-    "@capacitor/android": "^7.4.3",
-    "@capacitor/cli": "^7.4.3",
-    "@capacitor/core": "^7.4.3",
-    "@capacitor/ios": "^7.4.3",
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/cli": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
+    "@capacitor/ios": "^7.4.4",
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.36.0",
+    "@eslint/js": "^9.38.0",
     "@next2d/vite-plugin-next2d-auto-loader": "^3.1.8",
-    "eslint": "^9.36.0",
+    "eslint": "^9.38.0",
     "globals": "^16.4.0",
-    "jsdom": "^27.0.0",
-    "vite": "^7.1.8",
-    "vitest": "^3.2.4",
+    "jsdom": "^27.1.0",
+    "vite": "^7.1.12",
+    "vitest": "^4.0.6",
     "vitest-webgl-canvas-mock": "^1.1.0"
   },
   "peerDependencies": {
