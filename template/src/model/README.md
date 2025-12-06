@@ -1,128 +1,344 @@
 # Model
 
-アプリケーションのドメインを隔離するためのディレクトリです。  
-テンプレートのディレクトリ構成は一例であり、アプリケーションの機能性、保守性など、特性に合わせてモデリングを行ってください。
+アプリケーションのビジネスロジックとデータアクセスを担当するディレクトリです。クリーンアーキテクチャに基づき、Application、Domain、Infrastructureの3層で構成されています。
 
-This directory is used to isolate the domain of the application.  
-The directory structure of the template is an example and should be modeled according to the characteristics of the application, such as functionality and maintainability.  
+This directory is responsible for business logic and data access. Based on Clean Architecture, it consists of three layers: Application, Domain, and Infrastructure.
 
-## Example of directory structure
+## 📁 現在のディレクトリ構造 / Current Directory Structure
 
-```sh
-project
-└── src
-    └── model
-        ├── application
-        │   └── content
-        ├── domain
-        │   ├── callback
-        │   └── event
-        │       ├── top
-        │       └── home
-        ├── infrastructure
-        │   └── repository
-        └── ui
-            └── component
-                ├── atom
-                └── template
-                    ├── top
-                    └── home
+```mermaid
+graph LR
+    subgraph model["model/"]
+        subgraph application["application/<br>アプリケーション層"]
+            subgraph home["home/"]
+                home_usecase["usecase/<br>StartDragUseCase.js<br>StopDragUseCase.js<br>CenterTextFieldUseCase.js"]
+            end
+            subgraph top["top/"]
+                top_usecase["usecase/<br>NavigateToViewUseCase.js"]
+            end
+        end
+        subgraph domain["domain/<br>ドメイン層"]
+            subgraph callback["callback/"]
+                subgraph Background["Background/"]
+                    bg_js["Background.js"]
+                    subgraph service["service/"]
+                        draw["BackgroundDrawService.js"]
+                        scale["BackgroundChangeScaleService.js"]
+                    end
+                end
+            end
+        end
+        subgraph infrastructure["infrastructure/<br>インフラ層"]
+            subgraph repository["repository/"]
+                repo["HomeTextRepository.js"]
+            end
+        end
+    end
 ```
 
-このテンプレートの各ディレクトリの役割  
-(テンプレートのディレクトリ構成は一例であり、アプリケーションの機能性、保守性など、特性に合わせてモデリングを行ってください。)  
+## 🎨 アーキテクチャ概要 / Architecture Overview
 
-The role of each directory in this template  
-(The directory structure of the template is an example and should be modeled according to the characteristics of the application, such as functionality, maintainability, etc.)
+```mermaid
+graph TB
+    subgraph Application["⚙️ Application Layer"]
+        direction TB
+        UseCase["UseCases"]
+        UseCaseDesc["ビジネスロジックの実装<br/>Business logic implementation"]
+    end
 
-### Application
+    subgraph Domain["💎 Domain Layer"]
+        direction TB
+        DomainLogic["Domain Logic"]
+        DomainDesc["コアビジネスルール<br/>Core business rules"]
+    end
 
-```sh
-application
-└── content
+    subgraph Infrastructure["🔧 Infrastructure Layer"]
+        direction TB
+        Repository["Repositories"]
+        RepoDesc["外部データアクセス<br/>External data access"]
+    end
+
+    Application -->|uses| Domain
+    Application -->|calls| Infrastructure
+
+    classDef appStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef domainStyle fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef infraStyle fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+
+    class Application,UseCase appStyle
+    class Domain,DomainLogic domainStyle
+    class Infrastructure,Repository infraStyle
 ```
 
-`content`ディレクトリにはAnimation Toolで作成されたアニメーションを動的に生成するためのクラスが格納されてます。  
-`service`ディレクトリを作成して、`domain`へのアクセスを行う責務を担う事も良いかもしれません。  
+## ⚙️ Application Layer
 
-The `content` directory contains classes for dynamically generating animations created by the Animation Tool.  
-It may be a good idea to create a `service` directory to be responsible for accessing the `domain`.  
+### 役割 / Role
 
-#### Example of cooperation with Animation Tool
+- ユーザーのアクションに対応するビジネスロジックを実装
+- 各ユーザーアクションごとにUseCaseクラスを作成
+- DomainとInfrastructureにアクセス
 
-`namespace`にAnimation Toolのシンボルに設定した名前を追記する事で動的生成が可能になります。  
-Dynamic generation is enabled by appending the name set for the Animation Tool symbol in the `namespace` field.  
+Implements business logic corresponding to user actions. Creates a UseCase class for each user action. Accesses Domain and Infrastructure.
+
+### 実装例 / Implementation Example
+
+#### StartDragUseCase.js
 
 ```javascript
-import { MovieClipContent } from "@next2d/framework";
-
-/**
- * @see file/sample.n2d
- * @class
- * @extends {MovieClipContent}
- */
-export class TopContent extends MovieClipContent
-{
+export class StartDragUseCase {
     /**
-     * @return {string}
+     * @description ドラッグ可能なオブジェクトのドラッグを開始
+     *              Start dragging a draggable object
      */
-    get namespace ()
-    {
-        return "TopContent"; // Animation Toolのsymbolで設定した名前を追記
+    execute(target) {
+        target.startDrag();
     }
 }
 ```
 
-### Domain
+#### NavigateToViewUseCase.js
 
-```sh
-domain
-├── callback
-└── event
-    ├── top
-    └── home
+```javascript
+import { app } from "@next2d/framework";
+
+export class NavigateToViewUseCase {
+    /**
+     * @description 指定された画面に遷移
+     *              Navigate to the specified view
+     */
+    async execute(viewName) {
+        await app.gotoView(viewName);
+    }
+}
 ```
 
-アプリケーションの固有ロジックを格納するディレクトリで、プロジェクトの核心になる層です。  
-`callback`で、全画面の背景を生成、`event`ディレクトリは各ページのイベント処理を行っています。  
-`event`ディレクトリのクラスがUserからの`InputUseCase`の責務を担っています。  
+### 特徴 / Features
 
-This directory stores the application-specific logic and is the core layer of the project.  
-The `callback` generates the background for all screens, and the `event` directory handles events for each page.  
-The classes in the `event` directory are responsible for `InputUseCase` from User.  
+- ✅ **単一責任** - 1つのUseCaseは1つの責務のみ
+- ✅ **再利用可能** - 異なるViewModelから呼び出し可能
+- ✅ **テスタブル** - 独立してユニットテスト可能
 
-### Infrastructure
+詳細は [application/README.md](./application/README.md) を参照してください。
 
-```sh
-infrastructure
-└── repository
+See [application/README.md](./application/README.md) for details.
+
+## 💎 Domain Layer
+
+### 役割 / Role
+
+- アプリケーションのコアとなるビジネスルールを実装
+- フレームワークや外部ライブラリに依存しない純粋なロジック
+- アプリケーション全体で共通して使用される処理
+
+Implements the core business rules of the application. Pure logic that doesn't depend on frameworks or external libraries. Commonly used processes throughout the application.
+
+### 実装例 / Implementation Example
+
+#### Background.js
+
+```javascript
+import { Shape, stage } from "@next2d/display";
+import { Event } from "@next2d/events";
+
+/**
+ * @description グラデーション背景
+ *              Gradient background
+ */
+export class Background {
+    constructor() {
+        this.shape = new Shape();
+
+        // リサイズイベントをリスン
+        stage.addEventListener(Event.RESIZE, () => {
+            backgroundDrawService(this);
+            backgroundChangeScaleService(this);
+        });
+    }
+
+    execute() {
+        const context = app.getContext();
+        const view = context.view;
+        if (!view) return;
+
+        // 背景を最背面に配置
+        view.addChildAt(this.shape, 0);
+    }
+}
 ```
 
-外部へのアクセスロジックを格納するディレクトリです。  
-データベースからの情報であれば`entity`ディレクトリを作成して可変可能オブジェクトとして  
-可変想定がないオブジェクトなどはデータ転送オブジェクト(DTO)として`dto`ディレクトリにそれぞれ責務を分散させるのが良いかもしれません。  
+### 特徴 / Features
 
-A directory to store external access logic.  
-If the information is from a database, create an `entity` directory as a variable object.  
-For objects that have no variable assumptions, it may be a good idea to distribute their responsibilities in the `dto` directory as data transfer objects (DTOs).
+- ✅ **フレームワーク非依存** - 可能な限り純粋なJavaScript
+- ✅ **再利用可能** - アプリケーション全体で利用
+- ✅ **安定性** - 外部の変更に影響されにくい
+- ✅ **テスタブル** - 外部依存が最小限
 
-### UI(User Interface)
+詳細は [domain/README.md](./domain/README.md) を参照してください。
 
-```sh
-ui
-└── component
-    ├── atom
-    └── template
-        ├── top
-        └── home
+See [domain/README.md](./domain/README.md) for details.
+
+## 🔧 Infrastructure Layer
+
+### 役割 / Role
+
+- 外部システムとの連携（API、データベース等）
+- データアクセスの実装
+- エラーハンドリングの保証
+
+Integrates with external systems (APIs, databases, etc.). Implements data access. Ensures error handling.
+
+### 実装例 / Implementation Example
+
+#### HomeTextRepository.js
+
+```javascript
+import { config } from "@/config/Config";
+
+export class HomeTextRepository {
+    /**
+     * @description Home画面のテキストデータを取得
+     *              Get text data for Home screen
+     */
+    static async get() {
+        try {
+            const response = await fetch(
+                `${config.api.endPoint}api/home.json`
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            return await response.json();
+        } catch (error) {
+            console.error('Failed to fetch home text:', error);
+            throw error;
+        }
+    }
+}
 ```
 
-アトミックデザインを意識したディレクトリ構成になってます。  
-`atom`ディレクトリに最小の表示要素を作成して、`template`ディレクトリで各atomの要素を呼び出しページのレイアウトを作成してます。  
-今回は`template`内のクラスが`UseCase`の責務も担っています。  
-`application`ディレクトリへのアクセスは`template`内のクラスに制限する想定です。  
+### 特徴 / Features
 
-The directory structure is designed with atomic design in mind.  
-The minimum display elements are created in the `atom` directory, and the elements of each atom are called in the `template` directory to create the layout of the page.  
-In this case, the classes in the `template` directory are also responsible for `UseCase`.  
-Access to the `application` directory is supposed to be restricted to the classes in the `template` directory.
+- ✅ **エラーハンドリング** - すべての外部アクセスでtry-catch
+- ✅ **設定の外部化** - エンドポイントは`config`から取得
+- ✅ **テスタブル** - モックに差し替え可能
+
+詳細は [infrastructure/README.md](./infrastructure/README.md) を参照してください。
+
+See [infrastructure/README.md](./infrastructure/README.md) for details.
+
+## 🔄 レイヤー間の関係 / Layer Relationships
+
+```mermaid
+sequenceDiagram
+    participant VM as ViewModel
+    participant UC as UseCase<br/>(Application)
+    participant DL as Domain Logic<br/>(Domain)
+    participant Repo as Repository<br/>(Infrastructure)
+    participant API as External API
+
+    VM->>UC: 1. ビジネスロジック実行<br/>Execute business logic
+    activate UC
+    UC->>DL: 2. ドメインロジック使用<br/>Use domain logic
+    activate DL
+    DL-->>UC: 3. 結果返却<br/>Return result
+    deactivate DL
+    UC->>Repo: 4. データ取得<br/>Fetch data
+    activate Repo
+    Repo->>API: 5. API呼び出し<br/>Call API
+    activate API
+    API-->>Repo: 6. レスポンス<br/>Response
+    deactivate API
+    Repo-->>UC: 7. データ返却<br/>Return data
+    deactivate Repo
+    UC-->>VM: 8. 処理完了<br/>Complete
+    deactivate UC
+```
+
+## 📋 設計原則 / Design Principles
+
+### 1. 依存関係の方向 / Dependency Direction
+
+```mermaid
+graph LR
+    View["View Layer"] --> Application["Application Layer"]
+    Application --> Domain["Domain Layer"]
+    Application --> Infrastructure["Infrastructure Layer"]
+
+    style Domain fill:#e8f5e9,stroke:#1b5e20
+    style Application fill:#f3e5f5,stroke:#4a148c
+    style Infrastructure fill:#fce4ec,stroke:#880e4f
+    style View fill:#e3f2fd,stroke:#0d47a1
+```
+
+- **Application層** は **Domain層** と **Infrastructure層** に依存
+- **Domain層** は何にも依存しない（最も安定）
+
+### 2. 単一責任の原則 / Single Responsibility Principle
+
+各クラスは1つの明確な責務のみを持ちます。
+
+Each class has one clear responsibility.
+
+```javascript
+// ✅ 良い例: 単一の責務
+export class StartDragUseCase {
+    execute(target) {
+        target.startDrag();
+    }
+}
+
+export class StopDragUseCase {
+    execute(target) {
+        target.stopDrag();
+    }
+}
+```
+
+## 🆕 新しい機能の追加方法 / Adding New Features
+
+### 1. UseCase（Application層）の追加
+
+```sh
+# 1. ディレクトリ作成
+model/application/{screen-name}/usecase/
+
+# 2. UseCaseファイル作成
+model/application/{screen-name}/usecase/YourUseCase.js
+```
+
+### 2. Domain Logicの追加
+
+```sh
+# 1. ディレクトリ作成
+model/domain/{feature-name}/
+
+# 2. ドメインロジック作成
+model/domain/{feature-name}/YourDomainLogic.js
+model/domain/{feature-name}/service/YourService.js
+```
+
+### 3. Repositoryの追加
+
+```sh
+# Repository作成
+model/infrastructure/repository/YourRepository.js
+```
+
+## ✅ ベストプラクティス / Best Practices
+
+1. **1クラス1責務** - UseCaseは単一の目的のみ
+2. **executeメソッド** - UseCaseのエントリーポイントを統一
+3. **エラーハンドリング** - Infrastructure層で適切に処理
+4. **ドキュメント** - JSDocで処理内容を明記
+5. **テスト** - 各層を独立してテスト可能に
+
+## 🔗 関連ドキュメント / Related Documentation
+
+- [../ARCHITECTURE.md](../../ARCHITECTURE.md) - アーキテクチャ全体の説明
+- [application/README.md](./application/README.md) - Application層の詳細
+- [domain/README.md](./domain/README.md) - Domain層の詳細
+- [infrastructure/README.md](./infrastructure/README.md) - Infrastructure層の詳細
+- [../view/README.md](../view/README.md) - View層の説明
+- [../ui/README.md](../ui/README.md) - UIコンポーネント

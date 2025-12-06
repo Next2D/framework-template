@@ -1,12 +1,12 @@
 # Configuration Files
 
-各種設定ファイルを格納するディレクトリです。  
-Directory for storing various configuration files.  
+各種設定ファイルを格納するディレクトリです。
+Directory for storing various configuration files.
 
 ## stage.json
 
-表示領域(Stage)の設定を行うJSONファイルです。  
-JSON file for setting the display area.  
+表示領域(Stage)の設定を行うJSONファイルです。
+JSON file for setting the display area.
 
 | name      | value   | default | description                                                                                          |
 |-----------|---------|---------|------------------------------------------------------------------------------------------------------|
@@ -25,16 +25,16 @@ JSON file for setting the display area.
 
 ## config.json
 
-初期は `local`、`dev`、`stg`、`prd`、`all`、と区切られており、`all` 以外は任意の環境名です。環境に依存する設定（例：APIエンドポイント、ログ出力レベル、キャッシュの設定など）を分離することで、開発中と本番運用時とで異なる挙動を実現できます。また、全ての設定値が一箇所にまとまっているため、管理やメンテナンスが容易になります。新たなパラメータの追加や既存の設定変更も、該当箇所を探しやすくなります。 
+初期は `local`、`dev`、`stg`、`prd`、`all`、と区切られており、`all` 以外は任意の環境名です。環境に依存する設定（例：APIエンドポイント、ログ出力レベル、キャッシュの設定など）を分離することで、開発中と本番運用時とで異なる挙動を実現できます。また、全ての設定値が一箇所にまとまっているため、管理やメンテナンスが容易になります。新たなパラメータの追加や既存の設定変更も、該当箇所を探しやすくなります。
 
-Initially, the configuration is divided into `local`, `dev`, `stg`, `prd`, and `all`, where any environment name is allowed except for `all`.  
+Initially, the configuration is divided into `local`, `dev`, `stg`, `prd`, and `all`, where any environment name is allowed except for `all`.
 By segregating environment-specific settings (for example, API endpoints, log output levels, cache configurations, etc.), you can achieve different behaviors between development and production. Additionally, since all configuration values are consolidated in one place, management and maintenance become easier, and it simplifies locating the relevant sections when adding new parameters or modifying existing settings.
 
 ### config.json > all
 
-`all` はその名の通り、どの環境でも書き出される共通変数となります。`all` で機能に影響のある設定項目は以下の項目となります。  
+`all` はその名の通り、どの環境でも書き出される共通変数となります。`all` で機能に影響のある設定項目は以下の項目となります。
 
-As the name suggests, `all` is a common variable that is written out in any environment. The following items are available in `all` that affect functionality.  
+As the name suggests, `all` is a common variable that is written out in any environment. The following items are available in `all` that affect functionality.
 
 | name                | value           | default                 | description                                                                                                                                                                                                                                                             |
 |---------------------|-----------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -45,23 +45,23 @@ As the name suggests, `all` is a common variable that is written out in any envi
 
 ### config.json > platform
 
-`platform` の値は書き出し時の `--platform` で指定した値がセットされます。値は、`macos`、`windows`、`linux`、`ios`、`android`、`web` が対応しています。プラットフォーム固有の判定などで利用が可能です。  
+`platform` の値は書き出し時の `--platform` で指定した値がセットされます。値は、`macos`、`windows`、`linux`、`ios`、`android`、`web` が対応しています。プラットフォーム固有の判定などで利用が可能です。
 
 The `platform` value is assigned based on the value specified with `--platform` at export time. The accepted values are `macos`, `windows`, `linux`, `ios`, `android`, and `web`. It can be used for platform-specific determinations.
 
 ## routing.json
 
-ルーティングに設定できるトッププロパティは、英数字、スラッシュです。スラッシュをキーにCamelCaseでViewクラスにアクセスします。  
+ルーティングに設定できるトッププロパティは、英数字、スラッシュです。スラッシュをキーにCamelCaseでViewクラスにアクセスします。
 
 The top properties that can be set for routing are alphanumeric characters and slashes. The slash is used as a key to access the View class in CamelCase.
 
 ### Example
 
-下記のサンプルの場合は、`https://example.com/quest/list` でアクセスが可能になり  
-ContextにQuestListViewクラスがセットされます。  
+下記のサンプルの場合は、`https://example.com/quest/list` でアクセスが可能になり
+ContextにQuestListViewクラスがセットされます。
 
-In the case of the sample below, access is enabled at `https://example.com/quest/list` and the  
-Context is set to the QuestListView class.  
+In the case of the sample below, access is enabled at `https://example.com/quest/list` and the
+Context is set to the QuestListView class.
 
 ```json
 {
@@ -81,9 +81,9 @@ Context is set to the QuestListView class.
 
 ### routing.json > requests
 
-requests配列の設定は以下の項目が利用可能です。  
+requests配列の設定は以下の項目が利用可能です。
 
-The following items are available for setting up the requests array  
+The following items are available for setting up the requests array
 
 | name       | value           | default  | description                                                                                                                                                                                                                                                                          |
 |------------|-----------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -1,6 +1,8 @@
-import { ViewModel } from "@next2d/framework";
-import { execute as homeButtonTemplate } from "@/model/ui/component/template/home/HomeButtonTemplate";
-import { execute as homeTextTemplate } from "@/model/ui/component/template/home/HomeTextTemplate";
+import { ViewModel, app } from "@next2d/framework";
+import { StartDragUseCase } from "@/model/application/home/usecase/StartDragUseCase";
+import { StopDragUseCase } from "@/model/application/home/usecase/StopDragUseCase";
+import { CenterTextFieldUseCase } from "@/model/application/home/usecase/CenterTextFieldUseCase";
+import { config } from "@/config/Config";
 
 /**
  * @class
@@ -9,35 +11,85 @@ import { execute as homeTextTemplate } from "@/model/ui/component/template/home/
 export class HomeViewModel extends ViewModel
 {
     /**
-     * @param  {View} view
-     * @return {Promise<View>}
-     * @method
+     * @constructor
      * @public
      */
-    async unbind (view)
+    constructor ()
     {
-        return super.unbind(view);
+        super();
+        this.homeText = "";
+        this.startDragUseCase = new StartDragUseCase();
+        this.stopDragUseCase = new StopDragUseCase();
+        this.centerTextFieldUseCase = new CenterTextFieldUseCase();
     }
 
     /**
-     * @param  {View} view
      * @return {Promise<void>}
+     * @method
+     * @override
+     * @public
+     */
+    async initialize ()
+    {
+        const response = app.getResponse();
+        this.homeText = response.has("HomeText") ? response.get("HomeText").word : "";
+    }
+
+    /**
+     * @description ホームテキストを取得
+     *              Get home text
+     *
+     * @return {string}
      * @method
      * @public
      */
-    async bind (view)
+    getHomeText ()
     {
-        /**
-         * アニメーションをAnimation ToolのJSONから生成
-         * Generate animation from Animation Tool's JSON
-         */
-        const homeContent = homeButtonTemplate();
-        view.addChild(homeContent);
+        return this.homeText;
+    }
 
-        /**
-         * Hello, Worldのテキストを生成
-         * Generate Hello, World text
-         */
-        view.addChild(homeTextTemplate(homeContent));
+    /**
+     * @description ホームコンテンツのポインターダウン時の処理
+     *              Handle when home content is pointer down
+     *
+     * @param  {PointerEvent} event
+     * @return {void}
+     * @method
+     * @public
+     */
+    homeContentPointerDownEvent (event)
+    {
+        const target = event.currentTarget;
+        this.startDragUseCase.execute(target);
+    }
+
+    /**
+     * @description ホームコンテンツのポインターアップ時の処理
+     *              Handle when home content is pointer up
+     *
+     * @param  {PointerEvent} event
+     * @return {void}
+     * @method
+     * @public
+     */
+    homeContentPointerUpEvent (event)
+    {
+        const target = event.currentTarget;
+        this.stopDragUseCase.execute(target);
+    }
+
+    /**
+     * @description ホームテキストの変更時の処理
+     *              Handle when home text is changed
+     *
+     * @param  {Event} event
+     * @return {void}
+     * @method
+     * @public
+     */
+    homeTextChangeEvent (event)
+    {
+        const textField = event.currentTarget;
+        this.centerTextFieldUseCase.execute(textField, config.stage.width);
     }
 }

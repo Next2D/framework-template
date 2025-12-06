@@ -17,9 +17,16 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-      - run: cd template && npm install && npx eslint ./src/**/*.js
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm@latest
+      - run: |
+          npm install
+          npx eslint ./src/**/*.ts
+        working-directory: ./template
 
   windows-browser-test:
     runs-on: windows-latest
@@ -27,6 +34,13 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-      - run: cd template && npm install && npx eslint ./src/**/*.js
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm@latest
+      - run: |
+          npm install
+          npx eslint ./src/**/*.ts
+        working-directory: ./template
