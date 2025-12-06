@@ -73,6 +73,20 @@ graph TB
 
 Implements business logic corresponding to user actions. Creates a UseCase class for each user action. Accesses Domain and Infrastructure.
 
+### ディレクトリ構造 / Directory Structure
+
+```
+application/
+├── home/                           # Home画面
+│   └── usecase/
+│       ├── StartDragUseCase.ts
+│       ├── StopDragUseCase.ts
+│       └── CenterTextFieldUseCase.ts
+└── top/                            # Top画面
+    └── usecase/
+        └── NavigateToViewUseCase.ts
+```
+
 ### 実装例 / Implementation Example
 
 #### StartDragUseCase.js
