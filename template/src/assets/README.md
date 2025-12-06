@@ -19,18 +19,19 @@ import logoImage from "@/assets/logo.png";
 
 // logoImageはビルド時に解決されたURLになります
 // logoImage will be a resolved URL at build time
-const sprite = new Sprite();
-sprite.addChild(new Bitmap(logoImage));
+const shape = new Shape();
+await shape.load(logoImage);
 ```
 
 ### JSONのインポート / Importing JSON
 
 ```javascript
-import configData from "@/assets/data.json";
+import animation from "@/assets/animation.json";
 
-// JSONは直接オブジェクトとしてインポートされます
-// JSON is imported directly as an object
-console.log(configData.someProperty);
+// AnimationToolで書き出したJSONは直接インポートできます
+// JSON exported from AnimationTool can be imported directly.
+const loader = new Loader();
+await loader.loadJSON(animation);
 ```
 
 ## ディレクトリ構造の例 / Example Directory Structure
@@ -41,10 +42,8 @@ assets/
 │   ├── logo.png
 │   └── icons/
 │       └── home.svg
-├── data/
-│   └── settings.json
-└── fonts/
-    └── custom-font.woff2
+├── json/
+│   └── animation.json
 ```
 
 ## assetsとmockの使い分け / Difference between assets and mock
@@ -59,8 +58,7 @@ assets/
 ## 対応フォーマット / Supported Formats
 
 - **画像 / Images**: PNG, JPG, SVG, WebP, GIF
-- **データ / Data**: JSON
-- **フォント / Fonts**: WOFF, WOFF2, TTF, EOT
+- **データ / Data**: JSON(Animation Tool)
 - **その他 / Others**: Viteがサポートする形式
 
 ## 関連ドキュメント / Related Documentation

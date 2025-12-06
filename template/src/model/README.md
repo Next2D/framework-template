@@ -6,34 +6,27 @@ This directory is responsible for business logic and data access. Based on Clean
 
 ## 📁 現在のディレクトリ構造 / Current Directory Structure
 
-```mermaid
-graph LR
-    subgraph model["model/"]
-        subgraph application["application/<br>アプリケーション層"]
-            subgraph home["home/"]
-                home_usecase["usecase/<br>StartDragUseCase.js<br>StopDragUseCase.js<br>CenterTextFieldUseCase.js"]
-            end
-            subgraph top["top/"]
-                top_usecase["usecase/<br>NavigateToViewUseCase.js"]
-            end
-        end
-        subgraph domain["domain/<br>ドメイン層"]
-            subgraph callback["callback/"]
-                subgraph Background["Background/"]
-                    bg_js["Background.js"]
-                    subgraph service["service/"]
-                        draw["BackgroundDrawService.js"]
-                        scale["BackgroundChangeScaleService.js"]
-                    end
-                end
-            end
-        end
-        subgraph infrastructure["infrastructure/<br>インフラ層"]
-            subgraph repository["repository/"]
-                repo["HomeTextRepository.js"]
-            end
-        end
-    end
+```
+model/
+├── application/                    # アプリケーション層
+│   ├── home/
+│   │   └── usecase/
+│   │       ├── StartDragUseCase.js
+│   │       ├── StopDragUseCase.js
+│   │       └── CenterTextFieldUseCase.js
+│   └── top/
+│       └── usecase/
+│           └── NavigateToViewUseCase.js
+├── domain/                         # ドメイン層
+│   └── callback/
+│       └── Background/
+│           ├── Background.js
+│           └── service/
+│               ├── BackgroundDrawService.js
+│               └── BackgroundChangeScaleService.js
+└── infrastructure/                 # インフラ層
+    └── repository/
+        └── HomeTextRepository.js
 ```
 
 ## 🎨 アーキテクチャ概要 / Architecture Overview
