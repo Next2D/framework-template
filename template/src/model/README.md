@@ -139,6 +139,18 @@ See [application/README.md](./application/README.md) for details.
 
 Implements the core business rules of the application. Pure logic that doesn't depend on frameworks or external libraries. Commonly used processes throughout the application.
 
+### ディレクトリ構造 / Directory Structure
+
+```
+domain/
+└── callback/
+    └── Background/
+        ├── Background.ts                       # グラデーション背景
+        └── service/
+            ├── BackgroundDrawService.ts        # 描画サービス
+            └── BackgroundChangeScaleService.ts # スケール変更
+```
+
 ### 実装例 / Implementation Example
 
 #### Background.js
