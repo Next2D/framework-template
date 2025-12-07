@@ -206,6 +206,14 @@ See [domain/README.md](./domain/README.md) for details.
 
 Integrates with external systems (APIs, databases, etc.). Implements data access. Ensures error handling.
 
+### ディレクトリ構造 / Directory Structure
+
+```
+infrastructure/
+└── repository/
+    └── HomeTextRepository.ts   # Home画面テキストデータ
+```
+
 ### 実装例 / Implementation Example
 
 #### HomeTextRepository.js
