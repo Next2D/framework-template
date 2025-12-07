@@ -16,8 +16,7 @@ export class TopView extends View
      * @public
      */
     constructor (vm) {
-        super();
-        this.vm = vm;
+        super(vm);
     }
 
     /**
