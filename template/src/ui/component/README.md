@@ -6,18 +6,14 @@ Directory for UI components based on Atomic Design principles.
 
 ## ディレクトリ構造 / Directory Structure
 
-```mermaid
-graph LR
-    subgraph component["component/"]
-        subgraph atom["atom/<br>最小単位"]
-            button["ButtonAtom.js"]
-            text["TextAtom.js"]
-        end
-        subgraph molecule["molecule/<br>複合コンポーネント"]
-            homeBtn["HomeBtnMolecule.js"]
-            topBtn["TopBtnMolecule.js"]
-        end
-    end
+```
+component/
+├── atom/                          # 最小単位
+│   ├── ButtonAtom.js
+│   └── TextAtom.js
+└── molecule/                      # 複合コンポーネント
+    ├── HomeBtnMolecule.js
+    └── TopBtnMolecule.js
 ```
 
 ## アトミックデザイン階層 / Atomic Design Hierarchy

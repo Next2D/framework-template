@@ -19,16 +19,16 @@ The Application layer provides business logic corresponding to user actions. Thi
 
 ## ディレクトリ構造 / Directory Structure
 
-```mermaid
-graph LR
-    subgraph application["application/"]
-        subgraph home["home/"]
-            home_usecase["usecase/<br>StartDragUseCase.js<br>StopDragUseCase.js<br>CenterTextFieldUseCase.js"]
-        end
-        subgraph top["top/"]
-            top_usecase["usecase/<br>NavigateToViewUseCase.js"]
-        end
-    end
+```
+application/
+├── home/
+│   └── usecase/
+│       ├── StartDragUseCase.js
+│       ├── StopDragUseCase.js
+│       └── CenterTextFieldUseCase.js
+└── top/
+    └── usecase/
+        └── NavigateToViewUseCase.js
 ```
 
 各画面ごとにディレクトリを作成し、その中に `usecase` ディレクトリを配置します。

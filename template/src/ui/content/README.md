@@ -12,12 +12,10 @@ Wraps animations created with the Animation Tool as JavaScript classes for use i
 
 ## ディレクトリ構造 / Directory Structure
 
-```mermaid
-graph LR
-    subgraph content["content/"]
-        home["HomeContent.js<br>Home画面用"]
-        top["TopContent.js<br>Top画面用"]
-    end
+```
+content/
+├── HomeContent.js    # Home画面用
+└── TopContent.js     # Top画面用
 ```
 
 ## コンテンツの仕組み / How Content Works

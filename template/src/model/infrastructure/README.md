@@ -19,31 +19,24 @@ The Infrastructure layer is responsible for interactions with the outside of the
 
 ## ディレクトリ構造 / Directory Structure
 
-```mermaid
-graph LR
-    subgraph infrastructure["infrastructure/"]
-        subgraph repository["repository/"]
-            home["HomeTextRepository.js"]
-        end
-    end
+```
+infrastructure/
+└── repository/
+    └── HomeTextRepository.js
 ```
 
 将来的に以下のような拡張も可能です:
 
 Future extensions are possible, such as:
 
-```mermaid
-graph LR
-    subgraph infrastructure["infrastructure/"]
-        subgraph repository["repository/<br>データアクセス層"]
-            home["HomeTextRepository.js"]
-            user["UserRepository.js"]
-            config["ConfigRepository.js"]
-        end
-        subgraph external["external/<br>外部サービス"]
-            analytics["AnalyticsService.js"]
-        end
-    end
+```
+infrastructure/
+├── repository/                    # データアクセス層
+│   ├── HomeTextRepository.js
+│   ├── UserRepository.js
+│   └── ConfigRepository.js
+└── external/                      # 外部サービス
+    └── AnalyticsService.js
 ```
 
 ## Repository Pattern
