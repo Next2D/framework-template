@@ -42,8 +42,8 @@ assets/
 │   ├── logo.png
 │   └── icons/
 │       └── home.svg
-├── json/
-│   └── animation.json
+└── json/
+    └── animation.json
 ```
 
 ## assetsとmockの使い分け / Difference between assets and mock
