@@ -1,3 +1,4 @@
+````markdown
 # Model
 
 アプリケーションのビジネスロジックとデータアクセスを担当するディレクトリです。クリーンアーキテクチャに基づき、Application、Domain、Infrastructureの3層で構成されています。
@@ -8,7 +9,7 @@ This directory is responsible for business logic and data access. Based on Clean
 
 ```
 model/
-├── application/                    # アプリケーション層
+├── application/                                # アプリケーション層
 │   ├── home/
 │   │   └── usecase/
 │   │       ├── StartDragUseCase.js
@@ -17,14 +18,14 @@ model/
 │   └── top/
 │       └── usecase/
 │           └── NavigateToViewUseCase.js
-├── domain/                         # ドメイン層
+├── domain/                                     # ドメイン層
 │   └── callback/
+│       ├── Background.js                       # コールバッククラス本体
 │       └── Background/
-│           ├── Background.js
 │           └── service/
 │               ├── BackgroundDrawService.js
 │               └── BackgroundChangeScaleService.js
-└── infrastructure/                 # インフラ層
+└── infrastructure/                             # インフラ層
     └── repository/
         └── HomeTextRepository.js
 ```
@@ -79,12 +80,12 @@ Implements business logic corresponding to user actions. Creates a UseCase class
 application/
 ├── home/                           # Home画面
 │   └── usecase/
-│       ├── StartDragUseCase.ts
-│       ├── StopDragUseCase.ts
-│       └── CenterTextFieldUseCase.ts
+│       ├── StartDragUseCase.js
+│       ├── StopDragUseCase.js
+│       └── CenterTextFieldUseCase.js
 └── top/                            # Top画面
     └── usecase/
-        └── NavigateToViewUseCase.ts
+        └── NavigateToViewUseCase.js
 ```
 
 ### 実装例 / Implementation Example
@@ -92,10 +93,17 @@ application/
 #### StartDragUseCase.js
 
 ```javascript
+/**
+ * @description ドラッグ開始のユースケース
+ *              Use case for starting drag
+ */
 export class StartDragUseCase {
     /**
      * @description ドラッグ可能なオブジェクトのドラッグを開始
      *              Start dragging a draggable object
+     *
+     * @param  {object} target - IDraggableを実装したオブジェクト
+     * @return {void}
      */
     execute(target) {
         target.startDrag();
@@ -108,10 +116,17 @@ export class StartDragUseCase {
 ```javascript
 import { app } from "@next2d/framework";
 
+/**
+ * @description 画面遷移のユースケース
+ *              Use case for navigating to a view
+ */
 export class NavigateToViewUseCase {
     /**
      * @description 指定された画面に遷移
      *              Navigate to the specified view
+     *
+     * @param  {string} viewName
+     * @return {Promise<void>}
      */
     async execute(viewName) {
         await app.gotoView(viewName);
@@ -145,10 +160,10 @@ Implements the core business rules of the application. Pure logic that doesn't d
 domain/
 └── callback/
     └── Background/
-        ├── Background.ts                       # グラデーション背景
+        ├── Background.js                       # グラデーション背景
         └── service/
-            ├── BackgroundDrawService.ts        # 描画サービス
-            └── BackgroundChangeScaleService.ts # スケール変更
+            ├── BackgroundDrawService.js        # 描画サービス
+            └── BackgroundChangeScaleService.js # スケール変更
 ```
 
 ### 実装例 / Implementation Example
@@ -165,8 +180,12 @@ import { Event } from "@next2d/events";
  */
 export class Background {
     constructor() {
+        /**
+         * @type {Shape}
+         * @public
+         */
         this.shape = new Shape();
-
+        
         // リサイズイベントをリスン
         stage.addEventListener(Event.RESIZE, () => {
             backgroundDrawService(this);
@@ -183,6 +202,40 @@ export class Background {
         view.addChildAt(this.shape, 0);
     }
 }
+```
+
+#### BackgroundDrawService.js
+
+```javascript
+import { config } from "@/config/Config";
+import { Matrix } from "@next2d/geom";
+
+/**
+ * @description 背景のグラデーション描画を実行
+ *              Execute background gradient drawing
+ *
+ * @param  {Background} background
+ * @return {void}
+ */
+export const execute = (background) => {
+    const width = config.stage.width;
+    const height = config.stage.height;
+
+    const matrix = new Matrix();
+    matrix.createGradientBox(height, width, Math.PI / 2, 0, 0);
+
+    background.shape.graphics
+        .clear()
+        .beginGradientFill(
+            "linear",
+            ["#1461A0", "#ffffff"],
+            [0.6, 1],
+            [0, 255],
+            matrix
+        )
+        .drawRect(0, 0, width, height)
+        .endFill();
+};
 ```
 
 ### 特徴 / Features
@@ -202,16 +255,16 @@ See [domain/README.md](./domain/README.md) for details.
 
 - 外部システムとの連携（API、データベース等）
 - データアクセスの実装
-- エラーハンドリングの保証
+- エラーハンドリング
 
-Integrates with external systems (APIs, databases, etc.). Implements data access. Ensures error handling.
+Integrates with external systems (APIs, databases, etc.). Implements data access. Error handling.
 
 ### ディレクトリ構造 / Directory Structure
 
 ```
 infrastructure/
 └── repository/
-    └── HomeTextRepository.ts   # Home画面テキストデータ
+    └── HomeTextRepository.js   # Home画面テキストデータ
 ```
 
 ### 実装例 / Implementation Example
@@ -225,6 +278,8 @@ export class HomeTextRepository {
     /**
      * @description Home画面のテキストデータを取得
      *              Get text data for Home screen
+     *
+     * @return {Promise<{word: string}>}
      */
     static async get() {
         try {
@@ -292,7 +347,7 @@ graph LR
     View["View Layer"] --> Application["Application Layer"]
     Application --> Domain["Domain Layer"]
     Application --> Infrastructure["Infrastructure Layer"]
-
+    
     style Domain fill:#e8f5e9,stroke:#1b5e20
     style Application fill:#f3e5f5,stroke:#4a148c
     style Infrastructure fill:#fce4ec,stroke:#880e4f
@@ -349,7 +404,7 @@ model/domain/{feature-name}/service/YourService.js
 ### 3. Repositoryの追加
 
 ```sh
-# Repository作成
+# 1. Repository作成
 model/infrastructure/repository/YourRepository.js
 ```
 
@@ -369,3 +424,4 @@ model/infrastructure/repository/YourRepository.js
 - [infrastructure/README.md](./infrastructure/README.md) - Infrastructure層の詳細
 - [../view/README.md](../view/README.md) - View層の説明
 - [../ui/README.md](../ui/README.md) - UIコンポーネント
+````

@@ -4,8 +4,7 @@
  *
  * @class
  */
-export class CenterTextFieldUseCase
-{
+export class CenterTextFieldUseCase {
     /**
      * @description テキストフィールドを画面中央に配置する
      *              Center the text field on the screen

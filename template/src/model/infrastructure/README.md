@@ -1,3 +1,4 @@
+````markdown
 # Infrastructure Layer
 
 インフラストラクチャ層のディレクトリです。外部システムとの連携やデータ永続化の詳細を実装します。
@@ -31,11 +32,13 @@ Future extensions are possible, such as:
 
 ```
 infrastructure/
-├── repository/                    # データアクセス層
+├── repository/                # データアクセス層
 │   ├── HomeTextRepository.js
 │   ├── UserRepository.js
 │   └── ConfigRepository.js
-└── external/                      # 外部サービス
+├── dto/                       # データ転送
+│   └── ApiResponseDto.js
+└── external/                  # 外部サービス
     └── AnalyticsService.js
 ```
 
@@ -69,7 +72,7 @@ export class HomeTextRepository
      * @description Home画面のテキストデータを取得
      *              Get text data for Home screen
      *
-     * @return {Promise<object>}
+     * @return {Promise<{word: string}>}
      * @static
      * @throws {Error} Failed to fetch home text
      */
@@ -90,11 +93,11 @@ export class HomeTextRepository
 
             // レスポンスをパース
             return await response.json();
-
+            
         } catch (error) {
             // エラーログ
             console.error('Failed to fetch home text:', error);
-
+            
             // エラーを上位層に伝播
             throw error;
         }
@@ -115,11 +118,11 @@ Implement error handling for all external access.
 static async get() {
     try {
         const response = await fetch(...);
-
+        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-
+        
         return await response.json();
     } catch (error) {
         console.error('Failed to fetch:', error);
@@ -178,16 +181,16 @@ export class CachedRepository {
     constructor() {
         this.cache = new Map();
     }
-
+    
     async get(id) {
         if (this.cache.has(id)) {
             return this.cache.get(id);
         }
-
+        
         const response = await fetch(`/api/${id}`);
         const data = await response.json();
         this.cache.set(id, data);
-
+        
         return data;
     }
 }
@@ -201,32 +204,32 @@ export class CachedRepository {
 export class RobustRepository {
     static MAX_RETRIES = 3;
     static RETRY_DELAY = 1000;
-
+    
     static async get(id) {
         let lastError = null;
-
+        
         for (let i = 0; i < this.MAX_RETRIES; i++) {
             try {
                 const response = await fetch(`/api/${id}`);
-
+                
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
                 }
-
+                
                 return await response.json();
             } catch (error) {
                 lastError = error;
                 console.warn(`Retry ${i + 1}/${this.MAX_RETRIES}:`, error);
-
+                
                 if (i < this.MAX_RETRIES - 1) {
                     await this.sleep(this.RETRY_DELAY);
                 }
             }
         }
-
+        
         throw new Error(`Failed after ${this.MAX_RETRIES} retries: ${lastError}`);
     }
-
+    
     static sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -238,33 +241,33 @@ export class RobustRepository {
 ```javascript
 export class TimeoutRepository {
     static TIMEOUT = 5000;  // 5秒
-
+    
     static async get(id) {
         const controller = new AbortController();
         const timeoutId = setTimeout(
             () => controller.abort(),
             this.TIMEOUT
         );
-
+        
         try {
             const response = await fetch(`/api/${id}`, {
                 signal: controller.signal
             });
-
+            
             clearTimeout(timeoutId);
-
+            
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}`);
             }
-
+            
             return await response.json();
         } catch (error) {
             clearTimeout(timeoutId);
-
+            
             if (error.name === 'AbortError') {
                 throw new Error(`Request timeout after ${this.TIMEOUT}ms`);
             }
-
+            
             throw error;
         }
     }
@@ -279,31 +282,31 @@ export class TimeoutRepository {
 export class CachedRepository {
     static cache = new Map();
     static CACHE_TTL = 60000;  // 1分
-
+    
     static async get(id) {
         // キャッシュチェック
         const cached = this.cache.get(id);
         const now = Date.now();
-
+        
         if (cached && (now - cached.timestamp) < this.CACHE_TTL) {
             console.log('Cache hit:', id);
             return cached.data;
         }
-
+        
         // APIから取得
         console.log('Cache miss:', id);
         const response = await fetch(`/api/${id}`);
         const data = await response.json();
-
+        
         // キャッシュに保存
         this.cache.set(id, {
             data,
             timestamp: now
         });
-
+        
         return data;
     }
-
+    
     static clearCache() {
         this.cache.clear();
     }
@@ -383,7 +386,7 @@ export class YourRepository
             }
 
             return await response.json();
-
+            
         } catch (error) {
             console.error('Failed to fetch data:', error);
             throw error;
@@ -404,3 +407,5 @@ export class YourRepository
 - [ARCHITECTURE.md](../../../ARCHITECTURE.md) - アーキテクチャ全体の説明
 - [../application/README.md](../application/README.md) - Application層の説明
 - [../../config/README.md](../../config/README.md) - 設定ファイル
+
+````

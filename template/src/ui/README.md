@@ -1,3 +1,4 @@
+````markdown
 # UI Components
 
 UIコンポーネントを格納するディレクトリです。アトミックデザインの概念に基づいて構成されています。
@@ -8,11 +9,14 @@ Directory for storing UI components, structured based on Atomic Design principle
 
 ```
 ui/
-├── animation/                     # アニメーション定義
+├── animation/                 # アニメーション定義
 ├── component/
-│   ├── atom/                      # 最小単位
-│   └── molecule/                  # 複合コンポーネント
-└── content/                       # Animation Tool
+│   ├── atom/                  # 最小単位
+│   ├── molecule/              # 複合コンポーネント
+│   ├── organism/              # 複数Moleculeの組み合わせ（将来の拡張用）
+│   ├── page/                  # ページコンポーネント
+│   └── template/              # ページテンプレート（将来の拡張用）
+└── content/                   # Animation Tool
 ```
 
 ## アトミックデザインの階層 / Atomic Design Hierarchy
@@ -48,6 +52,11 @@ Provides basic text display functionality.
 
 ```javascript
 export class TextAtom extends TextField {
+    /**
+     * @param {string} text
+     * @param {object|null} props
+     * @param {object|null} format_object
+     */
     constructor(
         text = "",
         props = null,
@@ -80,15 +89,20 @@ export class HomeBtnMolecule extends ButtonAtom {
         this.homeContent = new HomeContent();
         this.addChild(this.homeContent);
     }
-
-    startDrag() { ... }
-    stopDrag() { ... }
+    
+    startDrag() {
+        this.homeContent.startDrag();
+    }
+    
+    stopDrag() {
+        this.homeContent.stopDrag();
+    }
 }
 ```
 
 **特徴 / Features:**
 - `ButtonAtom` を継承
-- ドラッグ&ドロップ機能を提供
+- ドラッグ&ドロップ機能を提供（メソッドは`MovieClipContent`親クラスから継承）
 
 #### component/molecule/TopBtnMolecule.js
 Top画面のボタンコンポーネントです。
@@ -97,6 +111,9 @@ Button component for the Top screen.
 
 ```javascript
 export class TopBtnMolecule extends ButtonAtom {
+    /**
+     * @param {string} text
+     */
     constructor(text) {
         super();
         // ViewModelから渡されたテキストを表示
@@ -104,6 +121,9 @@ export class TopBtnMolecule extends ButtonAtom {
         this.addChild(textField);
     }
 
+    /**
+     * @param {Function} callback
+     */
     playEntrance(callback) {
         // アニメーション再生
     }
@@ -228,9 +248,12 @@ constructor() {
 import { Sprite } from "@next2d/display";
 
 export class YourAtom extends Sprite {
+    /**
+     * @param {object|null} props
+     */
     constructor(props = null) {
         super();
-
+        
         // プロパティ設定
         if (props) {
             Object.assign(this, props);
@@ -252,7 +275,7 @@ import { TextAtom } from "../atom/TextAtom";
 export class YourMolecule extends ButtonAtom {
     constructor() {
         super();
-
+        
         const text = new TextAtom("Click me");
         this.addChild(text);
     }
@@ -274,8 +297,27 @@ export class YourContent extends MovieClipContent {
 }
 ```
 
+## テスト / Testing
+
+UIコンポーネントのテストは機能をテストします。
+
+UI component testing tests functionality.
+
+```javascript
+describe('HomeBtnMolecule', () => {
+    test('has drag methods', () => {
+        const btn = new HomeBtnMolecule();
+        
+        expect(typeof btn.startDrag).toBe('function');
+        expect(typeof btn.stopDrag).toBe('function');
+    });
+});
+```
+
 ## 関連ドキュメント / Related Documentation
 
 - [ARCHITECTURE.md](../../ARCHITECTURE.md) - アーキテクチャ全体の説明
 - [view/README.md](../view/README.md) - View層の説明
 - [Animation Tool Documentation](https://next2d.app/docs/animation-tool/) - Animation Toolの使い方
+
+````

@@ -5,8 +5,20 @@ import { NavigateToViewUseCase } from "@/model/application/top/usecase/NavigateT
  * @class
  * @extends {ViewModel}
  */
-export class TopViewModel extends ViewModel
-{
+export class TopViewModel extends ViewModel {
+
+    /**
+     * @type {NavigateToViewUseCase}
+     * @private
+     */
+    navigateToViewUseCase;
+
+    /**
+     * @type {string}
+     * @private
+     */
+    topText = "";
+
     /**
      * @constructor
      * @public
@@ -14,7 +26,6 @@ export class TopViewModel extends ViewModel
     constructor ()
     {
         super();
-        this.topText = "";
         this.navigateToViewUseCase = new NavigateToViewUseCase();
     }
 
@@ -27,7 +38,9 @@ export class TopViewModel extends ViewModel
     async initialize ()
     {
         const response = app.getResponse();
-        this.topText = response.has("TopText") ? response.get("TopText").word : "";
+        this.topText = response.has("TopText")
+            ? response.get("TopText").word
+            : "";
     }
 
     /**

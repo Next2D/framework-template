@@ -4,8 +4,7 @@
  *
  * @class
  */
-export class StopDragUseCase
-{
+export class StopDragUseCase {
     /**
      * @description ドラッグ可能なオブジェクトのドラッグを停止する
      *              Stop dragging a draggable object

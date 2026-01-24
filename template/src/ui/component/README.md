@@ -1,3 +1,4 @@
+````markdown
 # UI Components
 
 アトミックデザインに基づいたUIコンポーネントを格納するディレクトリです。
@@ -8,12 +9,19 @@ Directory for UI components based on Atomic Design principles.
 
 ```
 component/
-├── atom/                          # 最小単位
+├── atom/                      # 最小単位
 │   ├── ButtonAtom.js
 │   └── TextAtom.js
-└── molecule/                      # 複合コンポーネント
-    ├── HomeBtnMolecule.js
-    └── TopBtnMolecule.js
+├── molecule/                  # 複合コンポーネント
+│   ├── HomeBtnMolecule.js
+│   └── TopBtnMolecule.js
+├── organism/                  # 複数Moleculeの組み合わせ（将来の拡張用）
+├── page/                      # ページコンポーネント
+│   ├── home/
+│   │   └── HomePage.js
+│   └── top/
+│       └── TopPage.js
+└── template/                  # ページテンプレート（将来の拡張用）
 ```
 
 ## アトミックデザイン階層 / Atomic Design Hierarchy
@@ -33,8 +41,29 @@ The most basic UI elements. The smallest components that cannot be divided furth
 
 Components with more complex functionality, combining multiple Atoms.
 
-- `HomeBtnMolecule` - Home画面用のボタン（ドラッグ機能付き）
+- `HomeBtnMolecule` - Home画面用のボタン（ドラッグ機能付き、内部の`HomeContent`経由で提供）
 - `TopBtnMolecule` - Top画面用のボタン（アニメーション付き）
+
+### Organism (有機体) - 将来の拡張用
+
+複数のMoleculeを組み合わせた、より大きな機能単位のコンポーネントです。現在は`.gitkeep`のみで、必要に応じて実装します。
+
+Larger functional unit components combining multiple Molecules. Currently contains only `.gitkeep`, to be implemented as needed.
+
+### Template (テンプレート) - 将来の拡張用
+
+ページのレイアウト構造を定義するテンプレートです。現在は`.gitkeep`のみで、必要に応じて実装します。
+
+Templates that define page layout structures. Currently contains only `.gitkeep`, to be implemented as needed.
+
+### Page (ページ)
+
+画面全体を構成するコンポーネントです。ViewからPageを配置し、PageがMoleculeやAtomを組み合わせて画面を構築します。
+
+Components that compose entire screens. Views place Pages, and Pages combine Molecules and Atoms to build screens.
+
+- `HomePage` - Home画面のページコンポーネント
+- `TopPage` - Top画面のページコンポーネント
 
 ## 設計原則 / Design Principles
 
@@ -92,3 +121,5 @@ export class YourMolecule extends ButtonAtom {
 - [atom/README.md](./atom/README.md) - Atomコンポーネント
 - [molecule/README.md](./molecule/README.md) - Moleculeコンポーネント
 - [../README.md](../README.md) - UI全体の説明
+
+````

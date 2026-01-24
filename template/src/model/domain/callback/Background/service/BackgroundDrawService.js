@@ -10,8 +10,7 @@ import { Matrix } from "@next2d/geom";
  * @method
  * @protected
  */
-export const execute = (background) =>
-{
+export const execute = (background) => {
     const width  = config.stage.width;
     const height = config.stage.height;
 

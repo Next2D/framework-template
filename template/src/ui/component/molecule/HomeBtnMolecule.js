@@ -1,5 +1,5 @@
 import { HomeContent } from "@/ui/content/HomeContent";
-import { ButtonAtom } from "../atom/ButtonAtom";
+import { ButtonAtom } from "@/ui/component/atom/ButtonAtom";
 
 /**
  * @description Home画面のボタン分子
@@ -9,8 +9,14 @@ import { ButtonAtom } from "../atom/ButtonAtom";
  * @extends {ButtonAtom}
  * @public
  */
-export class HomeBtnMolecule extends ButtonAtom
-{
+export class HomeBtnMolecule extends ButtonAtom {
+
+    /**
+     * @type {HomeContent}
+     * @private
+     */
+    homeContent;
+
     /**
      * @constructor
      * @public
@@ -24,31 +30,5 @@ export class HomeBtnMolecule extends ButtonAtom
         this.homeContent.scaleY = 2;
 
         this.addChild(this.homeContent);
-    }
-
-    /**
-     * @description ドラッグを開始する
-     *              Start dragging
-     *
-     * @return {void}
-     * @method
-     * @public
-     */
-    startDrag ()
-    {
-        this.homeContent.startDrag();
-    }
-
-    /**
-     * @description ドラッグを停止する
-     *              Stop dragging
-     *
-     * @return {void}
-     * @method
-     * @public
-     */
-    stopDrag ()
-    {
-        this.homeContent.stopDrag();
     }
 }

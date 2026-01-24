@@ -8,8 +8,32 @@ import { config } from "@/config/Config";
  * @class
  * @extends {ViewModel}
  */
-export class HomeViewModel extends ViewModel
-{
+export class HomeViewModel extends ViewModel {
+
+    /**
+     * @type {StartDragUseCase}
+     * @private
+     */
+    startDragUseCase;
+
+    /**
+     * @type {StopDragUseCase}
+     * @private
+     */
+    stopDragUseCase;
+
+    /**
+     * @type {CenterTextFieldUseCase}
+     * @private
+     */
+    centerTextFieldUseCase;
+
+    /**
+     * @type {string}
+     * @private
+     */
+    homeText = "";
+
     /**
      * @constructor
      * @public
@@ -17,7 +41,6 @@ export class HomeViewModel extends ViewModel
     constructor ()
     {
         super();
-        this.homeText = "";
         this.startDragUseCase = new StartDragUseCase();
         this.stopDragUseCase = new StopDragUseCase();
         this.centerTextFieldUseCase = new CenterTextFieldUseCase();
@@ -32,7 +55,9 @@ export class HomeViewModel extends ViewModel
     async initialize ()
     {
         const response = app.getResponse();
-        this.homeText = response.has("HomeText") ? response.get("HomeText").word : "";
+        this.homeText = response.has("HomeText")
+            ? response.get("HomeText").word
+            : "";
     }
 
     /**

@@ -1,3 +1,4 @@
+````markdown
 # Animation Tool Content
 
 Next2D Animation Toolで作成されたコンテンツを格納するディレクトリです。
@@ -14,8 +15,8 @@ Wraps animations created with the Animation Tool as JavaScript classes for use i
 
 ```
 content/
-├── HomeContent.js    # Home画面用
-└── TopContent.js     # Top画面用
+├── HomeContent.js             # Home画面用
+└── TopContent.js              # Top画面用
 ```
 
 ## コンテンツの仕組み / How Content Works
@@ -66,23 +67,10 @@ export class HomeContent extends MovieClipContent
         return "HomeContent";  // Animation Toolで設定したシンボル名
     }
 
-    /**
-     * @description ドラッグを開始
-     *              Start dragging
-     */
-    startDrag ()
-    {
-        // ドラッグ処理
-    }
-
-    /**
-     * @description ドラッグを停止
-     *              Stop dragging
-     */
-    stopDrag ()
-    {
-        // ドラッグ停止処理
-    }
+    // ドラッグメソッド(startDrag/stopDrag)は
+    // MovieClipContentの親クラス(MovieClip)から継承されます
+    // The drag methods (startDrag/stopDrag) are inherited
+    // from MovieClipContent's parent class (MovieClip)
 }
 ```
 
@@ -193,3 +181,5 @@ export class YourContent extends MovieClipContent
 - [../component/README.md](../component/README.md) - UIコンポーネント
 - [../README.md](../README.md) - UI全体の説明
 - [Next2D Animation Tool](https://tool.next2d.app/) - Animation Toolの使い方
+
+````

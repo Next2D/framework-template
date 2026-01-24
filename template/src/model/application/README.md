@@ -1,3 +1,4 @@
+````markdown
 # Application Layer
 
 アプリケーション層のディレクトリです。ビジネスロジックを実装するUseCaseを格納します。
@@ -62,7 +63,7 @@ export class StartDragUseCase
      * @description ドラッグ可能なオブジェクトのドラッグを開始する
      *              Start dragging a draggable object
      *
-     * @param  {object} target
+     * @param  {object} target - IDraggableを実装したオブジェクト
      * @return {void}
      * @method
      * @public
@@ -71,7 +72,7 @@ export class StartDragUseCase
     {
         // ビジネスルールを実装
         // 例: ドラッグ可能かチェック、ログ記録など
-
+        
         target.startDrag();
     }
 }
@@ -103,7 +104,7 @@ export class NavigateToViewUseCase
     {
         // ビジネスルール: 遷移前の検証など
         // 例: 未保存データのチェック、権限確認など
-
+        
         await app.gotoView(viewName);
     }
 }
@@ -124,7 +125,7 @@ export class CenterTextFieldUseCase
      * @description テキストフィールドを画面中央に配置する
      *              Center the text field on the screen
      *
-     * @param  {object} textField
+     * @param  {object} textField - ITextFieldを実装したオブジェクト
      * @param  {number} stageWidth - ステージの幅 / Stage width
      * @return {void}
      * @method
@@ -209,22 +210,22 @@ export class FetchUserDataUseCase {
             // Repositoryでもエラーハンドリングされているが
             // UseCase層でも必要に応じて処理
             const data = await UserRepository.get(userId);
-
+            
             // ビジネスルールのバリデーション
             if (!this.validateUserData(data)) {
                 throw new Error('Invalid user data');
             }
-
+            
             return data;
         } catch (error) {
             // ログ記録
             console.error('Failed to fetch user data:', error);
-
+            
             // 上位層にエラーを伝播
             throw error;
         }
     }
-
+    
     validateUserData(data) {
         // バリデーションロジック
         return data !== null && data.id !== undefined;
@@ -246,7 +247,7 @@ export class FetchHomeTextUseCase {
      * @description Home画面のテキストを取得
      *              Fetch text for Home screen
      *
-     * @return {Promise<object>}
+     * @return {Promise<{word: string}>}
      * @method
      * @public
      */
@@ -254,17 +255,42 @@ export class FetchHomeTextUseCase {
         try {
             // Repositoryでデータ取得
             const data = await HomeTextRepository.get();
-
+            
             // ビジネスロジック: データの加工や検証
             // 例: キャッシュの確認、デフォルト値の設定など
-
+            
             return data;
         } catch (error) {
             console.error('Failed to fetch home text:', error);
-
+            
             // フォールバック: デフォルト値を返す
             return { word: 'Hello, World!' };
         }
+    }
+}
+```
+
+## 複数のUseCaseの組み合わせ / Combining Multiple UseCases
+
+複雑な処理は、複数のUseCaseを組み合わせて実装します。
+
+Implement complex processes by combining multiple UseCases.
+
+```javascript
+export class InitializeHomeScreenUseCase {
+    constructor() {
+        this.fetchTextUseCase = new FetchHomeTextUseCase();
+        this.centerTextUseCase = new CenterTextFieldUseCase();
+    }
+    
+    async execute(textField) {
+        // 1. データ取得
+        const data = await this.fetchTextUseCase.execute();
+        
+        // 2. テキスト設定（ViewModelで実施）
+        
+        // 3. 中央配置
+        this.centerTextUseCase.execute(textField);
     }
 }
 ```
@@ -282,14 +308,14 @@ describe('StartDragUseCase', () => {
     test('should call startDrag on target', () => {
         // モックオブジェクトを作成
         const mockDraggable = {
-            startDrag: vi.fn(),
-            stopDrag: vi.fn()
+            startDrag: jest.fn(),
+            stopDrag: jest.fn()
         };
-
+        
         // UseCaseを実行
         const useCase = new StartDragUseCase();
         useCase.execute(mockDraggable);
-
+        
         // startDragが呼ばれたか検証
         expect(mockDraggable.startDrag).toHaveBeenCalled();
     });
@@ -328,7 +354,7 @@ export class YourUseCase
     execute (param)
     {
         // ビジネスロジックを実装
-
+        
         return result;
     }
 }
@@ -347,3 +373,5 @@ export class YourUseCase
 - [../domain/README.md](../domain/README.md) - Domain層の説明
 - [../infrastructure/README.md](../infrastructure/README.md) - Infrastructure層の説明
 - [../../view/README.md](../../view/README.md) - View層の説明
+
+````

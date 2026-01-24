@@ -1,4 +1,4 @@
-import { TopBtnEntranceAnimation } from "@/ui/animation/top/TopBtnEntranceAnimation";
+import { TopBtnShowAnimation } from "@/ui/animation/top/TopBtnShowAnimation";
 import { ButtonAtom } from "../atom/ButtonAtom";
 import { TextAtom } from "../atom/TextAtom";
 
@@ -10,8 +10,8 @@ import { TextAtom } from "../atom/TextAtom";
  * @extends {ButtonAtom}
  * @public
  */
-export class TopBtnMolecule extends ButtonAtom
-{
+export class TopBtnMolecule extends ButtonAtom {
+
     /**
      * @param {string} text - ボタンに表示するテキスト / Text to display on the button
      * @constructor
@@ -35,12 +35,13 @@ export class TopBtnMolecule extends ButtonAtom
      * @description ボタンのアニメーションを再生
      *              Play button entrance animation
      *
+     * @param  {Function} callback
      * @return {void}
      * @method
      * @public
      */
-    playEntrance (callback)
+    show (callback)
     {
-        new TopBtnEntranceAnimation(this, callback).start();
+        new TopBtnShowAnimation(this, callback).start();
     }
 }

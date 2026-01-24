@@ -8,23 +8,26 @@ import { Event } from "@next2d/events";
  * @class
  * @public
  */
-export class TopBtnEntranceAnimation
-{
+export class TopBtnShowAnimation {
+
+    /**
+     * @type {Job}
+     * @private
+     */
+    _job;
+
     /**
      * @param {TopBtnMolecule} sprite
      * @param {Function} callback
      * @constructor
      * @public
      */
-    constructor(
-        sprite,
-        callback
-    ) {
-
+    constructor(sprite, callback)
+    {
         // アニメーションの初期値に設定
         sprite.alpha = 0;
 
-        this._entranceJob = Tween.add(sprite,
+        this._job = Tween.add(sprite,
             {
                 "alpha": 0
             },
@@ -34,7 +37,7 @@ export class TopBtnEntranceAnimation
         );
 
         // 終了アニメーションが完了したら、完了イベントを発行
-        this._entranceJob.addEventListener(Event.COMPLETE, () =>
+        this._job.addEventListener(Event.COMPLETE, () =>
         {
             callback();
         });
@@ -48,6 +51,6 @@ export class TopBtnEntranceAnimation
      * @public
      */
     start() {
-        this._entranceJob.start();
+        this._job.start();
     }
 }

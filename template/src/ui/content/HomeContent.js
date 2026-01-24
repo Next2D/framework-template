@@ -5,8 +5,7 @@ import { MovieClipContent } from "@next2d/framework";
  * @class
  * @extends {MovieClipContent}
  */
-export class HomeContent extends MovieClipContent
-{
+export class HomeContent extends MovieClipContent {
     /**
      * @return {string}
      * @readonly

@@ -1,3 +1,4 @@
+````markdown
 # Domain Layer
 
 ドメイン層のディレクトリです。アプリケーションのコアとなるビジネスロジックを実装します。
@@ -36,14 +37,14 @@ Future extensions are possible, such as:
 
 ```
 domain/
-├── callback/                      # コールバック処理
+├── callback/                  # コールバック処理
 │   └── Background/
-├── service/                       # ドメインサービス
+├── service/                   # ドメインサービス
 │   ├── ValidationService.js
 │   └── CalculationService.js
-├── entity/                        # エンティティ
+├── entity/                    # エンティティ
 │   └── User.js
-└── value-object/                  # 値オブジェクト
+└── value-object/              # 値オブジェクト
     └── Email.js
 ```
 
@@ -73,8 +74,12 @@ export class Background
 {
     constructor ()
     {
+        /**
+         * @type {Shape}
+         * @public
+         */
         this.shape = new Shape();
-
+        
         // リサイズイベントをリスン
         stage.addEventListener(Event.RESIZE, () =>
         {
@@ -216,12 +221,6 @@ export class ValidationService {
 // これはNext2Dフレームワーク固有の設計判断であり、
 // 純粋なクリーンアーキテクチャからは逸脱していますが、
 // 描画ロジックの再利用性を優先した設計です。
-export class Background {
-    // Next2Dのshapeを使用（このプロジェクトでは許容）
-    constructor() {
-        this.shape = new Shape();
-    }
-}
 ```
 
 ### 2. ビジネスルールの表現 / Express Business Rules
@@ -233,26 +232,23 @@ Express business rules clearly.
 ```javascript
 // ✅ 良い例: ビジネスルールが明確
 export class User {
+    /**
+     * @param {string} id
+     * @param {string} name
+     * @param {number} age
+     */
     constructor(id, name, age) {
         // ビジネスルール: 年齢は0以上150以下
         if (age < 0 || age > 150) {
             throw new Error('Invalid age');
         }
-
         this.id = id;
         this.name = name;
         this.age = age;
     }
-
+    
     // ビジネスルール: 成人判定
     isAdult() {
-        return this.age >= 18;
-    }
-}
-
-// ❌ 悪い例: ビジネスルールが不明確
-export class User {
-    check() {  // 何をチェックするのか不明
         return this.age >= 18;
     }
 }
@@ -270,7 +266,7 @@ export class Calculator {
     static add(a, b) {
         return a + b;  // 副作用なし
     }
-
+    
     static multiply(a, b) {
         return a * b;  // 副作用なし
     }
@@ -283,6 +279,32 @@ export class Background {
         // この場合は、メソッド名や説明で明確にする
         const view = app.getContext().view;
         view.addChildAt(this.shape, 0);
+    }
+}
+```
+
+### 4. 不変性 / Immutability
+
+可能な限り、不変なオブジェクトを使用します。
+
+Use immutable objects as much as possible.
+
+```javascript
+// ✅ 良い例: 不変オブジェクト
+export class Point {
+    /**
+     * @param {number} x
+     * @param {number} y
+     */
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        Object.freeze(this);  // 不変化
+    }
+    
+    // 新しいインスタンスを返す
+    move(dx, dy) {
+        return new Point(this.x + dx, this.y + dy);
     }
 }
 ```
@@ -338,9 +360,13 @@ Use classes for complex logic or when holding state.
 export class CalculationService
 {
     constructor() {
+        /**
+         * @type {Map<string, number>}
+         * @private
+         */
         this.cache = new Map();
     }
-
+    
     /**
      * @description 計算を実行（キャッシュあり）
      *              Execute calculation (with cache)
@@ -352,17 +378,20 @@ export class CalculationService
     calculate(a, b)
     {
         const key = `${a}-${b}`;
-
+        
         if (this.cache.has(key)) {
             return this.cache.get(key);
         }
-
+        
         const result = this.performCalculation(a, b);
         this.cache.set(key, result);
-
+        
         return result;
     }
-
+    
+    /**
+     * @private
+     */
     performCalculation(a, b)
     {
         // 複雑な計算ロジック
@@ -385,7 +414,7 @@ describe('ValidationService', () => {
         expect(validateInput('abc')).toBe(true);
         expect(validateInput('test')).toBe(true);
     });
-
+    
     test('should return false for invalid input', () => {
         expect(validateInput('ab')).toBe(false);  // 短すぎる
         expect(validateInput('a'.repeat(51))).toBe(false);  // 長すぎる
@@ -417,7 +446,7 @@ describe('ValidationService', () => {
 export const execute = (param) =>
 {
     // ビジネスルールの実装
-
+    
     return result;
 };
 ```
@@ -427,10 +456,13 @@ export const execute = (param) =>
 1. **フレームワーク非依存** - 可能な限り純粋なJavaScriptで実装
 2. **ビジネスルール優先** - 技術的な詳細よりもビジネスルールを優先
 3. **テスタブル** - 外部依存を最小限に抑える
-4. **明確な命名** - ビジネス用語を使用した分かりやすい命名
+4. **不変性** - 可能な限り不変なオブジェクトを使用
+5. **明確な命名** - ビジネス用語を使用した分かりやすい命名
 
 ## 関連ドキュメント / Related Documentation
 
 - [ARCHITECTURE.md](../../../ARCHITECTURE.md) - アーキテクチャ全体の説明
 - [../application/README.md](../application/README.md) - Application層の説明
 - [../infrastructure/README.md](../infrastructure/README.md) - Infrastructure層の説明
+
+````

@@ -1,30 +1,68 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { NavigateToViewUseCase } from "./NavigateToViewUseCase";
 
+// @next2d/framework モジュールをモック
 vi.mock("@next2d/framework", () => ({
     app: {
-        gotoView: vi.fn()
+        gotoView: vi.fn().mockResolvedValue(undefined)
     }
 }));
 
 import { app } from "@next2d/framework";
-const mockGotoView = app.gotoView;
 
+/**
+ * @description NavigateToViewUseCase のテスト
+ *              Tests for NavigateToViewUseCase
+ */
 describe("NavigateToViewUseCase", () => {
-    let useCase;
-
     beforeEach(() => {
-        useCase = new NavigateToViewUseCase();
-        mockGotoView.mockClear();
+        vi.clearAllMocks();
     });
 
-    it("should call app.gotoView with view name", async () => {
-        await useCase.execute("home");
-        expect(mockGotoView).toHaveBeenCalledWith("home");
+    /**
+     * @description execute メソッドのテスト
+     *              Test for execute method
+     */
+    describe("execute", () => {
+        it("app.gotoView が指定された viewName で呼び出されること", async () => {
+            const useCase = new NavigateToViewUseCase();
+            const viewName = "home";
+
+            await useCase.execute(viewName);
+
+            expect(app.gotoView).toHaveBeenCalledWith("home");
+            expect(app.gotoView).toHaveBeenCalledTimes(1);
+        });
+
+        it("'top' ビューに遷移できること", async () => {
+            const useCase = new NavigateToViewUseCase();
+            const viewName = "top";
+
+            await useCase.execute(viewName);
+
+            expect(app.gotoView).toHaveBeenCalledWith("top");
+        });
+
+        it("非同期処理が正常に完了すること", async () => {
+            const useCase = new NavigateToViewUseCase();
+
+            await expect(useCase.execute("home")).resolves.toBeUndefined();
+        });
     });
 
-    it("should call app.gotoView with different view names", async () => {
-        await useCase.execute("top");
-        expect(mockGotoView).toHaveBeenCalledWith("top");
+    /**
+     * @description インスタンス生成のテスト
+     *              Test for instance creation
+     */
+    describe("Instance Creation / インスタンス生成", () => {
+        it("インスタンスが正常に生成されること", () => {
+            const useCase = new NavigateToViewUseCase();
+            expect(useCase).toBeInstanceOf(NavigateToViewUseCase);
+        });
+
+        it("execute メソッドを持つこと", () => {
+            const useCase = new NavigateToViewUseCase();
+            expect(typeof useCase.execute).toBe("function");
+        });
     });
 });
