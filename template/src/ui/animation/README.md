@@ -1,4 +1,3 @@
-````markdown
 # Animation Definitions
 
 コンポーネントのアニメーションロジックを格納するディレクトリです。
@@ -267,5 +266,3 @@ export class YourAnimation {
 - [../component/README.md](../component/README.md) - UIコンポーネント
 - [../README.md](../README.md) - UI全体の説明
 - [Next2D Tween Documentation](https://next2d.app/docs/tween/) - Tweenの使い方
-
-````

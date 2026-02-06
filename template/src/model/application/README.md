@@ -1,4 +1,3 @@
-````markdown
 # Application Layer
 
 アプリケーション層のディレクトリです。ビジネスロジックを実装するUseCaseを格納します。
@@ -373,5 +372,3 @@ export class YourUseCase
 - [../domain/README.md](../domain/README.md) - Domain層の説明
 - [../infrastructure/README.md](../infrastructure/README.md) - Infrastructure層の説明
 - [../../view/README.md](../../view/README.md) - View層の説明
-
-````

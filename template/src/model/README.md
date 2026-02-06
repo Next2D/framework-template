@@ -1,4 +1,3 @@
-````markdown
 # Model
 
 アプリケーションのビジネスロジックとデータアクセスを担当するディレクトリです。クリーンアーキテクチャに基づき、Application、Domain、Infrastructureの3層で構成されています。
@@ -424,4 +423,3 @@ model/infrastructure/repository/YourRepository.js
 - [infrastructure/README.md](./infrastructure/README.md) - Infrastructure層の詳細
 - [../view/README.md](../view/README.md) - View層の説明
 - [../ui/README.md](../ui/README.md) - UIコンポーネント
-````

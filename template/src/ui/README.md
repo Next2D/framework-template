@@ -1,4 +1,3 @@
-````markdown
 # UI Components
 
 UIコンポーネントを格納するディレクトリです。アトミックデザインの概念に基づいて構成されています。
@@ -319,5 +318,3 @@ describe('HomeBtnMolecule', () => {
 - [ARCHITECTURE.md](../../ARCHITECTURE.md) - アーキテクチャ全体の説明
 - [view/README.md](../view/README.md) - View層の説明
 - [Animation Tool Documentation](https://next2d.app/docs/animation-tool/) - Animation Toolの使い方
-
-````

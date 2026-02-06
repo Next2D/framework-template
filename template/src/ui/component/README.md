@@ -1,4 +1,3 @@
-````markdown
 # UI Components
 
 アトミックデザインに基づいたUIコンポーネントを格納するディレクトリです。
@@ -121,5 +120,3 @@ export class YourMolecule extends ButtonAtom {
 - [atom/README.md](./atom/README.md) - Atomコンポーネント
 - [molecule/README.md](./molecule/README.md) - Moleculeコンポーネント
 - [../README.md](../README.md) - UI全体の説明
-
-````

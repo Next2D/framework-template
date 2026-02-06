@@ -1,4 +1,3 @@
-````markdown
 # Domain Layer
 
 ドメイン層のディレクトリです。アプリケーションのコアとなるビジネスロジックを実装します。
@@ -464,5 +463,3 @@ export const execute = (param) =>
 - [ARCHITECTURE.md](../../../ARCHITECTURE.md) - アーキテクチャ全体の説明
 - [../application/README.md](../application/README.md) - Application層の説明
 - [../infrastructure/README.md](../infrastructure/README.md) - Infrastructure層の説明
-
-````

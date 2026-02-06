@@ -1,4 +1,3 @@
-````markdown
 # View and ViewModel
 
 1画面にViewとViewModelをワンセット作成するのが基本スタイルです。ディレクトリ構成はキャメルケースの最初のブロックで作成するのを推奨しています。
@@ -536,5 +535,3 @@ export class YourViewModel extends ViewModel {
 - [model/README.md](../model/README.md) - Model層の説明
 - [ui/README.md](../ui/README.md) - UIコンポーネント
 - [config/README.md](../config/README.md) - ルーティング設定
-
-````

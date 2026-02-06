@@ -1,4 +1,3 @@
-````markdown
 # Infrastructure Layer
 
 インフラストラクチャ層のディレクトリです。外部システムとの連携やデータ永続化の詳細を実装します。
@@ -407,5 +406,3 @@ export class YourRepository
 - [ARCHITECTURE.md](../../../ARCHITECTURE.md) - アーキテクチャ全体の説明
 - [../application/README.md](../application/README.md) - Application層の説明
 - [../../config/README.md](../../config/README.md) - 設定ファイル
-
-````

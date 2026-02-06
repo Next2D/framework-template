@@ -1,4 +1,3 @@
-````markdown
 # Animation Tool Content
 
 Next2D Animation Toolで作成されたコンテンツを格納するディレクトリです。
@@ -181,5 +180,3 @@ export class YourContent extends MovieClipContent
 - [../component/README.md](../component/README.md) - UIコンポーネント
 - [../README.md](../README.md) - UI全体の説明
 - [Next2D Animation Tool](https://tool.next2d.app/) - Animation Toolの使い方
-
-````
