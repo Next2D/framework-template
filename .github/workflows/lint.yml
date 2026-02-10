@@ -19,12 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          registry-url: "https://registry.npmjs.org"
-      - run: npm install -D eslint-plugin-unused-imports
-        working-directory: ./template
-      - run: npx eslint ./src/**/*.js --ignore-pattern *.test.js
+      - run: npx eslint ./src/**/*.js
         working-directory: ./template
 
   windows-browser-test:
@@ -35,10 +30,5 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          registry-url: "https://registry.npmjs.org"
-      - run: npm install -D eslint-plugin-unused-imports
-        working-directory: ./template
-      - run: npx eslint ./src/**/*.js --ignore-pattern *.test.js
+      - run: npx eslint ./src/**/*.js
         working-directory: ./template
