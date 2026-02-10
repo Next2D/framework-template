@@ -24,7 +24,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm install -D eslint-plugin-unused-imports
         working-directory: ./template
-      - run: npx eslint ./src/**/*.js --ignore-pattern "*.test.js"
+      - run: npx eslint ./src/**/*.js --ignore-pattern *.test.js
         working-directory: ./template
 
   windows-browser-test:
@@ -40,5 +40,5 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm install -D eslint-plugin-unused-imports
         working-directory: ./template
-      - run: npx eslint ./src/**/*.js --ignore-pattern "*.test.js"
+      - run: npx eslint ./src/**/*.js --ignore-pattern *.test.js
         working-directory: ./template
