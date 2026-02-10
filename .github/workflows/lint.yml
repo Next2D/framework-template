@@ -19,6 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
       - run: npm install
         working-directory: ./template
       - run: npx eslint ./src/**/*.js --ignore-pattern ./src/**/*.test.js
@@ -32,6 +35,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
       - run: npm install
         working-directory: ./template
       - run: npx eslint ./src/**/*.js --ignore-pattern ./src/**/*.test.js
