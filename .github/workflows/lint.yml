@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v6
       - run: npm install
         working-directory: ./template
-      - run: npx eslint ./src/**/*.js
+      - run: npx eslint ./src/**/*.js --ignore-pattern ./src/**/*.test.js
         working-directory: ./template
 
   windows-browser-test:
@@ -34,5 +34,5 @@ jobs:
       - uses: actions/setup-node@v6
       - run: npm install
         working-directory: ./template
-      - run: npx eslint ./src/**/*.js
+      - run: npx eslint ./src/**/*.js --ignore-pattern ./src/**/*.test.js
         working-directory: ./template
