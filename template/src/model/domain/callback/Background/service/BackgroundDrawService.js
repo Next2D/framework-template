@@ -10,13 +10,12 @@ import { Matrix } from "@next2d/geom";
  * @method
  * @protected
  */
-export const execute = (background) =>
-{
+export const execute = (background) => {
     const width  = config.stage.width;
     const height = config.stage.height;
 
     const matrix = new Matrix();
-    matrix.createGradientBox(width, height, Math.PI / 2);
+    matrix.createGradientBox(height, width, Math.PI / 2, 0, 0);
 
     background
         .shape

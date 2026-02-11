@@ -26,3 +26,4 @@ dist-ssr
 src/Packages.js
 src/config/Config.js
 electron/resources
+electron/package-lock.json
