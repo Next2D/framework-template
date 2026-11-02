@@ -2,9 +2,12 @@
   "package": {
     "devDependencies": {
       "eslint": "*",
-      "eslint-plugin-unused-imports": "*",
       "@eslint/eslintrc": "*",
-      "@eslint/js": "*"
+      "@eslint/js": "*",
+      "globals": "*"
+    },
+    "scripts": {
+      "lint": "eslint src --ignore-pattern \"src/**/*.test.js\""
     }
   }
 }

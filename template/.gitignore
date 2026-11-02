@@ -25,5 +25,6 @@ dist-ssr
 
 src/Packages.js
 src/config/Config.js
-electron/resources
-electron/package-lock.json
+
+# Xbox: builder が生成する C++/CMake ホスト一式 (MicrosoftGame.config はルートで管理)
+/xbox
